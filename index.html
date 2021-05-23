@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DE IRISARRI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" content='width=1400' />
+    <meta name="author" content="Andy yair Bolaño" />
+    <meta name="description" content="DE IRISARRI es una marca de ropa pret a porter que se enfoca en el desarrollo de bodysuits y crop tops principalmente en terciopelo : ADN de la marca. 
+D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la horma y la comodidad perfecta para sus clientes, variedad de diseños enfocados en la versatilidad y una amplia opción de colores.
+
+Todos nuestros productos son elaborados en Colombia éticamente de manera muy artesanal. También contamos con una alianza social con la fundación NIÑAS SIN MIEDO que trabaja en derechos sexuales y reproductivos en niñas y adolescentes. 
+
+Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar indicado." />
+    <meta name="keywords"
+        content="deirisarri,marca,ropa,ropa colombiana,estilo,sexy,elegante,materiales, estilo de ropa,unico,Laura De Irisarri,diseñadora, diseño colombiano,ropa elegante" />
+    <meta name="Resource-type" content="Document" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="js/jquery.loader.js " type="text/javascript"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            "use strict";
+            var ql = new QueryLoader2(document.querySelector("body"), {
+                barColor: "#000",
+                backgroundColor: "#F7CED6",
+                percentage: true,
+                barHeight: 1,
+                minimumTime: 200,
+                fadeOutTime: 1000
+            });
+        });
+    </script>
+    <link href="css/jquery.fullpage.css" rel="stylesheet" type="text/css" />
+    <link href="css/dri.css" rel="stylesheet" type="text/css" />
+    <link href="css/grid.css" rel="stylesheet" type="text/css" />
+    <link href="css/sweet.css" rel="stylesheet" type="text/css" />
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+
+    <script src="js/jquery_1.8.9.min.js" type="text/javascript"></script>
+    <script src="js/jquery_ui_1.9.1.js" type="text/javascript"></script>
+    <script src="js/jquery.fullpage.min.js" type="text/javascript"></script>
+    <script src="js/page.js" type="text/javascript"></script>
+    <script src="js/jquery.traslator.min.js" type="text/javascript"></script>
+    <script src="js/masonary.js " type="text/javascript"></script>
+    <style>
+        #load {
+            background-color: #F7CED6;
+            position: fixed;
+            z-index: 9000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body ng-app="app">
+    <div id="load">
+
+    </div>
+    <div id="loading" class="animated bounceIn">
+        <div class="loading">
+            <img src="img/loading.svg" alt="cargando">
+            <h2>Procesando compra...</h2>
+        </div>
+    </div>
+
+    <div id="overlay">
+    </div>
+
+    <div id="modal_imagen" class="modal">
+
+
+    </div>
+
+    <div id="modal_coleccion" class="modal">
+        <span class="close" onclick="close_modal_coleccion()" class="animated bounceIn"></span>
+        <div id="img">
+
+        </div>
+    </div>
+
+
+
+    <ul id="logo" ng-controller="barController as vm">
+        <li data-menuanchor="home">
+            <a ng-href="#home"><img src="img/logo.jpg " alt=" " class="logo" /></a>
+        </li>
+        <li>
+            <div class="content-lang">
+                <a href="javascript:;" id="spanish" class="lang" ng-click="vm.lang('ES')">ESP/</a>
+                <a href="javascript:;" id="english" class="lang" ng-click="vm.lang('EN')"">/ENG</a>
+            </div>
+        </li>
+        <li>
+            <div class=" cart" carritomobil="" id="cart-mobile">
+
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="overlay-mobile" id="overlay-mobile">
+        <nav class="overlay-menu">
+            <ul>
+                <li data-menuanchor="dir"><a ng-href="#dir">DE IRISARRI</a></li>
+                <li data-menuanchor="tienda">
+                    <a ng-href="#tienda" data-translate="tienda"></a>
+                </li>
+                <li data-menuanchor="blog">
+                    <a ng-href="#blog" data-translate="blog"></a>
+                </li>
+                <li data-menuanchor="colecciones">
+                    <a ng-href="#colecciones" data-translate="colecciones"></a>
+                </li>
+                <li data-menuanchor="contacto">
+                    <a ng-href="#contacto" data-translate="contacto"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="overlay-bg" id="overlay-bg" onclick="menu()">
+
+    </div>
+
+    <ul id="menu">
+        <li>
+            <div class="cart" carrito="" id="cart">
+
+            </div>
+        </li>
+        <li data-menuanchor="dir">
+            <a ng-href="#dir">DE IRISARRI</a>
+        </li>
+        <li data-menuanchor="tienda">
+            <a ng-href="#tienda" data-translate="tienda"></a>
+        </li>
+        <li data-menuanchor="blog">
+            <a ng-href="#blog" data-translate="blog"></a>
+        </li>
+        <li data-menuanchor="colecciones">
+            <a ng-href="#colecciones" data-translate="colecciones"></a>
+        </li>
+        <li data-menuanchor="contacto">
+            <a ng-href="#contacto" data-translate="contacto"></a>
+        </li>
+    </ul>
+
+
+    <div class="button_container" id="toggle">
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="bottom"></span>
+    </div>
+
+
+    <div id="fullpage">
+        <section class="section active" id="section0" ng-controller="HomeController as vm" ng-init="vm.getBanner();">
+            <div class="blank">
+
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12 slide-home">
+                            <h1 id="textoBannerES" class="ES">{{vm.banner.textoES}}</h1>
+                            <h1 id="textoBannerEN" class="EN">{{vm.banner.textoEN}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fp-controlArrow fp-prev" ng-click="vm.prev(vm.banner.id)"></div>
+            <div class="fp-controlArrow fp-next" ng-click="vm.next(); vm.stop();"></div>
+        </section>
+
+        <section class="section" id="section1">
+            <div class="slide active" id="slide1">
+                <div class="content">
+                    <h1 data-translate="DIR-TITLE-DES"></h1>
+                    <p data-translate="DIR-DESCRIPCION" style="text-align:center"></p>
+                    <img src="img/detail-text.svg " class="img-detail">
+                </div>
+            </div>
+            <div class="slide" id="slide2">
+                <div class="content">
+                    <h1 data-translate="DIR-TITLE-HIS"></h1>
+                    <p data-translate="DIR-HISTORIA" style="text-align:center"></p>
+                    <img src="img/detail-text.svg " class="img-detail">
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section2" ng-controller="TiendaController as vm" ng-init="vm.getProductos()">
+
+            <div class="slide" id="slide0">
+                <div class="overflow-content scrollable-element " ng-class="{'scroll-dowm': vm.mobile}"
+                    id="scroll-shop">
+                    <div class="line-content">
+                        <div class="content-productos">
+                            <div class="grid">
+                                <div class="gutter-sizer"></div>
+                                <div class="grid-sizer"></div>
+                                <div class="grid-item" ng-repeat="item in vm.productos">
+                                    <div ng-if="$index==1 ">
+                                        <div class="content-title title-right title-down">
+                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                <h2 class="ES">{{item.propiedades.nombreES}}</h2>
+                                                <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                            </a>
+                                            <div class="decoration-title">
+                                                <img src="img/decoration-text.svg">
+                                            </div>
+
+                                        </div>
+                                        <a href="javascript:;">
+
+                                            <div class="image img-down img-right cargador">
+                                                <div ng-if="item.sotck.length == 0" class="agotado"
+                                                    style="top: 60%;display:block;width: 100%;position: relative;">
+                                                    AGOTADO</div>
+                                                <img data-src="{{item.propiedades.image}}" class="image post-carga"
+                                                    ng-click='vm.view_producto(item)' style="width:100%">
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                    <div ng-if="$index !==1">
+                                        <div class="content-title title-right" ng-if="vm.impar($index)">
+                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                <h2 class="ES">{{item.propiedades.nombreES}}</h2>
+                                                <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                            </a>
+                                            <div class="decoration-title">
+                                                <img src="img/decoration-text.svg">
+                                            </div>
+                                        </div>
+                                        <div class="content-title title-left" ng-if="vm.par($index)">
+                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                <h2 class="ES">{{item.propiedades.nombreES}}</h2>
+                                                <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                            </a>
+                                            <div class="decoration-title">
+                                                <img src="img/decoration-text.svg">
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;">
+                                            <div class="image img-right cargador" ng-if="vm.impar($index)">
+                                                <div ng-if="item.sotck.length == 0" class="agotado"
+                                                    style="top: 60%;display:block;width: 100%;position: relative;">
+                                                    AGOTADO</div>
+                                                <img data-src="{{item.propiedades.image}}" ng-if="vm.impar($index)"
+                                                    class="image post-carga" ng-click='vm.view_producto(item)'
+                                                    style="width:100%">
+                                            </div>
+
+                                        </a>
+                                        <a href="javascript:;">
+                                            <div class="image img-left cargador" ng-if="vm.par($index)">
+                                                <div ng-if="item.sotck.length == 0" class="agotado"
+                                                    style="top: 60%;display:block;width: 100%;position: relative;">
+                                                    AGOTADO</div>
+                                                <img data-src="{{item.propiedades.image}}" ng-if="vm.par($index)"
+                                                    class="image post-carga" ng-click='vm.view_producto(item)'
+                                                    style="width:100%">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="slide1">
+                <div class="overflow-content scrollable-element scroll-dowm" ng-if="vm.mobile"
+                    style="-webkit-overflow-scrolling: touch;">
+                    <div class="content">
+                        <div class="row store">
+                            <div class="col-lg-12">
+                                <div class="carousel-store" id="elementos-productos-movil">
+
+                                </div>
+                                <br><br>
+                            </div>
+                            <br>
+                            <div class="col-lg-12" style="zoom:0.9">
+                                <div class="row" style="padding:0">
+                                    <div class="col-xs-6">
+
+                                        <div style="width:100%">
+                                            <div class="box-talla" ng-repeat="item in vm.Producto.tallas "
+                                                id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
+                                                {{item.talla}}
+                                            </div>
+                                        </div>
+
+
+                                        <div class="box-color" style="width:100%">
+
+                                            <select id="colorSel" class="input-text" ng-change="vm.color();"
+                                                ng-model="vm.colorSelected" style="width:100%;height:37px;">
+                                                <option value="0" disabled>COLOR</option>
+                                                <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
+                                                    {{item.nombre}}
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                        <br>
+                                        <div class="color" id="color" style="width:100%;height:16px;">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 content-comprar">
+                                        <button class="comprar" ng-click="vm.addCart();"
+                                            data-translate="addCart"></button>
+                                        <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP
+                                        </h3>
+                                        <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined}} USD
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h2 class="ES">{{vm.Producto.propiedades.nombreES}}</h2>
+                                        <h2 class="EN">{{vm.Producto.propiedades.nombreEN}}</h2>
+
+                                        <p class="ES">{{vm.Producto.propiedades.descripcionES}}</p>
+                                        <p class="EN">{{vm.Producto.propiedades.descripcionEN}}</p>
+                                        <div class="decoration-title">
+                                            <img src="img/decoration-text.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content" ng-if="!vm.mobile">
+                    <div class="row store">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="box-talla" ng-repeat="item in vm.Producto.tallas "
+                                                id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
+                                                {{item.talla}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="box-color">
+
+                                                <select id="colorSel" class="input-text" ng-change="vm.color();"
+                                                    ng-model="vm.colorSelected" style="height:37px;">
+                                                    <option value="0" disabled>COLOR</option>
+                                                    <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
+                                                        {{item.nombre}}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                            <div class="color" id="color" style="margin-left: 5px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-6 content-comprar">
+                                    <button class="comprar" ng-click="vm.addCart();" data-translate="addCart"></button>
+                                    <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
+                                    <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined:0}} USD
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2 class="ES">{{vm.Producto.propiedades.nombreES}}</h2>
+                                    <h2 class="EN">{{vm.Producto.propiedades.nombreEN}}</h2>
+
+                                    <p class="ES">{{vm.Producto.propiedades.descripcionES}}</p>
+                                    <p class="EN">{{vm.Producto.propiedades.descripcionEN}}</p>
+                                    <div class="decoration-title">
+                                        <img src="img/decoration-text.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="carousel-store" id="elementos-productos-pc">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <a href="javascript:;" ng-click="vm.back()" class="back" id="back"></a>
+        </section>
+
+        <section class="section" id="section3" ng-controller="BlogController as vm" ng-init="vm.getBlog()">
+
+            <ul class="anio-blog">
+                <li ng-repeat="item in vm.anios  track by $index "><a href="javascript:;" class="guia-blog"
+                        id="{{item}}_guia" ng-click="vm.goAnio(item)">{{item}}</a></li>
+            </ul>
+            <div class="overflow-content scrollable-element" id="blog-scroll">
+                <div class="line-content">
+
+                    <div class="blog-container">
+
+                        <div class="row blog-item" ng-repeat="item in vm.blogs" id="{{item.anio}}"
+                            onmouseover="calcul_blog(this.id)">
+                            <div class="col-lg-2 col-md-2 col-xs-12 anio">
+                                {{item.anio}}_<br>
+                                <a href="https://www.facebook.com/DeIrisarri/" target="_blank"><img
+                                        src="img/facebook.svg " class='social-blog facebook'></a>
+                                <a href="https://twitter.com/deirisarri?lang=es" target="_blank"><img
+                                        src="img/twitter.svg " class='social-blog twiter'></a>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12">
+                                <p ng-bind-html="item.descripcionES" class="ES">
+
+                                </p>
+                                <p ng-bind-html="item.descripcionEN" class="EN">
+
+                                </p>
+                                <div class="decoration-title-blog">
+                                    <img src="img/decoration-text.svg">
+                                </div>
+                                <span class="url">
+                                    <span ng-if="item.url==''">//</span>
+                                    <a href="{{item.url}}" target="_blank">{{item.url}}</a>
+                                </span>
+                                <div class='img-blog'>
+                                    <div class="cargador car-blog ">
+                                        <img data-src="{{item.imagen}}" class="post-carga-blog"
+                                            ng-click='vm.view_imagen(item.imagen)'>
+                                    </div>
+
+                                    <div class="btn-zoom" ng-click='vm.view_imagen(item.imagen)'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section4" ng-controller="ColeccionesController as vm"
+            ng-init="vm.getColecciones();">
+            <div class="overflow-content scrollable-element " ng-class="{'scroll-dowm': vm.mobile}">
+                <div class="line-content">
+                    <div class="colecciones-container">
+                        <div class='row vertical-center content-carrusel' ng-repeat="item in vm.colecciones"
+                            id="collecciones{{item.propiedades.id}}">
+                            <div class='col-xs-1'>
+                                <span class='name-colection'>{{item.propiedades.nombre}}</span>
+                            </div>
+                            <div class='col-xs-10'>
+                                <div class="carousel" id="carousel_{{$index}}">
+
+                                    <div class="carousel-nav left" ng-click="vm.back_($index);"></div>
+                                    <div class="carousel-cell" ng-repeat="i in item.imagenes" id="colleccion{{i.id}}">
+                                        <img data-flickity-lazyload="{{i.url}} " class='image-collection mobile'
+                                            ng-click='vm.view_imagen(item,i.id, $index)'>
+                                        <div class="btn-zoom" ng-click='vm.view_imagen(item, i.id, $index)'></div>
+                                    </div>
+                                    <div class="carousel-nav right " ng-click="vm.next_($index);"></div>
+                                </div>
+                            </div>
+                            <div class='col-xs-1'>
+                                <span class='name-colection'>{{item.propiedades.nombre}}</span>
+                            </div>
+                        </div>
+                        <br><br><br><br>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section" id="section5" ng-controller="ContactoController as vm">
+            <div class="content">
+                <div class="form">
+                    <form>
+                        <input type="text" class="input-text" placeholder="NOMBRE" data-translate="input-nombre"
+                            ng-model="vm.data.nombre" onkeypress="return validarTexto(event)"><br>
+                        <input type="email" class="input-text" placeholder="E-MAIL" ng-model="vm.data.email"
+                            id="email"><br>
+                        <input type="text" class="input-text" placeholder="TEMA" data-translate="input-tema"
+                            ng-model="vm.data.tema"><br>
+                        <img src="img/contact-decoration.svg" class="contact-decoration">
+                        <textarea rows="8" class="input-text" placeholder="MENSAJE" data-translate="input-mensaje"
+                            ng-model="vm.data.mensaje"></textarea><br>
+                        <button class="btn send" data-translate="enviar" ng-click="vm.enviar();"></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section6">
+            <div class="overflow-content scrollable-element" style="text-align:left">
+                <span class="terminos"><b>TERMINOS Y CONDICIONES DE USO<br><br> INTRODUCCIÓN</b><br><br> El uso de este
+                    Sitio Web se rige por los términos y condiciones de uso que a continuación se presentan. El cliente
+                    o usuario al acceder al Sitio Web o hacer un pedido a
+                    través del mismo, está aceptando las condiciones generales de uso y se compromete a respetar todo el
+                    contenido, los deberes, obligaciones, acciones y omisiones aquí expresadas. Cuando el usuario o
+                    cliente utilice cualquier servicio
+                    suministrado en este Sitio, estará sujeto a las reglas, guías, políticas, términos y condiciones
+                    aplicables a dicho servicio en particular. Si usted no acepta todos los Términos y Condiciones de
+                    Uso, por favor absténgase de navegar
+                    en este Sitio Web. DE IRISARRI se reserva el derecho a modificar los Términos y Condiciones de Uso
+                    del Sitio Web, a su sola discreción, en cualquier momento y sin previo aviso bajo el principio de
+                    autonomía de la voluntad. El uso del
+                    Sitio Web con las modificaciones supone la plena aceptación de los Términos y Condiciones de Uso en
+                    su versión actualizada.<br><br><b> AVISO LEGAL</b><br> <br>El cliente o usuario declara bajo la
+                    gravedad de juramento:<br><br> Que sus ingresos provienen de actividades
+                    lícitas<br> Que no se encuentra con registro negativo en listados de prevención de lavado de activos
+                    nacionales o internacionales<br> Que nunca han permitido que terceras personas utilicen sus cuentas
+                    o tarjetas de crédito o débito para consignar
+                    o administrar dineros que desconozca su origen o provengan de actividades contrarias a la ley.<br>
+                    Que ha actuado dentro del marco legal vigente en Colombia, Que ha brindado información brindada
+                    veraz, exacta, correcta y fidedigna
+                    <br><br>
+                    En caso de presentarse alguna infracción, violación o reclamo frente a la información o
+                    los ingresos, el cliente o usuario se obliga a responder frente a DE IRISARRI por todos los
+                    perjuicios que se llegaren a causar como consecuencia de la información o proveniencia
+                    de los ingresos. En igual sentido responderá ante terceros perjudicados.
+                    <br><br>
+                    <b>Cambio o devolución de un producto</b>
+                    <br><br>
+                    De acuerdo a la Ley 1480 de 2011 (Estatuto del Consumidor)  existe la obligación de
+                    responder por la garantía cuando se presenta una falla o un daño en el producto o
+                    servicio, es decir, cuando las condiciones de calidad o de idoneidad resulten afectadas. El
+                    plazo para aplicar la garantía del producto es de tres (3) meses, contados a partir de la
+                    entrega del producto.
+                    <br><br>
+                    Cuando la reclamación se hace por una causa diferente a la garantía legal, se aplicarán
+                    las políticas de devoluciones o cambios que se dispone a continuación:<br><br>
+                     La solicitud debe ser presentada dentro de los 5 (cinco) días hábiles siguientes a la
+                    entrega del producto.<br><br>
+                     El producto debe estar nuevo, sin uso, con todos sus empaques originales, piezas,
+                    accesorios, y etiquetas adheridas al mismo.<br><br>
+                     No se efectuarán cambios de prendas de vestir con algún tipo de arreglo o mancha,
+                    ropa interior, ni vestidos de baño o productos en promoción.<br><br>
+
+                    Sin perjuicio de lo anterior, toda venta efectuada se considera como una venta en firme,
+                    por lo tanto no se admitirá la devolución del producto o el dinero que no estén
+                    respaldadas en la ley o mediante orden de autoridad competente.
+                    <br><br>
+                    <b>Limitación de Responsabilidad</b>
+                    <br><br>
+                    Sin perjuicio de lo determinado en la Legislación Colombiana, <b>DE IRISARRI</b> no asume
+                    responsabilidad alguna de los daños personales o del lucro cesante o daño emergente, ni
+                    de los daños especiales, directos o indirectos incluyendo pero sin limitarse la existencia
+                    de virus, incapacidad para usar el material en este Sitio Web o Sitios Web vinculados,
+                    pérdida de oportunidades de negocios, o cualquier otro daño resultante o relacionado con
+                    el uso o el mal uso del Sitio Web y de los servicios, como quiera que haya sido causado e
+                    incluso si se ha informado a DE IRISARRI de la posibilidad de tales daños. DE IRISARRI
+                    no asume responsabilidad alguna en caso de que el uso del material de este Sitio Web
+                    dé lugar a la reparación o corrección de equipos o información, el usuario o cliente deberá
+                    asumir cualquier costo derivado de ello.<br><br>
+                    Así mismo, bajo ninguna circunstancia, <b>DE IRISARRI</b> será responsable por el contenido
+                    que el cliente o usuario pueda llegar a incorporar en el Sitio Web, ni garantiza la exactitud,
+                    veracidad, confiabilidad ni actualización de la información suministrada.<br><br>
+                    <b>Derechos de Propiedad Intelectual</b>
+                    <br><br>
+                    Todo el contenido de la presente Sitio Web es de propiedad de <b>LAURA DE IRISARRI</b>
+                    propietaria de la marca <b>DE IRISARRI</b>, incluyendo pero sin limitarse a las marcas, logos,
+                    nombres, fotografías, diseños, imágenes, datos y demás elementos de propiedad
+                    industrial o intelectual insertados, usados y/o desplegados en este sitio web. Queda
+                    expresamente prohibida la adaptación, modificación, distribución, comercialización,
+                    comunicación pública y/o reproducción total o parcial del Sitio Web o de cualquiera de
+                    sus contenidos de propiedad intelectual o industrial sin la autorización previa, expresa y
+                    por escrito de <b>LAURA DE IRISARRI</b>.
+                    <br><br>
+                    <b>Manejo de información</b>
+                    <br><br>
+                    La información recolectada por <b>DE IRISARRI</b> en las transacciones realizadas, es
+                    suministrada por el usuario o cliente de forma libre y voluntaria, para que ésta sea
+                    administrada por <b>DE IRISARRI</b> o por quien éste designe para el cumplimiento de los
+                    deberes adquiridos.<br><br>
+                    El suministro de la información implica su recolección, almacenamiento, comunicación
+                    de información comercial, publicitaria y de mercadeo relacionada con la actividad
+                    comercial de la marca.<br><br>
+                    Asimismo, los datos recolectados serán objeto de análisis para fines de mejorar la
+                    estrategia de negocios del Sitio Web y para fines de predicción, clasificación y
+                    segmentación.<br><br>
+                    <b>Precio</b>
+                    <br><br>
+                    El valor total de la compra estará compuesto de los siguientes valores a cargo del cliente
+                    o usuario: valor del producto, impuestos y gastos de transporte si fuere el caso.<br><br>
+                    <b>Domicilio y Legislación aplicable</b><br><br>
+                    Para lo previsto en estos Términos y Condiciones de uso, el usuario o cliente acuerda
+                    someterse a las leyes aplicables en el territorio colombiano renunciando expresamente al
+                    fuero que pudiese corresponderle por razón de su domicilio presente o futuro,
+                    reconociendo que su solución, en su caso, debe hacerse bajo las leyes de Colombia.<br><br>
+                    <b>Comentarios y sugerencias</b>
+                    <br><br>
+                    Sus comentarios y sugerencias serán bien recibidos. Le rogamos que nos envíen tales
+                    comentarios y sugerencias a través de nuestro correo electrónico
+                    lauradeirisarri@gmail.com<br><br><br><br><br><br>
+                </span>
+            </div>
+        </section>
+        <section class="section" id="section7">
+            <div class="overflow-content scrollable-element" style="text-align: left;">
+                <span class="terminos">
+                    <b>AVISO DE PRIVACIDAD DE DE IRISARRI</b>
+                    <br><br>
+                    Para dar cumplimiento a lo dispuesto en la Ley Estatutaria 1581 de 2012, reglamentada parcialmente
+                    por los Decretos 1377 de
+                    2013 y Decreto 886 de 2014, normas compiladas en el Decreto Único Nacional del Sector Comercio,
+                    Industria y Turismo 1074
+                    de 2015 (Artículos 2.2.2.25.1.1. al 2.2.2.26.3.4), la marca <b>DE IRISARRI</b> le informa que sus
+                    datos serán tratados conforme a las
+                    POLÍTICA DE TRATAMIENTO DE LA INFORMACIÓN PERSONAL desarrollada y publicada en la página
+                    www.deirisarri.co.
+                    LAURA DE IRISARRI, titular de la marca <b>DE IRISARRI</b> actúa como Responsable del Tratamiento de
+                    los Datos Personales,
+                    sobre los cuales guardará su confidencialidad atendiendo los requisitos y medidas de seguridad
+                    exigidos por la ley.
+                    El tratamiento que se le dará bajo la marca <b>DE IRISARRI</b> a los datos personales se limitará a
+                    la recolección, almacenamiento,
+                    uso y circulación para las finalidades autorizadas por medio de las diferentes herramientas por
+                    donde se colectan los datos.
+                    Una vez se cumplan con las finalidades del tratamiento para la cual se otorgó autorización por parte
+                    del titular, los datos
+                    personales serán suprimidos de las bases de datos de la marca <b>DE IRISARRI</b>
+                    <br><br>
+                    <b>FINALIDADES Y USOS DE LOS DATOS PERSONALES:</b>
+                    <br><br>
+                    La recolección, almacenamiento, uso y/o circulación de los datos personales de los clientes de <b>DE
+                        IRISARRI</b> tiene como
+                    finalidad principal prestar los servicios y productos ofrecidos y/o contratados por el cliente de
+                    forma adecuada y con una
+                    excelente calidad.
+                    Las finalidades específicas podrán ser consultadas en la POLÍTICA DE TRATAMIENTO DE LA INFORMACIÓN
+                    PERSONAL de
+                    <b>DE IRISARRI</b> la cual podrá ser consultada en la página www.deirisarri.co.
+                    Datos sensibles:
+                    <b>DE IRISARRI</b> no recolectará, almacenará o tratará datos sensibles, a menos que sea
+                    estrictamente necesario.
+                    <br><br>
+                    <b>TRANSMISIÓN Y TRANSFERENCIA DE DATOS PERSONALES</b>
+                    <br><br>
+                    Con el objetivo de dar cumplimiento al objeto de la marca <b>DE IRISARRI</b> y con el fin de cumplir
+                    con las operaciones del
+                    negocio, <b>DE IRISARRI</b> podrá transmitir o transferir los datos personales a terceros nacionales
+                    o extranjeros bajo las medidas
+                    de seguridad necesarias para proteger su información y con limitación al desarrollo de la marca
+                    <b>DE IRISARRI</b>
+                    <br><br>
+                    <b>CAMBIOS AL AVISO DE PRIVACIDAD</b>
+                    <br><br>
+                    En caso de existir cambios sustanciales en el presente Aviso de Privacidad se pondrá
+                    la versión actualizada del mismo a través de la página web www.deirisarri.co o se
+                    enviará la versión actualizada al correo que proporcionó al momento del registro.
+                    <br><br>
+                    <b>DERECHOS QUE LE ASISTEN AL TITULAR</b>
+                    <br><br>
+                    En cumplimiento de las garantías fundamentales consagradas en la Constitución y la
+                    Ley, y sin perjuicio de lo dispuesto en las demás normas que regulen la materia, los
+                    Titulares de los datos personales podrán ejercer de forma gratuita e ilimitada los
+                    siguientes derechos: (i) Conocer, actualizar y rectificar sus datos personales
+                    recolectados por <b>DE IRISARRI</b>. Este derecho se puede ejercer entre otros frente a
+                    datos parciales, inexactos, incompletos, fraccionados o que induzcan al error, (ii)
+                    Solicitar prueba de la autorización otorgada a D/IR (iii)Ser informado por <b>DE IRISARRI</b>
+                    el responsable y/o encargado, previa solicitud, respecto del uso y tratamiento que le
+                    han dado a los datos del titular, (iv) Presentar ante la Superintendencia de Industria y
+                    Comercio quejas y reclamos por infracciones a lo dispuesto en la ley (v) Revocar en
+                    cualquier tiempo la autorización y/o supresión del dato teniendo en cuenta los límites
+                    legales para ello, (vi) Acceder en forma gratuita a los datos del titular contenidos en la
+                    base de datos de <b>DE IRISARRI</b> vii) Los demás que se establezcan en la legislación
+                    vigente, especialmente en la Ley 1581 de 2012 y en el Decreto Único 1074 de 2015 en
+                    sus Capítulos 25 y 26, o las normas que los modifiquen, adicionen o sustituyan. Los
+                    anteriores derecho podrán ser ejercidos a través del correo electrónico
+                    <b>lauradeirisarri@gmail.com</b> o al teléfono 3108757963
+                    <br><br>
+                    Bogotá D.C. 2018.
+                </span>
+            </div>
+        </section>
+        <section class="section" id="section8">
+            <div class="overflow-content scrollable-element" style="text-align:left">
+                <span class="terminos"><b>POLÍTICA DE TRATAMIENTO DE LA INFORMACIÓN PERSONAL</b>
+                    <br><br>
+                    <b> INTRODUCCIÓN</b>
+                    <br><br>
+
+                    LAURA DE IRISARRI, como titular de la marca DE IRISARRI ubicada en la Calle 79b # 7 38 y Responsable
+                    de los datos que se
+                    recolectan bajo la misma, en cumplimiento con lo establecido en la Ley 1581 de 2012 reglamentada
+                    parcialmente por el
+                    Decreto 1377 de 2013 y Decreto 886 de 2014, normas compiladas en el Decreto Único Nacional del
+                    Sector Comercio,
+                    Industria y Turismo 1074 de 2015 (Artículos 2.2.2.25.1.1. al 2.2.2.26.3.4), mediante el presente
+                    documento adopta la POLÍTICA
+                    DE PROTECCIÓN Y TRATAMIENTO DE DATOS PERSONALES con el propósito de proteger y respetar el derecho
+                    constitucional del Habeas Data y de proporcionarle un adecuado tratamiento a la información personal
+                    brindada y
+                    recolectada de las personas naturales a través de diferentes medios tales como formatos, correo
+                    electrónico, mensajes de
+                    texto, página web, redes sociales, teléfono y cualquier otro medio conocido o por conocer en nombre
+                    de la marca DE
+                    IRISARRI y guardará su confidencialidad atendiendo los requisitos y medidas de seguridad exigidos
+                    por la ley.
+                    <br><br>
+                    <b>DERECHOS DE LOS TITULARES</b>
+                    <br><br>
+                    En cumplimiento de las garantías fundamentales consagradas en la Constitución y la Ley, y sin
+                    perjuicio de lo dispuesto en
+                    las demás normas que regulen la materia, los Titulares de los datos personales podrán ejercer de
+                    forma gratuita e
+                    ilimitadamente los siguientes derechos:<br><br>
+
+                    <b>Derecho al acceso</b> a su información personal objeto de tratamiento de forma gratuita<br>
+
+                    <b>Derecho a la actualización</b> de los datos personales objeto de tratamiento.<br>
+
+                    <b>Derecho a la rectificación</b> de los datos personales objeto de tratamiento.<br>
+
+                    <b>Derecho de oposición</b> a que los datos personales sean objeto de tratamiento<br>
+
+                    <b>Derecho a solicitar la supresión</b> de los datos personales cuando en el tratamiento no se
+                    respeten los principios, derechos y
+                    garantías constitucionales y legales.<br>
+                    <b>Derecho a solicitar prueba de la autorización</b> otorgada para el tratamiento.<br>
+                    <b>Derecho a revocar el consentimiento</b> para el tratamiento de los datos personales.<br>
+                    <b>Derecho a presentar quejas y reclamos</b> ante la Superintendencia de Industria y
+                    Comercio por infracciones a lo dispuesto en la Ley Estatutaria 1581 de 2012 y las demás
+                    normas que la modifiquen, adicionen o complementen.<br>
+
+                    <b>Derecho a ser informado</b> por parte del Responsable y/o Encargado del uso y tratamiento
+                    que se les dará a los datos personales, así como de las modificaciones y actualizaciones
+                    de las políticas de protección, medidas de seguridad y finalidades.<br><br>
+                    <b>DATOS PERSONALES RECOLECTADOS</b>
+                    <br><br>
+                    Los datos que serán recolectados por <b>DE IRISARRI</b> son aquellos datos que el titular
+                    proporcione voluntariamente y sean necesarios para brindarle (y mejorar) nuestros servicios, y
+                    para los fines que se describen en el punto IV. del presente documento y que usted acepta
+                    libremente. Principalmente, la información que se recolecta es información personal directa
+                    como nombre, domicilio, teléfono, correo electrónico, número de tarjeta de crédito, información
+                    de facturación información de envíos y preferencias de productos a través de formularios
+                    electrónicos u otros formatos, vía telefónica, redes sociales y de forma directa del titular, la
+                    cual podrá ser almacenada en las bases de datos de <b>DE IRISARRI</b><br><br>
+                    Al proporcionarnos sus datos por cualquiera de los medios descritos, usted se compromete a
+                    que los mismos sean fidedignos, correctos y actuales. En este sentido, se pone en su
+                    conocimiento que si se detecta cualquier dato falso o engañoso o que no cumpla con los
+                    requisitos anteriores, se procederá a su eliminación sin necesidad de previo aviso.<br><br>
+                    <b>DE IRISARRI</b> no recolectará, almacenará o tratará datos sensibles, a menos que sea
+                    estrictamente necesario. De presentarse dicha situación, no realizará ningún tratamiento
+                    sin la debida autorización previa, informada y expresa del titular o representante legal, y
+                    las finalidades que lo justifican, ya que como se establece en el artículo 6 de la Ley 1581 de
+                    2012, se prohíbe el tratamiento de datos personales sensibles a menos que se encuentre
+                    incurso en alguna de las excepciones contempladas en el mencionado artículo.<br><br>
+                    <b>TRATAMIENTO Y FINALIDADES DE LOS DATOS PERSONALES</b><br><br>
+                    La recolección, almacenamiento, uso y/o circulación de los datos personales de los
+                    clientes de <b>DE IRISARRI</b> tiene como finalidad principal prestar los servicios y productos
+                    ofrecidos y/o contratados de forma adecuada y con una excelente calidad.<br><br>
+                    Sin embargo, para poder desarrollar el objeto de la marca, de igual forma se podrá hacer
+                    el tratamiento de los datos para las siguientes finalidades:<br><br>
+                    1. Mantenimiento, desarrollo y/o control de la relación comercial entre el
+                    Titular del dato personal y DE IRISARRI<br><br>
+                    2. Brindar asesoramiento en moda a los clientes<br><br>
+                    3. Comunicación con los clientes a través de múltiples canales y medios para
+                    mantenerlos actualizado en temas como promociones, ofertas, contenido de la
+                    experiencia del cliente y productos o servicios nuevos<br><br>
+                    4. Llenar pedidos de productos, servicios o información de inventarios<br><br>
+                    5. Mejorar la efectividad de nuestros servicios, sitios web, medios de comunicación.<br><br>
+
+                    6. Mantener un historial de las compras de los clientes<br><br>
+                    7. Rastrear y confirmar pedidos en línea<br><br>
+                    8. Atender las consultas que usted tenga sobre los productos y servicios, eventos y
+                    promociones de la marca<br><br>
+                    9. Transmisión de datos nacional o internacional a terceros tales como agentes,
+                    proveedores de servicios y otros representantes que actúan en nuestro nombre,
+                    con fines limitados para el desarrollo del objeto de la marca.<br><br>
+                    10. Invitar al cliente a participar de todo tipo de actividades que se desarrollen entorno
+                    a nuestra marca<br><br>
+                    11. Gestión contable, económica, fiscal y administrativa de clientes<br><br>
+                    12. Realizar otras actividades comerciales según sea necesario para el desarrollo de
+                    la marca DE IRISARRI<br><br>
+                    13. Gestiones derivadas de las relaciones contractuales y/o extracontractuales.<br><br>
+                    14. Transferencia de los datos personales nacional o internacional en caso de una
+                    venta, fusión, adquisición, disolución o evento similar relacionado con la marca.<br><br>
+                    Considerando los fines descritos, su consentimiento para las finalidades descritas será
+                    válido de manera indefinida o hasta que usted lo revoque. Usted como titular del dato
+                    puede elegir: Dejar de recibir comunicaciones comerciales por e-mail, correo directo,
+                    redes sociales, teléfono y móvil en cualquier momento que lo desee usando los canales
+                    de acceso descritos en el punto V del presente documento.<br><br>
+                    <b>CANALES DE ACCESO</b><br><br>
+                    En desarrollo de la garantía constitucional de Habeas Data respecto de los derechos de
+                    acceso, actualización, rectificación y supresión por parte del Titular de los datos
+                    personales, sus causahabientes, representantes legales y/o apoderados, <b>DE IRISARRI</b>
+                    habilitará canales de acceso para los Titulares.<br><br>
+                    Todas las comunicaciones, consultas, quejas y/o reclamos deberán ser dirigidas al a
+                    <b>LAURA DE IRISARRI</b> por cualquiera de los siguientes medios:<br><br>
+
+                    Vía electrónica: A la dirección electrónica: lauradeirisarri@gmail.com<br><br>
+                    Vía física: <b>Calle 79b # 7 38</b> Casa Santamaría<br><br>
+                    Teléfono: 3108757963<br><br>
+                    <b>PROCEDIMIENTO PARA EJERCER LOS DERECHOS DE LOS TITULARES</b><br><br>
+                    Las consultas, quejas o reclamos podrán ser presentados a través de un documento
+                    enviado mediante el correo electrónico lauradeirisarri@gmail.com, el cual deberá ir con
+                    el título <b>DE IRISARRI - DATOS PERSONALES</b><br><br>
+
+                    <b>Consultas</b>
+                    <br><br>
+                    Tratándose del derecho de petición en calidad de información y/o consultas, <b>DE IRISARRI</b>
+                    dará respuesta en un término máximo de diez (10) días hábiles contados a partir del día
+                    siguiente a la fecha de recepción de la petición o consulta mediante el correo electrónico
+                    mencionado.<br><br>
+                    Cuando no fuere posible atender la consulta dentro de dicho término se informará al
+                    interesado, indicando los motivos de la demora y señalando la fecha en que esta se
+                    atenderá, la cual en ningún caso podrá superar cinco (5) días hábiles siguientes al
+                    vencimiento del primer término. El documento de consulta deberá contener lo siguiente:
+                    <br><br>
+                    a) El nombre y número de identificación del titular.<br>
+                    b) Descripción detallada de la consulta<br>
+                    En caso de que el causahabiente del Titular quien solicite la consulta, deberá adjuntar a la
+                    consulta:<br><br>
+                    a) El nombre y número de identificación del titular.<br>
+                    b) Documento que acredite la calidad en que obra.<br>
+                    c) Copia documento de identidad del causahabiente<br>
+                    d) Descripción completa de la consulta.<br>
+                    e) Dirección y datos de contacto del consultante.<br><br>
+
+                     Si se trata del representante legal y/o apoderado del titular, deberá presentar:<br><br>
+
+                    a) El nombre y número de identificación del titular.<br>
+                    b) Copia Documento de identidad del representante legal<br>
+                    c) Documento que acredite la calidad en la que obra (poder, certificación).<br>
+                    d) Descripción completa de la consulta.<br>
+                    e) Dirección y datos de contacto del consultante.<br><br>
+                    <b>Quejas y/o reclamos</b>
+                    <br><br>
+                    Cuando el Titular considere que su información debe ser objeto de corrección,
+                    actualización o supresión o cuando advierta un presunto incumplimiento de cualquiera de
+                    sus derechos, el término máximo para atender la queja o reclamo será de quince (15) días
+                    hábiles contados a partir del día siguiente a la fecha de recepción del documento. Cuando
+                    no fuere posible atender el reclamo dentro de dicho término, se informará al interesado los
+                    motivos de la demora y la fecha en que será atendido, la cual en ningún caso podrá
+                    superar los ocho (8) días hábiles siguientes al vencimiento del primer término. Si el
+                    reclamo resulta incompleto, se requerirá al interesado dentro de los cinco (5) días
+                    siguientes a la recepción de la queja y/o reclamo para que subsane las fallas.
+                    <br><br>
+                    Transcurridos dos (2) meses desde la fecha del requerimiento sin que el solicitante
+                    presente la información requerida, se entenderá desistida la queja o reclamo. El
+                    documento de queja o reclamo deberá contener:<br><br>
+                    a) El nombre y número de identificación del titular.<br>
+                    b) Copia documento de identidad del titular o documento que acredite su
+                    calidad de titular<br>
+                    c) Descripción detallada del reclamo<br><br>
+                    En caso de que el causa habiente del Titular quien solicite el reclamo, deberá adjuntar al
+                    documento:<br><br>
+                    a) El nombre y número de identificación del titular.<br>
+                    b) Documento que acredite la calidad en que obra.<br>
+                    c) Copia documento de identidad del causahabiente<br>
+                    d) Descripción completa de la queja o reclamo<br>
+                    e) Dirección y datos de contacto del consultante.<br>
+                    <br><br>
+                     Si se trata del representante legal y/o apoderado del titular, deberá presentar:
+                    <br><br>
+                    a) El nombre y número de identificación del titular.<br>
+                    b) Copia Documento de identidad del representante legal<br>
+                    c) Documento que acredite la calidad en la que obra (poder, certificación).<br>
+                    d) Descripción completa de la queja o reclamo<br>
+                    e) Dirección y datos de contacto del consultante.<br><br><br>
+                    <b>SEGURIDAD RESPECTO A SUS DATOS PERSONALES</b><br><br>
+                    <b>DE IRISARRI</b> ha adoptado las medidas de seguridad, administrativas, técnicas y
+                    físicas, necesarias para proteger sus datos personales contra daño, pérdida,
+                    alteración, destrucción o el uso, acceso o tratamiento no autorizado.<br><br>
+                    <b>VIGENCIA DE LA POLÍTICA</b><br><br>
+                    La presente Política empezará a regir a partir de 2018. Los Datos Personales que sean
+                    almacenados, utilizados o transmitidos permanecerán en las bases de datos de <b>DE IRISARRI</b>
+                    durante el tiempo que sea necesario para cumplir con las finalidades expuestas
+                    en esta política o de acuerdo al cumplimiento de los deberes legales.<br><br>
+                    Sin embargo, la información será revisada cada año para verificar la veracidad del dato y
+                    finalidad de seguir con su tratamiento.<br><br>
+                    De ser necesario <b>DE IRISARRI</b> se reserva el derecho a modificar la presente Política de
+                    forma unilateral. Por lo tanto, de realizarse cambios en el documento, se informará a los
+                    usuarios de los mismos a través de la correspondiente actualización de su contenido en
+                    nuestra página web www.deirisarri.co
+                    <br><br><br><br>
+                </span>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer">
+
+        <ul class="menu" id="menu-footer">
+            <li data-menuanchor="terminos"><a ng-href="#terminos">TÉRMINOS Y CONDICIONES</a></li>
+            <li data-menuanchor="aviso"><a ng-href="#aviso">AVISO DE PRIVACIDAD</a></li>
+            <li data-menuanchor="politica"><a ng-href="#politica">POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES</a></li>
+        </ul>
+
+        <div id="social-network">
+            <div class="social">
+                <a href="https://www.facebook.com/DeIrisarri/" target="_blank "><img src="img/facebook.svg"></a>
+                <a href="https://twitter.com/deirisarri?lang=es" target="_blank "><img src="img/twitter.svg"></a>
+                <a href="https://www.instagram.com/de_irisarri/" target="_blank "><img src="img/instagram.svg"></a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="CarritoController as vm" id="modal_carrito" class="modal">
+        <div class="content-carrito scrollable-element animated bounceIn">
+
+
+            <div id="modalConfirm" class="modal">
+                <div class="content-model-confirm animated bounceIn">
+                    <h2 data-translate="mensajePedido">Hemos registrador tu pedido, por favor continua con el pago</h2>
+                    <div id="buttonPay">
+
+                    </div>
+                </div>
+            </div>
+
+            <span class="close" ng-click="vm.closeCarrito()" class='animated bounceIn'></span>
+            <div class="row">
+                <div class="col-lg-2" style="width:auto;">
+                    <img src="img/logo.jpg" alt="" class="logo" />
+                </div>
+                <div class="col-lg-8 col-xs-12">
+                    <h2 data-translate="carritoDeCompras"></h2>
+                    <h3>{{Carrito.length}} <span data-translate="productos"></span></h3>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="header-cart" data-translate="infoCliente"></div>
+                    <div class="form-pago">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="label" data-translate="identificacion"></label><br>
+                                    <input type="text" class="input-text" ng-model="vm.Cliente.nit" required
+                                        id="identificacion" onkeypress="return validarNumero(event)">
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <br>
+                                    <label class="label" data-translate="email"></label><br>
+                                    <input type="email" class="input-text" ng-model="vm.Cliente.email" required
+                                        id="email">
+                                </div>
+                                <div class="col-lg-6">
+                                    <br>
+                                    <label class="label" data-translate="nombres"></label><br>
+                                    <input type="text" class="input-text" ng-model="vm.Cliente.nombres" required
+                                        id="nombres" onkeypress="return validarTexto(event)">
+                                </div>
+                                <div class="col-lg-6">
+                                    <br>
+                                    <label class="label" data-translate="apellidos"></label><br>
+                                    <input type="text" class="input-text" ng-model="vm.Cliente.apellidos" required
+                                        id="apellidos" onkeypress="return validarTexto(event)">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <br>
+                                    <label class="label" data-translate="pais"></label><br>
+                                    <select autocomplete="off" ng-model="vm.Cliente.pais" class="input-text" required
+                                        id="pais" ng-change="vm.getCiudades()">
+
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <br>
+                                    <label class="label" data-translate="estado"></label><br>
+                                    <select autocomplete="off" ng-model="vm.Cliente.ciudad" class="input-text" required
+                                        id="ciudad" ng-change="vm.getDepartament()">
+
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <br>
+                                    <label class="label" data-translate="ciudad"></label><br>
+                                    <select autocomplete="off" ng-model="vm.Cliente.departament" class="input-text"
+                                        required id="departament">
+
+                                    </select>
+                                </div>
+                                <div class="col-lg-12">
+                                    <br>
+                                    <label class="label" data-translate="direccion"></label><br>
+                                    <input type="text" class="input-text" ng-model="vm.Cliente.direccion" required
+                                        id="direccion">
+                                </div>
+                                <div class="col-lg-12">
+                                    <br>
+                                    <label class="label" data-translate="telefono">Número de teléfono:</label><br>
+                                    <input type="text" class="input-text" ng-model="vm.Cliente.telefono" required
+                                        id="telefono" onkeypress="return validarNumero(event)">
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="header-cart" data-translate="infoEnvio"></div>
+                    <div class="form-pago">
+                        <form action="">
+
+                            <span data-translate="envioBogota"></span><br>
+                            <input type="radio" id="cbox_envioBogota" value="BO" name="envio" ng-model="item.enviob">
+                            <span data-translate="infoEnvioBogota"></span>
+                            <span class="ES">{{Envio.envioBO| currency:undefined:0}} COP</span>
+                            <span class="EN">{{Envio.envioBO_usd| currency:undefined}} USD</span>
+
+                            <br>
+                            <hr>
+
+                            <span data-translate="envioColombia"></span><br>
+                            <input type="radio" id="cbox_envioColombia" value="CO" name="envio" ng-model="item.envioa">
+                            <span data-translate="infoEnvioColombia"></span>
+                            <span class="ES">
+                                {{Envio.envioCO| currency:undefined:0}} COP
+                            </span>
+                            <span class="EN">
+                                {{Envio.envioCO_usd| currency:undefined}} USD
+                            </span>
+
+                            <br>
+                            <hr>
+                            <br>
+                            <span data-translate="envioInternacional"></span><br>
+                            <input type="radio" id="cbox_envioInternacional" value="IN" name="envio"
+                                ng-model="item.enviob">
+                            <span data-translate="infoEnvioInternacional"></span>
+                            <span class="ES">{{Envio.envioIN | currency:undefined:0}} COP</span>
+                            <span class="EN">{{Envio.envioIN_usd | currency:undefined}} USD</span>
+
+                            <br>
+                            <hr>
+                            <br>
+                            <span data-translate="recogerPedido"></span><br>
+                            <input type="radio" id="cbox_recogerLocal" value="LO" name="envio" ng-model="item.envioc">
+                            <span data-translate="recogerLocal"></span>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+
+                    <div class="header-cart" data-translate="infoPago"></div>
+                    <div class="form-pago">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <img src="img/payU.png" width="100px;"><br>
+                                    <span data-translate="infoPayu"></span><br>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="header-cart" data-translate="resumenCompra"></div>
+                    <div class="list-cart ">
+                        <table style="width: 100%">
+                            <tr ng-repeat="item in Carrito track by $index">
+                                {{$index}}
+                                <td style="width:100px">
+                                    <img src="{{item.imagen.url}}" class="img-cart">
+                                </td>
+                                <td valign="top ">
+                                    <div class="content-descripcion ">
+                                        <h4 class="ES">{{item.producto.nombreES}}</h2>
+                                            <h4 class="EN">{{item.producto.nombreEN}}</h2>
+                                                <small>
+                                                    Talla:{{item.talla}}
+                                                </small><br>
+                                                <small>
+                                                    Color:{{item.color.nombre}}
+                                                </small>
+                                    </div>
+                                </td>
+                                <td valign="top " style="text-align:right;">
+                                    <a href="javascript:;" ng-click="vm.eliminarProducto($index)"><small
+                                            style="color:#e53935" data-translate="eliminar"></small></a>
+                                    <div class="content-precio ">
+                                        <h4 class="ES">{{item.producto.precio * item.cantidad | currency:undefined:0}}
+                                            COP</h4>
+                                        <h4 class="EN">{{item.producto.precio_usd * item.cantidad | currency:undefined}}
+                                            USD</h4>
+                                        <input type="number " class="input-text cantidad " ng-model="item.cantidad "
+                                            ng-change="vm.buttonPay(); ">
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                            <tr ng-if="!(vm.getTotal() > Envio.valor_min_cop)" class="ES">
+                                <td colspan="3">
+                                    <small>valor de su compra no supera el monto minino, el valor minimo es :
+                                        <b>{{Envio.valor_min_cop |currency:undefined:0}} COP</b></small>
+                                </td>
+                            </tr>
+                            <tr ng-if="!(vm.getTotal() > Envio.valor_min_usd)">
+                                <td colspan="3">
+                                    <small>
+                                        Your purchase value does not exceed the minimum amount, the minimum value is :
+                                        <b>{{Envio.valor_min_usd |currency:undefined}} USD</b></small>
+                                </td>
+                            </tr>
+                            <tr class="total ">
+                                <td colspan="3">
+                                    <h4>SUBTOTAL:</h4>
+                                </td>
+                            </tr>
+                            <tr style="border:0">
+                                <td style="border:0" colspan="2">
+                                    <h4 class="ES">COMPRA:</h4>
+                                    <h4 class="EN">PURCHASE:</h4>
+                                </td>
+                                <td style="border:0;text-align: right">
+                                    <h4 class="ES">{{vm.getTotal()|currency:undefined:0}} COP </h4>
+                                    <h4 class="EN">{{vm.getTotal()|currency:undefined}} USD </h4>
+                                </td>
+                            </tr>
+                            <tr style="border:0">
+                                <td style="border:0" colspan="2">
+                                    <h4 class="ES">DESCUENTO:</h4>
+                                    <h4 class="EN">DISCOUNT:</h4>
+                                </td>
+                                <td style="border:0;text-align: right">
+                                    <h4 class="ES">- {{vm.descuento|currency:undefined:0}} COP </h4>
+                                    <h4 class="EN">- {{vm.descuento|currency:undefined}} USD </h4>
+                                </td>
+                            </tr>
+                            <tr style="border:0">
+                                <td style="border:0" colspan="2">
+                                    <h4 class="ES">VALOR DE ENVIO:</h4>
+                                    <h4 class="EN">SHIPPING VALUE</h4>
+                                </td>
+                                <td style="border:0;text-align: right">
+                                    <h4 class="ES">{{vm.envio | currency:undefined:0}} COP </h4>
+                                    <h4 class="EN">{{vm.envio | currency:undefined}} USD </h4>
+                                </td>
+                            </tr>
+                            <tr class="total ">
+                                <td>
+                                    <h4>TOTAL:</h4>
+                                </td>
+                                <td style="text-align: right" colspan="2">
+                                    <h4 class="ES">{{vm.getTotal() - vm.descuento + vm.envio | currency:undefined:0}}
+                                        COP </h4>
+                                    <h4 class="EN">{{vm.getTotal() - vm.descuento + vm.envio | currency:undefined}} USD
+                                    </h4>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="links ">
+                            <p><input type="checkbox" id="cbox_terminos" value="terminos" ng-model="vm.terminos"
+                                    ng-change="vm.buttonPay();">
+                                <span class="ES">Acepto <a ng-href='#terminos'
+                                        onclick="close_carrito_terminos()">Términos y condiciones</a>y autorizo el
+                                    tratamiento de los datos personales de acuerdo
+                                    a lo establecido en <a ng-href='#politica' onclick="close_carrito_terminos()">La
+                                        Política de Tratamiento de la Información Personal</a></span>
+                                <span class="EN">
+                                    I agree <a ng-href='#terminos' onclick="close_carrito_terminos()">Terms and
+                                        conditions</a> and authorizes the processing of personal data of according to
+                                    what is established in
+                                    <a ng-href='#politica' onclick="close_carrito_terminos()">The Policy of Treatment of
+                                        Personal Information</a></span>
+                            </p>
+                            <p data-translate="info"></p>
+                        </div>
+
+                        <input value="REALIZAR PEDIDO" name="Submit" type="submit" id="buy"
+                            class="button comprar finalizar" data-translate="finalizarPedido" ng-click="vm.pay()">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script src="js/angular/angular.js " type="text/javascript "></script>
+<script src="js/app.js " type="text/javascript "></script>
+<script src="js/controllers/home.js " type="text/javascript "></script>
+<script src="js/controllers/contacto.js " type="text/javascript "></script>
+<script src="js/controllers/tienda.js " type="text/javascript "></script>
+<script src="js/controllers/blog.js " type="text/javascript "></script>
+<script src="js/controllers/colecciones.js " type="text/javascript "></script>
+<script src="js/controllers/carrito.js " type="text/javascript "></script>
+<script src="js/services/app.js " type="text/javascript "></script>
+<script src="js/services/ubicacionService.js " type="text/javascript "></script>
+<script src="js/sweet.js " type="text/javascript "></script>
+<script src="js/toastr.min.js " type="text/javascript "></script>
+<script src="js/validaciones.js " type="text/javascript "></script>
+<script src="js/angular/sanitize.js " type="text/javascript"></script>
+
+<link href="css/flickity.css" rel="stylesheet" type="text/css" />
+<script src="js/flickity.js" type="text/javascript "></script>
+<script src="js/md5.js" type="text/javascript "></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152805027-1"></script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-152805027-1', 'auto');
+
+    /*   window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-152805027-1');*/
+
+
+    function close_carrito_terminos() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("modal_carrito").style.display = "none";
+    }
+    $(".menu li a").click(function () {
+        $('.menu li a').removeClass("active");
+        $(this).toggleClass("active");
+
+    });
+
+
+    $('#toggle').click(function () {
+        $(this).toggleClass('active');
+        $('#overlay-mobile').toggleClass('open');
+        $('#overlay-bg').toggleClass('open');
+    });
+
+    function menu() {
+        $('#toggle').toggleClass('active');
+        $('#overlay-mobile').toggleClass('open');
+        $('#overlay-bg').toggleClass('open');
+    }
+
+    $(window).load(function () {
+        CargarImagenesProductos();
+    })
+
+
+
+    function CargarImagenesProductos() {
+        $(".post-carga").each(function () {
+            $(this).attr('src', $(this).data('src')).load(function () {
+                $(this).fadeIn();
+                CargarImagenesBlog();
+            });
+        })
+    }
+
+    function CargarImagenesBlog() {
+        $(".post-carga-blog").each(function () {
+            $(this).attr('src', $(this).data('src')).load(function () {
+                $(this).fadeIn();
+            });
+        })
+    }
+
+    function close_modal() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("modal_imagen").style.display = "none";
+        $.fn.fullpage.setAllowScrolling(true);
+        $.fn.fullpage.setKeyboardScrolling(true, 'up, down')
+    }
+
+
+    function close_modal_coleccion() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("modal_coleccion").style.display = "none";
+        document.getElementById("img").innerHTML = " ";
+        $.fn.fullpage.setAllowScrolling(true);
+        $.fn.fullpage.setKeyboardScrolling(true, 'up, down')
+    }
+
+    function open_modal() {
+        $.fn.fullpage.setAllowScrolling(false);
+        $.fn.fullpage.setKeyboardScrolling(false, 'up, down');
+    }
+</script>
+
+
+</html>

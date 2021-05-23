@@ -1,0 +1,59 @@
+{
+
+    "tienda": "TIENDA",
+    "blog": "BLOG",
+    "colecciones": "COLECCIONES",
+    "contacto": "CONTACTO",
+    "DIR-TITLE-DES": "&nbsp;",
+    "DIR-TITLE-HIS": "TIENDAS",
+    "DIR-DESCRIPCION": "<b>DE IRISARRI</b>, es una marca de ropa <i>pret a porter</i> que se enfoca en el desarrollo de bodysuits y básicos en terciopelo: <b> ADN</b> de la marca. <br><br> <b>D / IR</b> lleva años en el mercado estudiando el cuerpo femenino para lograr la horma y la comodidad perfecta, tiene una gran variedad de diseños que juegan con la versatilidad y una amplia opción de colores.<br><br>Todos nuestros productos son elaborados en Colombia éticamente de manera muy artesanal. También contamos con una alianza social con la fundación <b>NIÑAS SIN MIEDO</b> que trabaja en derechos sexuales y reproductivos de las mujeres.<br> <br> Si aún no tienes un <i> velvet piece en tu clóset </i> ¡ anímate ! estás en el lugar indicado.",
+    "DIR-HISTORIA": "Casa Santamaría (Bogotá)<br>Calle 79B # 7 - 38.<br><br>Bazaar Boho (Neiva)<br>Calle 8 # 29 - 32, Local 1<br><br>Please Don’t Tell Shop (Miami)<br>www.pleasedonttellshop.com",
+    "input-nombre": {
+        "placeholder": "NOMBRE"
+    },
+    "input-tema": {
+        "placeholder": "TEMA"
+    },
+    "input-mensaje": {
+        "placeholder": "MENSAJE"
+    },
+    "enviar": "ENVIAR",
+    "addCart": "Agregar al carrito",
+    "finalizarCompra": "REALIZAR PAGO",
+    "finalizarPedido": "REGISTRAR PEDIDO",
+    "mensajePedido": "Hemos registrado tu pedido, por favor continua con el págo",
+    "carritoDeCompras": "Carrito de compras",
+    "productos": "Producto(s)",
+    "infoCliente": "Información del cliente",
+    "infoPago": "Método de pago",
+    "infoEnvio": "Método de envio",
+    "envioColombia": "<b>Envíos a Colombia 5 DÍAS HÁBILES</b>",
+    "envioInternacional": "<b>Envíos a destinos internacionales 15 DÍAS HÁBILES</b>",
+    "infoEnvioBogota": "Envios a la ciudad de Bogotá : ",
+    "envioBogota": "<b>Envíos a destino local 1 dia</b>",
+    "infoEnvioColombia": "Valor envio en Colombia CO : ",
+    "infoEnvioInternacional": "Envios a destinos internacionales :",
+
+    "recogerPedido": "Recoger mi pedido directamente en las oficinas de <b>deirisarri<b>",
+    "recogerLocal": "Recoger en el local",
+    "infoPayu": "<h4>Serás redirigido a la pasarela de pago después de realizar un pedido.</h4>",
+    "infoRecuerda": "Recuerda, cuando realices tu pago en PayU darle regresar a la pagina para que tu pedido quede completo",
+    "resumenCompra": "Resumen de tu compra",
+    "email": "Dirección de correo electrónico:",
+    "nombres": "Nombres:",
+    "identificacion": "Identificación:",
+    "apellidos": "Apellidos:",
+    "pais": "país/Región:",
+    "ciudad": " Municipio:",
+    "estado": "Departamento:",
+    "direccion": "Dirección de envio:",
+    "telefono": "Número de teléfono:",
+    "nomTarjeta": "Nombre en la tarjeta:",
+    "numTarjeta": "Número de tarjeta:",
+    "fechaExp": "Fecha de expiración:",
+    "numCuotas": "Número de cuotas:",
+    "tarjeta": "Tarjeta:",
+    "eliminar": "eliminar",
+    "info": "Recibiras tu factura de manera electrónica, al correo registrado.",
+    "terminos": ""
+}

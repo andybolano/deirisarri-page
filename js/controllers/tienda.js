@@ -1,0 +1,388 @@
+(function () {
+    'use strict';
+    angular
+        .module('app')
+        .controller('TiendaController', ['appService', '$rootScope', function (appService, $rootScope) {
+            var vm = this;
+            vm.productos = [];
+            vm.Producto = {};
+            vm.colorSelected = "0";
+            vm.colorFilter = "";
+            vm.tallaSelected = '';
+            vm.carrito = [];
+            vm.mobile = false;
+            vm.disponible = false;
+            var $carousel;
+
+            $carousel = $('.carousel-store').flickity({
+                lazyLoad: true,
+                percentPosition: true,
+                prevNextButtons: false,
+                initialIndex: 0
+            });
+
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                vm.mobile = true;
+            }
+
+            if (!localStorage.getItem('cart')) {
+
+            } else {
+                var carrito = [];
+                carrito = JSON.parse(localStorage.getItem('cart'));
+                $("#XMLID_1_").html(carrito.length);
+            }
+
+            vm.view_producto = function (item) {
+                $('#menu-footer').hide();
+
+                if (!$carousel.flickity()) {
+
+                } else {
+                    $carousel.flickity('destroy');
+                }
+
+                $("#color").css("background-color", '#FFF');
+                if ($('#spanish').hasClass('active-lang')) {
+                    (function () {
+                        $("[data-translate]").jqTranslate('js/traductor/lang', {
+                            defaultLang: 'en',
+                            forceLang: "es",
+                            asyncLangLoad: false
+                        });
+                    })();
+                } else {
+                    (function () {
+                        $("[data-translate]").jqTranslate('js/traductor/lang', {
+                            defaultLang: 'es',
+                            forceLang: "en",
+                            asyncLangLoad: false
+                        });
+                    })();
+                }
+
+
+                vm.colorSelected = "0";
+                vm.colorFilter = "";
+                localStorage.setItem('producto', JSON.stringify(item));
+
+                $.fn.fullpage.moveSlideLeft();
+                vm.Producto = JSON.parse(localStorage.getItem('producto'));
+
+
+
+
+
+                if (vm.mobile) {
+                    var text = ""
+                    for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
+                        text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
+                        text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                        text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
+                        text += '</div>';
+                    }
+                    $('#elementos-productos-movil').html(text);
+                } else {
+                    var text = ""
+                    for (var i = 0; i < vm.Producto.imagenes.length; i++) {
+                        text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
+                        text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                        text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
+                        text += '</div>';
+                    }
+
+                    $('#elementos-productos-pc').html(text);
+                }
+
+
+                setTimeout(() => {
+                    $carousel = $('.carousel-store').flickity({
+                        lazyLoad: true,
+                        percentPosition: true,
+                        prevNextButtons: false,
+                        initialIndex: 0
+                    });
+
+
+                    vm.selectTalla(vm.Producto.tallas[0].id_talla);
+
+                }, 500);
+            };
+
+            vm.getProductos = function () {
+                var promisePost = appService.getProductos();
+                promisePost.then(function (d) {
+
+
+                    vm.productos = d.data.Content;
+
+                    for (var i = 0; i < vm.productos.length; i++) {
+                        var nombres = vm.productos[i].propiedades.nombre.split("//");
+                        vm.productos[i].propiedades.nombreES = nombres[0];
+                        vm.productos[i].propiedades.nombreEN = nombres[1];
+
+                        var descripcion = vm.productos[i].propiedades.descripcion.split("//");
+                        vm.productos[i].propiedades.descripcionES = descripcion[0];
+                        vm.productos[i].propiedades.descripcionEN = descripcion[1];
+
+
+                    }
+
+
+
+
+
+                    setTimeout(function () {
+                        $('.grid').masonry({
+                            itemSelector: '.grid-item',
+                            columnWidth: '.grid-item',
+                            gutter: '.gutter-sizer',
+                            percentPosition: true
+                        });
+                    }, 1000);
+
+
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
+            }
+
+            vm.color = function () {
+
+                /*if (!vm.tallaSelected || vm.tallaSelected == "") {
+                    $("#colorSel").val("0");
+                    toastr['warning']('Por favor seleccionar talla!');
+                    return;
+                }*/
+                if (vm.colorSelected !== 0) {
+
+                    $carousel.flickity('destroy');
+
+                    if (vm.mobile) {
+                        var text = ""
+                        for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
+                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
+                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '" id="agotado' + i + '">AGOTADO</div>';
+                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
+                            text += '</div>';
+                        }
+                        $('#elementos-productos-movil').html(text);
+                    } else {
+                        var text = ""
+                        for (var i = 0; i < vm.Producto.imagenes.length; i++) {
+                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
+                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
+                            text += '</div>';
+                        }
+                        $('#elementos-productos-pc').html(text);
+                    }
+
+                    var dataColor = (JSON.parse(vm.colorSelected));
+                    $("#color").css("background-color", dataColor.color);
+
+                    vm.colorFilter = dataColor.nombre;
+
+                    if (vm.mobile) {
+                        for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
+                            if (dataColor.nombre !== vm.Producto.imagenes_moviles[i].color) {
+                                $('#element-' + vm.Producto.imagenes_moviles[i].color).remove();
+                            }
+                        }
+                    } else {
+                        for (var i = 0; i < vm.Producto.imagenes.length; i++) {
+                            if (dataColor.nombre !== vm.Producto.imagenes[i].color) {
+                                $('#element-' + vm.Producto.imagenes[i].color).remove();
+                            }
+                        }
+                    }
+                    setTimeout(function () {
+                        $carousel = $('.carousel-store').flickity({
+                            lazyLoad: true,
+                            percentPosition: true,
+                            prevNextButtons: false,
+                            initialIndex: 0
+                        });
+                    }, 100);
+
+                    vm.verificarDisponible();
+                } else {
+
+                }
+
+
+
+            }
+
+
+            vm.verificarDisponible = function () {
+                vm.disponible = false;
+                if (vm.tallaSelected == '' || !vm.tallaSelected) {
+                    return;
+
+                }
+
+                if (vm.colorSelected == '' || !vm.colorSelected || vm.colorSelected == 0) {
+                    return;
+                }
+
+                var color = (JSON.parse(vm.colorSelected));
+
+
+
+                for (var i = 0; i < vm.Producto.sotck.length; i++) {
+                    if (vm.Producto.sotck[i].id_color == color.id_color && vm.Producto.sotck[i].id_talla == vm.tallaSelected && parseInt(vm.Producto.sotck[i].cantidad_total) > 0) {
+                        vm.disponible = true;
+                        break;
+                    }
+                }
+
+                $('.agotado').css("display", "none");
+                if (!vm.disponible) {
+                    $('.agotado-prenda-' + color.nombre).css("display", "block");
+                }
+
+
+            }
+
+            vm.selectTalla = function (talla) {
+
+                $('.box-talla').removeClass('active');
+                $('#talla_' + talla).addClass('active');
+                vm.tallaSelected = talla;
+                vm.verificarDisponible();
+            }
+
+            vm.back = function () {
+                vm.tallaSelected = '';
+                $carousel.flickity('destroy');
+                $("#color").css("background-color", '#FFF')
+                $.fn.fullpage.moveSlideRight();
+                $('#menu-footer').show();
+            }
+
+
+            vm.impar = function (n) {
+                var tipo = (n % 2) ? true : false;
+                return tipo;
+            }
+
+            vm.par = function (n) {
+
+                var tipo = (n % 2) ? false : true;
+                return tipo;
+            }
+
+            vm.addCart = function () {
+
+                if (vm.colorSelected == 0) {
+                    toastr['warning']('Seleccionar un color');
+                    return;
+                }
+
+                if (!vm.tallaSelected || vm.tallaSelected == "") {
+                    toastr['warning']('Seleccionar talla');
+                    return;
+                }
+
+                if (vm.disponible == false) {
+                    toastr['warning']('Producto agotado!');
+                    return;
+                }
+                var imagen = "";
+                var talla = "";
+                var id_talla = 0;
+                var carrito = [];
+                var currency = "";
+
+
+                if ($rootScope.lang == 'ES') {
+                    currency = 'COP';
+                } else if ($rootScope.lang == 'EN') {
+                    currency = 'USD';
+                }
+
+
+
+
+
+
+                var color = JSON.parse(vm.colorSelected);
+                for (var i = 0; i < vm.Producto.imagenes.length; i++) {
+                    if (color.nombre == vm.Producto.imagenes[i].color) {
+                        imagen = vm.Producto.imagenes[i];
+                        break;
+                    }
+                }
+
+                for (var i = 0; i < vm.Producto.tallas.length; i++) {
+                    if (vm.tallaSelected == vm.Producto.tallas[i].id_talla) {
+                        talla = vm.Producto.tallas[i].talla;
+                        id_talla = vm.Producto.tallas[i].id_talla;
+                        break;
+                    }
+                }
+                var producto = {
+                    producto: vm.Producto.propiedades,
+                    talla: talla,
+                    id_talla: id_talla,
+                    color: color,
+                    imagen: imagen,
+                    cantidad: 1,
+                    currency: currency,
+                    descuento: vm.Producto.descuentos
+
+                };
+
+                if (!localStorage.getItem('cart')) {
+
+                    $rootScope.Carrito = producto;
+                    localStorage.setItem('cart', JSON.stringify([producto]));
+                    swal({
+                        position: 'center',
+                        type: 'success',
+                        title: 'Producto agregado al carrito de compras',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+
+
+                } else {
+                    $rootScope.Carrito.push(producto);
+                    localStorage.setItem('cart', JSON.stringify($rootScope.Carrito));
+                    swal({
+                        position: 'center',
+                        type: 'success',
+                        title: 'Producto agregado al carrito de compras',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+
+                }
+                // $.fn.fullpage.moveSlideRight();
+                $rootScope.Carrito = JSON.parse(localStorage.getItem('cart'));
+                if (vm.mobile) {
+                    $("#XMLID_1_m").html($rootScope.Carrito.length);
+                } else {
+                    $("#XMLID_1_").html($rootScope.Carrito.length);
+                }
+
+                /*    setTimeout(function() {
+                        location.reload(true);
+                    }, 1500)*/
+                $('.box-talla').removeClass('active');
+                vm.tallaSelected = '';
+
+
+            }
+
+
+        }]);
+
+})();

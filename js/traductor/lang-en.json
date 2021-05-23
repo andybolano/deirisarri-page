@@ -1,0 +1,62 @@
+{
+
+    "tienda": "SHOP",
+    "blog": "BLOG",
+    "colecciones": "COLLECTIONS",
+    "contacto": "CONTACT",
+    "DIR-TITLE-DES": "&nbsp;",
+    "DIR-TITLE-HIS": "SHOP",
+    "DIR-DESCRIPCION": "<b> DE IRISARRI </b>,is a clothing brand <i>pret a porter</i> that focuses on developing bodysuits and basics in velvet : The brands <b>DNA.</b> <br> <br> <b> D/IR </b> has been in the market for years studying the female body in order to find the best fit and comfort, there is wide variety of designs that play with the versatility and a large range of colors.<br> <br> All of our designs are ethically made in Colombia. We also have joined ofreces with non profit <b>NSM</b>, an organization focused on creating sexual education and awareness for girls and teenagers.<br> <br>Our velvet pieces are a must have, if you don´t own one yet ¡ the time is now !",
+    "DIR-HISTORIA": "Casa Santamaría (Bogotá)<br>Calle 79B # 7 - 38.<br><br>Bazaar Boho (Neiva)<br>Calle 8 # 29 - 32, Local 1<br><br>Please Don’t Tell Shop (Miami)<br>www.pleasedonttellshop.com",
+    "input-nombre": {
+        "placeholder": "NAME"
+    },
+    "input-tema": {
+        "placeholder": "SUBJECT"
+    },
+    "input-mensaje": {
+        "placeholder": "MESSAGE"
+    },
+    "enviar": "SEND",
+    "addCart": "Add Cart",
+    "finalizarCompra": "PAY",
+    "finalizarPedido": "Registre Order",
+    "mensajePedido": "We have registered your order, please continue with the payment",
+    "carritoDeCompras": "Shopping cart",
+    "productos": "product(s)",
+    "infoCliente": "Customer information",
+    "infoPago": "Payment information",
+    "infoEnvio": "Shipping method",
+    "envioColombia": "<b>Shipments to Colombia 5 WORKING DAYS</b>",
+    "envioInternacional": "<b>Shipments to international destinations 15 WORKING DAYS</b>",
+    "infoEnvioColombia": "Shipping value in Colombia CO : ",
+    "infoEnvioInternacional": "Shipments to international destinations:",
+    "recogerPedido": "Pick up my order directly at the offices of <b>deirisarri<b>",
+    "recogerLocal": "Pick up at the local",
+
+    "infoEnvioBogota": "Shipments to the city of Bogotá : ",
+    "envioBogota": "<b>Shipments to local destination 1 day</b>",
+
+
+    "infoPayu": "<h4>You will be redirected to the payment gateway after placing an order.</h4>",
+    "infoRecuerda": "Remember, when you make your payment in PayU turn the page so that you have the full price.",
+    "resumenCompra": "Order summary",
+    "email": "Email address:",
+    "nombres": "Name:",
+    "identificacion": "ID:",
+    "apellidos": "Last name:",
+    "pais": "Country:",
+    "estado": "State:",
+    "ciudad": "City:",
+    "direccion": "Address to send:",
+    "telefono": "Phone number:",
+    "nomTarjeta": "Name on the card:",
+    "numTarjeta": "Card number:",
+    "fechaExp": "Expiration date:",
+    "numCuotas": "Number of installments:",
+    "tarjeta": "Card:",
+    "eliminar": "Deleted",
+    "info": "You will receive your invoice electronically, to registered mail.",
+    "terminos": ""
+
+}
