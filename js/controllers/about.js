@@ -2,22 +2,23 @@
     'use strict';
     angular
         .module('app')
-        .controller('FooterController', ['appService', '$rootScope', function (appService, $rootScope) {
+        .controller('AboutController', ['appService', '$rootScope', '$sce', function (appService, $rootScope, $sce) {
             var vm = this;
-            vm.datosContacto = {};
+            vm.datosAbout = {};
 
             _init();
 
             function _init(){
-                _traerNumeroWhatsApp();
+                _traerAbout();
             }
 
-            function _traerNumeroWhatsApp(){
-                var promisePost = appService.getNumeroWhatsApp();
+            function _traerAbout(){
+                var promisePost = appService.getAbout();
                 promisePost.then(function (d) {
                     var response = d.data;
                     if(response.isOk){
-                        vm.datosContacto.NumeroWhatsApp = response.Content.Numero;
+                        vm.datosAbout.AboutES = $sce.trustAsHtml(response.Content.AboutES);
+                        vm.datosAbout.AboutEN = $sce.trustAsHtml(response.Content.AboutEN);
                     }
                 }, function (err) {
                     if (err.status == 402) {

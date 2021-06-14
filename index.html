@@ -184,17 +184,19 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         </section>
 
         <section class="section" id="section1">
-            <div class="slide active" id="slide1">
+            <div class="slide active" id="slide1" ng-controller="AboutController as vm">
                 <div class="content">
                     <h1 data-translate="DIR-TITLE-DES"></h1>
-                    <p data-translate="DIR-DESCRIPCION" style="text-align:center"></p>
+                    <div class="ES" ng-bind-html="vm.datosAbout.AboutES" style="text-align: center;"></div>
+                    <div class="EN" ng-bind-html="vm.datosAbout.AboutEN" style="text-align: center;"></div>
                     <img src="img/detail-text.svg " class="img-detail">
                 </div>
             </div>
-            <div class="slide" id="slide2">
+            <div class="slide" id="slide2" ng-controller="TiendasController as vm">
                 <div class="content">
                     <h1 data-translate="DIR-TITLE-HIS"></h1>
-                    <p data-translate="DIR-HISTORIA" style="text-align:center"></p>
+                    <div class="ES" ng-bind-html="vm.datosTiendas.TiendasES"></div>
+                    <div class="EN" ng-bind-html="vm.datosTiendas.TiendasEN"></div>
                     <img src="img/detail-text.svg " class="img-detail">
                 </div>
             </div>
@@ -495,8 +497,16 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         </section>
 
         <section class="section" id="section5" ng-controller="ContactoController as vm">
-            <div class="content">
-                <div class="form">
+            <div class="content" style="text-align: left !important;">
+                
+                <div style="float: left; width: 50%;">
+                    <div class="ES" ng-bind-html="vm.datosContacto.ContactoES"></div>
+                    <div class="EN" ng-bind-html="vm.datosContacto.ContactoEN"></div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <img src="img/img-contact.png" width="100%;">
+                </div>
+                <!-- <div class="form">
                     <form>
                         <input type="text" class="input-text" placeholder="NOMBRE" data-translate="input-nombre"
                             ng-model="vm.data.nombre" onkeypress="return validarTexto(event)"><br>
@@ -509,7 +519,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                             ng-model="vm.data.mensaje"></textarea><br>
                         <button class="btn send" data-translate="enviar" ng-click="vm.enviar();"></button>
                     </form>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -1204,13 +1214,15 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
 
 <script src="js/angular/angular.js " type="text/javascript "></script>
 <script src="js/app.js " type="text/javascript "></script>
-<script src="js/controllers/home.js " type="text/javascript "></script>
+<script src="js/controllers/home.js " type="text/javascript "></script> 
 <script src="js/controllers/contacto.js " type="text/javascript "></script>
 <script src="js/controllers/tienda.js " type="text/javascript "></script>
 <script src="js/controllers/blog.js " type="text/javascript "></script>
 <script src="js/controllers/colecciones.js " type="text/javascript "></script>
 <script src="js/controllers/carrito.js " type="text/javascript "></script>
 <script src="js/controllers/footer.js " type="text/javascript "></script>
+<script src="js/controllers/about.js " type="text/javascript "></script>
+<script src="js/controllers/tiendas.js " type="text/javascript "></script>
 <script src="js/services/app.js " type="text/javascript "></script>
 <script src="js/services/ubicacionService.js " type="text/javascript "></script>
 <script src="js/sweet.js " type="text/javascript "></script>

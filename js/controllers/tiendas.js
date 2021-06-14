@@ -2,22 +2,23 @@
     'use strict';
     angular
         .module('app')
-        .controller('FooterController', ['appService', '$rootScope', function (appService, $rootScope) {
+        .controller('TiendasController', ['appService', '$rootScope', '$sce', function (appService, $rootScope, $sce) {
             var vm = this;
-            vm.datosContacto = {};
+            vm.datosTiendas = {};
 
             _init();
 
             function _init(){
-                _traerNumeroWhatsApp();
+                _traerTiendas();
             }
 
-            function _traerNumeroWhatsApp(){
-                var promisePost = appService.getNumeroWhatsApp();
+            function _traerTiendas(){
+                var promisePost = appService.getTiendas();
                 promisePost.then(function (d) {
                     var response = d.data;
                     if(response.isOk){
-                        vm.datosContacto.NumeroWhatsApp = response.Content.Numero;
+                        vm.datosTiendas.TiendasES = $sce.trustAsHtml(response.Content.TiendasES);
+                        vm.datosTiendas.TiendasEN = $sce.trustAsHtml(response.Content.TiendasEN);
                     }
                 }, function (err) {
                     if (err.status == 402) {

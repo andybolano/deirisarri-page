@@ -3,8 +3,8 @@
     // Add Angular module mdr.file
     angular.module('app', ['ngSanitize'])
         .constant('HOME', 'app.home')
-        .constant('API_URL', 'https://deirisarri.co/api/public/index.php/api')
-        //.constant('API_URL', 'https://disarri.lauchoit.com/api/public/index.php/api')
+        //.constant('API_URL', 'https://deirisarri.co/api/public/index.php/api')
+        .constant('API_URL', 'https://disarri.lauchoit.com/api')
         //.constant('API_URL', 'http://localhost/deirisarri/api/public/index.php/api')
         .config(function ($compileProvider) {
             $compileProvider.debugInfoEnabled(false);

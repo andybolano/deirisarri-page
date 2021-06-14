@@ -2,8 +2,9 @@
     'use strict';
     angular
         .module('app')
-        .controller('ContactoController', ['appService', function(appService) {
+        .controller('ContactoController', ['appService', '$sce', function(appService, $sce) {
             var vm = this;
+            vm.datosContacto= {};
             vm.data = {
                 nombre: "",
                 email: "",
@@ -63,6 +64,29 @@
                 });
 
 
+            }
+
+            _init();
+
+            function _init(){
+                _traerContacto();
+            }
+
+            function _traerContacto(){
+                var promisePost = appService.getContacto();
+                promisePost.then(function (d) {
+                    var response = d.data;
+                    if(response.isOk){
+                        vm.datosContacto.ContactoES = $sce.trustAsHtml(response.Content.ContactoES);
+                        vm.datosContacto.ContactoEN = $sce.trustAsHtml(response.Content.ContactoEN);
+                    }
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
             }
 
         }]);
