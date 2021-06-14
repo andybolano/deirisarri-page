@@ -618,6 +618,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 </span>
             </div>
         </section>
+
         <section class="section" id="section7">
             <div class="overflow-content scrollable-element" style="text-align: left;">
                 <span class="terminos">
@@ -696,6 +697,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 </span>
             </div>
         </section>
+
         <section class="section" id="section8">
             <div class="overflow-content scrollable-element" style="text-align:left">
                 <span class="terminos"><b>POLÍTICA DE TRATAMIENTO DE LA INFORMACIÓN PERSONAL</b>
@@ -903,10 +905,10 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         </section>
     </div>
 
-    <div id="footer">
+    <div id="footer" ng-controller="FooterController as vm">
 
         <ul class="menu" id="menu-footer">
-            <li data-menuanchor="terminos"><a ng-href="#terminos">TÉRMINOS Y CONDICIONES</a></li>
+            <li data-menuanchor="terminos"><a ng-href="#terminos">TÉRMINOS Y CONDICIONES {{vm.datosContacto.NumeroWhatsApp}}</a></li>
             <li data-menuanchor="aviso"><a ng-href="#aviso">AVISO DE PRIVACIDAD</a></li>
             <li data-menuanchor="politica"><a ng-href="#politica">POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES</a></li>
         </ul>
@@ -916,6 +918,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 <a href="https://www.facebook.com/DeIrisarri/" target="_blank "><img src="img/facebook.svg"></a>
                 <a href="https://twitter.com/deirisarri?lang=es" target="_blank "><img src="img/twitter.svg"></a>
                 <a href="https://www.instagram.com/de_irisarri/" target="_blank "><img src="img/instagram.svg"></a>
+                <a ng-if="vm.datosContacto.NumeroWhatsApp != null && vm.datosContacto.NumeroWhatsApp != ''" href="https://api.whatsapp.com/send?phone={{vm.datosContacto.NumeroWhatsApp}}" target="_blank "><img src="img/whatsapp.png"></a>
             </div>
         </div>
     </div>
@@ -1207,6 +1210,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
 <script src="js/controllers/blog.js " type="text/javascript "></script>
 <script src="js/controllers/colecciones.js " type="text/javascript "></script>
 <script src="js/controllers/carrito.js " type="text/javascript "></script>
+<script src="js/controllers/footer.js " type="text/javascript "></script>
 <script src="js/services/app.js " type="text/javascript "></script>
 <script src="js/services/ubicacionService.js " type="text/javascript "></script>
 <script src="js/sweet.js " type="text/javascript "></script>

@@ -13,7 +13,8 @@
             getColecciones: getColecciones,
             pay: pay,
             getBanner: getBanner,
-            sendMessage: sendMessage
+            sendMessage: sendMessage,
+            getNumeroWhatsApp: getNumeroWhatsApp
         };
         return service;
 
@@ -151,6 +152,33 @@
             }
         }
 
+        function getNumeroWhatsApp(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            //$http.get(API_URL + '/page/colecciones').then(success, error);
+            
+            var response = {
+                data : {
+                    "Mensaje": "Número WhatsApp consultado...",
+                    "Content": {
+                        "Numero": "573504628322"
+                    },
+                    "isOk": true
+                }
+            };
+            success(response);
+
+            return promise;
+
+            function success(p) {
+                defered.resolve(p);
+            }
+
+            function error(error) {
+                defered.reject(error);
+            }
+        }
 
     }
 })();

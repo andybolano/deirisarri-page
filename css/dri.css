@@ -1563,11 +1563,12 @@ button.comprar {
     height: 50px;
     display: block;
     width: 100%;
+    background-color: #f5ced6 !important;
     background: url(../img/footer.svg);
     background-repeat: repeat-x;
     z-index: 9;
     color: #f2f2f2;
-    bottom: 10px
+    bottom: 5px;
 }
 
 #social-network {
@@ -2158,7 +2159,7 @@ button.comprar {
     margin-top: 15px;
     float: left;
     color: #000;
-    background-color: #FFF;
+    background-color: #f5ced6 !important;
 }
 
 #footer .menu li {
@@ -2208,7 +2209,7 @@ button.comprar {
     }
 
     #footer .menu li a {
-        background-color: #FFF;
+        background-color: #f5ced6;
         color: #000;
         font-size: 8px;
         font-weight: 900;
