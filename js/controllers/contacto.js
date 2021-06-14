@@ -5,6 +5,7 @@
         .controller('ContactoController', ['appService', '$sce', function(appService, $sce) {
             var vm = this;
             vm.datosContacto= {};
+
             vm.data = {
                 nombre: "",
                 email: "",
@@ -66,7 +67,17 @@
 
             }
 
+            vm.isMovil = function(){
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
             _init();
+            
 
             function _init(){
                 _traerContacto();

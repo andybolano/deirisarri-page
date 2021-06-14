@@ -497,7 +497,11 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         </section>
 
         <section class="section" id="section5" ng-controller="ContactoController as vm">
-            <div class="content" style="text-align: left !important;">
+            <div class="content" ng-if="vm.isMovil()" >
+                <div class="ES" ng-bind-html="vm.datosContacto.ContactoES"></div>
+                <div class="EN" ng-bind-html="vm.datosContacto.ContactoEN"></div>
+            </div>
+            <div class="content" style="text-align: left !important;" ng-if="!vm.isMovil()">
                 
                 <div style="float: left; width: 50%;">
                     <div class="ES" ng-bind-html="vm.datosContacto.ContactoES"></div>
