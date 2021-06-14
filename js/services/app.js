@@ -20,7 +20,8 @@
             getContacto: getContacto,
             getCategorias: getCategorias,
             getTags: getTags,
-            dividirIdiomas: dividirIdiomas
+            dividirIdiomas: dividirIdiomas,
+            getSubCategorias: getSubCategorias
         };
         return service;
 
@@ -282,71 +283,11 @@
                     "Content": [
                         {
                             "id": 1,
-                            "nombre": "Mujer // Women",
-                            subCategorias:[
-                                {
-                                    "id": 1,
-                                    "nombre": "Pantalones // Jeans",
-                                },
-                                {
-                                    "id": 2,
-                                    "nombre": "Cop Tops // Cop Tops",
-                                },
-                                {
-                                    "id": 3,
-                                    "nombre": "Faldas // Skirts",
-                                },
-                                {
-                                    "id": 4,
-                                    "nombre": "Vestidos // Dresses",
-                                },
-                                {
-                                    "id": 5,
-                                    "nombre": "Sacos // Sacks",
-                                },
-                                {
-                                    "id": 6,
-                                    "nombre": "Accesorios // Accessories",
-                                },
-                                {
-                                    "id": 7,
-                                    "nombre": "Chaquetas // Jackets",
-                                },
-                                {
-                                    "id": 8,
-                                    "nombre": "Enterizos // Jumpsuits",
-                                },
-                                {
-                                    "id": 9,
-                                    "nombre": "Bodysuits // Bodysuits",
-                                },
-                            ]
+                            "nombre": "Mujer // Women"
                         },
                         {
                             "id": 2,
-                            "nombre": "Hombre // Men",
-                            subCategorias:[
-                                {
-                                    "id": 10,
-                                    "nombre": "Pantalones // Jeans",
-                                },
-                                {
-                                    "id": 11,
-                                    "nombre": "Correas // Straps",
-                                },
-                                {
-                                    "id": 12,
-                                    "nombre": "Billeteras // Wallets",
-                                },
-                                {
-                                    "id": 13,
-                                    "nombre": "Suteres  // Sweaters",
-                                },
-                                {
-                                    "id": 14,
-                                    "nombre": "Zapatos // Shoes",
-                                }
-                            ]
+                            "nombre": "Hombre // Men"
                         }
                     ],
                     "isOk": true
@@ -410,6 +351,101 @@
 
         function dividirIdiomas(cadena){
             return cadena.split("//");
+        }
+
+        function getSubCategorias(categoriaId){
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            //$http.get(API_URL + '/page/colecciones').then(success, error);
+            
+            var response1 = {
+                data : {
+                    "Mensaje": "SubCategorias consultadas...",
+                    "Content": [
+                        {
+                            "id": 1,
+                            "nombre": "Pantalones // Jeans",
+                        },
+                        {
+                            "id": 2,
+                            "nombre": "Cop Tops // Cop Tops",
+                        },
+                        {
+                            "id": 3,
+                            "nombre": "Faldas // Skirts",
+                        },
+                        {
+                            "id": 4,
+                            "nombre": "Vestidos // Dresses",
+                        },
+                        {
+                            "id": 5,
+                            "nombre": "Sacos // Sacks",
+                        },
+                        {
+                            "id": 6,
+                            "nombre": "Accesorios // Accessories",
+                        },
+                        {
+                            "id": 7,
+                            "nombre": "Chaquetas // Jackets",
+                        },
+                        {
+                            "id": 8,
+                            "nombre": "Enterizos // Jumpsuits",
+                        },
+                        {
+                            "id": 9,
+                            "nombre": "Bodysuits // Bodysuits",
+                        }
+                    ],
+                    "isOk": true
+                }
+            };
+
+            var response2 = {
+                data : {
+                    "Mensaje": "SubCategorias consultadas...",
+                    "Content": [
+                        {
+                            "id": 10,
+                            "nombre": "Pantalones // Jeans",
+                        },
+                        {
+                            "id": 11,
+                            "nombre": "Correas // Straps",
+                        },
+                        {
+                            "id": 12,
+                            "nombre": "Billeteras // Wallets",
+                        },
+                        {
+                            "id": 13,
+                            "nombre": "Suteres  // Sweaters",
+                        },
+                        {
+                            "id": 14,
+                            "nombre": "Zapatos // Shoes",
+                        }
+                    ],
+                    "isOk": true
+                }
+            };
+
+            if(categoriaId == 1) success(response1);
+            if(categoriaId == 2) success(response2);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
         }
 
     }

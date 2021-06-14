@@ -12,6 +12,9 @@
             vm.carrito = [];
             vm.mobile = false;
             vm.disponible = false;
+            vm.subcategorias = [];
+            vm.tags = [];
+            vm.filtrosProductos = {};
             var $carousel;
 
             $carousel = $('.carousel-store').flickity({
@@ -125,10 +128,6 @@
                         vm.productos[i].propiedades.descripcionES = descripcion[0];
                         vm.productos[i].propiedades.descripcionEN = descripcion[1];
                     }
-
-
-
-
 
                     setTimeout(function () {
                         $('.grid').masonry({
@@ -380,6 +379,64 @@
 
             }
 
-        }]);
+            vm.init = function(){
+                vm.getTags();
+                vm.getProductos();
+                $rootScope.$watch("categoriaSeleccionada",function(newValue,oldValue) {
+                    vm.filtrosProductos.categoriaId = newValue.id;
+                    vm.filtrosProductos.subCategoriaId = null;
+                    vm.getSubCategorias();
+                 });
+            };
 
+            vm.getSubCategorias = function(){
+                if($rootScope.categoriaSeleccionada == null) return;
+                var promisePost = appService.getSubCategorias($rootScope.categoriaSeleccionada.id);
+                promisePost.then(function (d) {
+                    var response = d.data;
+                    if(response.isOk){
+                        vm.subcategorias = response.Content;
+                        for (var i = 0; i < vm.subcategorias.length; i++) {
+                            var nombres = appService.dividirIdiomas(vm.subcategorias[i].nombre);
+                            vm.subcategorias[i].nombreES = nombres[0];
+                            vm.subcategorias[i].nombreEN = nombres[1];
+                        }
+                    }
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
+            };
+
+            vm.getTags = function(){
+                var promisePost = appService.getTags();
+                promisePost.then(function (d) {
+                    var response = d.data;
+                    if(response.isOk){
+                        vm.tags = response.Content;
+                        for (var i = 0; i < vm.tags.length; i++) {
+                            var nombres = appService.dividirIdiomas(vm.tags[i].nombre);
+                            vm.tags[i].nombreES = nombres[0];
+                            vm.tags[i].nombreEN = nombres[1];
+                        }
+                    }
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
+            };
+
+            vm.getFiltrosProductos = function(){
+                var tagsIdsSeleccionados = vm.tags.filter(function(o){ return o.seleccionado; }).map(function(o){ return o.id; });
+                vm.filtrosProductos.tagsIds = tagsIdsSeleccionados;
+                return vm.filtrosProductos;
+            };
+
+        }]);
 })();
