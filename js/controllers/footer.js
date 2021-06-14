@@ -17,7 +17,7 @@
                 promisePost.then(function (d) {
                     var response = d.data;
                     if(response.isOk){
-                        vm.datosContacto.NumeroWhatsApp = response.Content.Numero;
+                        vm.datosContacto.numeroWhatsApp = response.Content.numero;
                     }
                 }, function (err) {
                     if (err.status == 402) {

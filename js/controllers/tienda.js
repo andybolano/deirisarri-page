@@ -124,8 +124,6 @@
                         var descripcion = vm.productos[i].propiedades.descripcion.split("//");
                         vm.productos[i].propiedades.descripcionES = descripcion[0];
                         vm.productos[i].propiedades.descripcionEN = descripcion[1];
-
-
                     }
 
 
@@ -381,7 +379,6 @@
 
 
             }
-
 
         }]);
 

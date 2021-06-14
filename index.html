@@ -126,6 +126,8 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                     <a ng-href="#contacto" data-translate="contacto"></a>
                 </li>
             </ul>
+
+
         </nav>
     </div>
 
@@ -143,7 +145,26 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
             <a ng-href="#dir">DE IRISARRI</a>
         </li>
         <li data-menuanchor="tienda">
-            <a ng-href="#tienda" data-translate="tienda"></a>
+            <div class="dropdown">
+                <a href="javascript:;" data-translate="tienda"></a>
+                <div class="dropdown-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a ng-href="#tienda" style="float: right;" class="item-categoria">MUJER</a>
+                            <span style="float: left; margin-top: 9px;">+</span>
+                        </div>
+                        <div class="col-xs-12">
+                            <hr class="separador-categoria">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a ng-href="#tienda" style="float: left;" class="item-categoria">HOMBRE</a>
+                            <span style="float: right; margin-top: 9px;">+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </li>
         <li data-menuanchor="blog">
             <a ng-href="#blog" data-translate="blog"></a>
@@ -187,16 +208,16 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
             <div class="slide active" id="slide1" ng-controller="AboutController as vm">
                 <div class="content">
                     <h1 data-translate="DIR-TITLE-DES"></h1>
-                    <div class="ES" ng-bind-html="vm.datosAbout.AboutES" style="text-align: center;"></div>
-                    <div class="EN" ng-bind-html="vm.datosAbout.AboutEN" style="text-align: center;"></div>
+                    <div class="ES" ng-bind-html="vm.datosAbout.aboutES" style="text-align: center;"></div>
+                    <div class="EN" ng-bind-html="vm.datosAbout.aboutEN" style="text-align: center;"></div>
                     <img src="img/detail-text.svg " class="img-detail">
                 </div>
             </div>
             <div class="slide" id="slide2" ng-controller="TiendasController as vm">
                 <div class="content">
                     <h1 data-translate="DIR-TITLE-HIS"></h1>
-                    <div class="ES" ng-bind-html="vm.datosTiendas.TiendasES"></div>
-                    <div class="EN" ng-bind-html="vm.datosTiendas.TiendasEN"></div>
+                    <div class="ES" ng-bind-html="vm.datosTiendas.tiendasES"></div>
+                    <div class="EN" ng-bind-html="vm.datosTiendas.tiendasEN"></div>
                     <img src="img/detail-text.svg " class="img-detail">
                 </div>
             </div>
@@ -207,80 +228,174 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
             <div class="slide" id="slide0">
                 <div class="overflow-content scrollable-element " ng-class="{'scroll-dowm': vm.mobile}"
                     id="scroll-shop">
-                    <div class="line-content">
-                        <div class="content-productos">
-                            <div class="grid">
-                                <div class="gutter-sizer"></div>
-                                <div class="grid-sizer"></div>
-                                <div class="grid-item" ng-repeat="item in vm.productos">
-                                    <div ng-if="$index==1 ">
-                                        <div class="content-title title-right title-down">
-                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                <h2 class="ES">{{item.propiedades.nombreES}}</h2>
-                                                <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                    <div id="sec-tienda-categorias">
+                        <label class="title-categorias">¿Qué estas buscando?</label>
+                        <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Pantalones</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Cop Tops</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Faldas</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Vestidos</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Sacos</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Accesorios</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Chaquetas</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Enterizos</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Bodysuits</span>
+                                </label>
+                            </div>
+                        </div>
+                        <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Last Chance</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>New Arrivals</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Clásicos D/IR</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 item-sub-categoria">
+                                <label>
+                                    <input type="radio" value="0" name="radio-subcategorias">
+                                    <span>Bonos de regalo</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sec-tienda-productos">
+                        <div class="line-content">
+                            <div class="content-productos">
+                                <div class="grid">
+                                    <div class="gutter-sizer"></div>
+                                    <div class="grid-sizer"></div>
+                                    <div class="grid-item" ng-repeat="item in vm.productos">
+                                        <div ng-if="$index==1 ">
+                                            <div class="content-title title-right title-down">
+                                                <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                    <h2 class="ES">{{item.propiedades.nombreES}}</h2>
+                                                    <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                                </a>
+                                                <div class="decoration-title">
+                                                    <img src="img/decoration-text.svg">
+                                                </div>
+    
+                                            </div>
+                                            <a href="javascript:;">
+    
+                                                <div class="image img-down img-right cargador">
+                                                    <div ng-if="item.sotck.length == 0" class="agotado"
+                                                        style="top: 60%;display:block;width: 100%;position: relative;">
+                                                        AGOTADO</div>
+                                                    <img data-src="{{item.propiedades.image}}" class="image post-carga"
+                                                        ng-click='vm.view_producto(item)' style="width:100%">
+                                                </div>
+    
                                             </a>
-                                            <div class="decoration-title">
-                                                <img src="img/decoration-text.svg">
-                                            </div>
-
                                         </div>
-                                        <a href="javascript:;">
-
-                                            <div class="image img-down img-right cargador">
-                                                <div ng-if="item.sotck.length == 0" class="agotado"
-                                                    style="top: 60%;display:block;width: 100%;position: relative;">
-                                                    AGOTADO</div>
-                                                <img data-src="{{item.propiedades.image}}" class="image post-carga"
-                                                    ng-click='vm.view_producto(item)' style="width:100%">
+                                        <div ng-if="$index !==1">
+                                            <div class="content-title title-right" ng-if="vm.impar($index)">
+                                                <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                    <h2 class="ES">{{item.propiedades.nombreES}}</h2>
+                                                    <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                                </a>
+                                                <div class="decoration-title">
+                                                    <img src="img/decoration-text.svg">
+                                                </div>
                                             </div>
-
-                                        </a>
-                                    </div>
-                                    <div ng-if="$index !==1">
-                                        <div class="content-title title-right" ng-if="vm.impar($index)">
-                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                <h2 class="ES">{{item.propiedades.nombreES}}</h2>
-                                                <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                            <div class="content-title title-left" ng-if="vm.par($index)">
+                                                <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                    <h2 class="ES">{{item.propiedades.nombreES}}</h2>
+                                                    <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                                </a>
+                                                <div class="decoration-title">
+                                                    <img src="img/decoration-text.svg">
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;">
+                                                <div class="image img-right cargador" ng-if="vm.impar($index)">
+                                                    <div ng-if="item.sotck.length == 0" class="agotado"
+                                                        style="top: 60%;display:block;width: 100%;position: relative;">
+                                                        AGOTADO</div>
+                                                    <img data-src="{{item.propiedades.image}}" ng-if="vm.impar($index)"
+                                                        class="image post-carga" ng-click='vm.view_producto(item)'
+                                                        style="width:100%">
+                                                </div>
+    
                                             </a>
-                                            <div class="decoration-title">
-                                                <img src="img/decoration-text.svg">
-                                            </div>
-                                        </div>
-                                        <div class="content-title title-left" ng-if="vm.par($index)">
-                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                <h2 class="ES">{{item.propiedades.nombreES}}</h2>
-                                                <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
+                                            <a href="javascript:;">
+                                                <div class="image img-left cargador" ng-if="vm.par($index)">
+                                                    <div ng-if="item.sotck.length == 0" class="agotado"
+                                                        style="top: 60%;display:block;width: 100%;position: relative;">
+                                                        AGOTADO</div>
+                                                    <img data-src="{{item.propiedades.image}}" ng-if="vm.par($index)"
+                                                        class="image post-carga" ng-click='vm.view_producto(item)'
+                                                        style="width:100%">
+                                                </div>
                                             </a>
-                                            <div class="decoration-title">
-                                                <img src="img/decoration-text.svg">
-                                            </div>
                                         </div>
-                                        <a href="javascript:;">
-                                            <div class="image img-right cargador" ng-if="vm.impar($index)">
-                                                <div ng-if="item.sotck.length == 0" class="agotado"
-                                                    style="top: 60%;display:block;width: 100%;position: relative;">
-                                                    AGOTADO</div>
-                                                <img data-src="{{item.propiedades.image}}" ng-if="vm.impar($index)"
-                                                    class="image post-carga" ng-click='vm.view_producto(item)'
-                                                    style="width:100%">
-                                            </div>
-
-                                        </a>
-                                        <a href="javascript:;">
-                                            <div class="image img-left cargador" ng-if="vm.par($index)">
-                                                <div ng-if="item.sotck.length == 0" class="agotado"
-                                                    style="top: 60%;display:block;width: 100%;position: relative;">
-                                                    AGOTADO</div>
-                                                <img data-src="{{item.propiedades.image}}" ng-if="vm.par($index)"
-                                                    class="image post-carga" ng-click='vm.view_producto(item)'
-                                                    style="width:100%">
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -498,14 +613,14 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
 
         <section class="section" id="section5" ng-controller="ContactoController as vm">
             <div class="content" ng-if="vm.isMovil()" >
-                <div class="ES" ng-bind-html="vm.datosContacto.ContactoES"></div>
-                <div class="EN" ng-bind-html="vm.datosContacto.ContactoEN"></div>
+                <div class="ES" ng-bind-html="vm.datosContacto.contactoES"></div>
+                <div class="EN" ng-bind-html="vm.datosContacto.contactoEN"></div>
             </div>
             <div class="content" style="text-align: left !important;" ng-if="!vm.isMovil()">
                 
                 <div style="float: left; width: 50%;">
-                    <div class="ES" ng-bind-html="vm.datosContacto.ContactoES"></div>
-                    <div class="EN" ng-bind-html="vm.datosContacto.ContactoEN"></div>
+                    <div class="ES" ng-bind-html="vm.datosContacto.contactoES"></div>
+                    <div class="EN" ng-bind-html="vm.datosContacto.contactoEN"></div>
                 </div>
                 <div style="float: left; width: 50%;">
                     <img src="img/img-contact.png" width="100%;">
@@ -922,7 +1037,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
     <div id="footer" ng-controller="FooterController as vm">
 
         <ul class="menu" id="menu-footer">
-            <li data-menuanchor="terminos"><a ng-href="#terminos">TÉRMINOS Y CONDICIONES {{vm.datosContacto.NumeroWhatsApp}}</a></li>
+            <li data-menuanchor="terminos"><a ng-href="#terminos">TÉRMINOS Y CONDICIONES</a></li>
             <li data-menuanchor="aviso"><a ng-href="#aviso">AVISO DE PRIVACIDAD</a></li>
             <li data-menuanchor="politica"><a ng-href="#politica">POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES</a></li>
         </ul>
@@ -932,7 +1047,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 <a href="https://www.facebook.com/DeIrisarri/" target="_blank "><img src="img/facebook.svg"></a>
                 <a href="https://twitter.com/deirisarri?lang=es" target="_blank "><img src="img/twitter.svg"></a>
                 <a href="https://www.instagram.com/de_irisarri/" target="_blank "><img src="img/instagram.svg"></a>
-                <a ng-if="vm.datosContacto.NumeroWhatsApp != null && vm.datosContacto.NumeroWhatsApp != ''" href="https://api.whatsapp.com/send?phone={{vm.datosContacto.NumeroWhatsApp}}" target="_blank "><img src="img/whatsapp.png"></a>
+                <a ng-if="vm.datosContacto.numeroWhatsApp != null && vm.datosContacto.numeroWhatsApp != ''" href="https://api.whatsapp.com/send?phone={{vm.datosContacto.cumeroWhatsApp}}" target="_blank "><img src="img/whatsapp.png"></a>
             </div>
         </div>
     </div>

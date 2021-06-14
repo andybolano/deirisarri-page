@@ -17,8 +17,8 @@
                 promisePost.then(function (d) {
                     var response = d.data;
                     if(response.isOk){
-                        vm.datosTiendas.TiendasES = $sce.trustAsHtml(response.Content.TiendasES);
-                        vm.datosTiendas.TiendasEN = $sce.trustAsHtml(response.Content.TiendasEN);
+                        vm.datosTiendas.tiendasES = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.tiendas)[0]);
+                        vm.datosTiendas.tiendasEN = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.tiendas)[1]);
                     }
                 }, function (err) {
                     if (err.status == 402) {

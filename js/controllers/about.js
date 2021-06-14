@@ -17,8 +17,8 @@
                 promisePost.then(function (d) {
                     var response = d.data;
                     if(response.isOk){
-                        vm.datosAbout.AboutES = $sce.trustAsHtml(response.Content.AboutES);
-                        vm.datosAbout.AboutEN = $sce.trustAsHtml(response.Content.AboutEN);
+                        vm.datosAbout.aboutES = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.about)[0]);
+                        vm.datosAbout.aboutEN = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.about)[1]);
                     }
                 }, function (err) {
                     if (err.status == 402) {

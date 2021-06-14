@@ -15,9 +15,12 @@
             getBanner: getBanner,
             sendMessage: sendMessage,
             getNumeroWhatsApp: getNumeroWhatsApp,
-            getAbout: getAbout,
+            getAbout: getAbout, 
             getTiendas: getTiendas,
-            getContacto: getContacto
+            getContacto: getContacto,
+            getCategorias: getCategorias,
+            getTags: getTags,
+            dividirIdiomas: dividirIdiomas
         };
         return service;
 
@@ -165,7 +168,7 @@
                 data : {
                     "Mensaje": "Número WhatsApp consultado...",
                     "Content": {
-                        "Numero": "573504628322"
+                        "numero": "573504628322"
                     },
                     "isOk": true
                 }
@@ -193,8 +196,7 @@
                 data : {
                     "Mensaje": "About consultado...",
                     "Content": {
-                        "AboutES": "<p><b>DE IRISARRI</b>, es una marca de ropa <i>pret a porter</i> que se enfoca en el desarrollo de bodysuits y básicos en terciopelo: <b> ADN</b> de la marca. <br><br> <b>D / IR</b> lleva años en el mercado estudiando el cuerpo femenino para lograr la horma y la comodidad perfecta, tiene una gran variedad de diseños que juegan con la versatilidad y una amplia opción de colores.<br><br>Todos nuestros productos son elaborados en Colombia éticamente de manera muy artesanal. También contamos con una alianza social con la fundación <b>NIÑAS SIN MIEDO</b> que trabaja en derechos sexuales y reproductivos de las mujeres.<br> <br> Si aún no tienes un <i> velvet piece en tu clóset </i> ¡ anímate ! estás en el lugar indicado.</p><br/><br/>",
-                        "AboutEN": "<p><b> DE IRISARRI </b>,is a clothing brand <i>pret a porter</i> that focuses on developing bodysuits and basics in velvet : The brands <b>DNA.</b> <br> <br> <b> D/IR </b> has been in the market for years studying the female body in order to find the best fit and comfort, there is wide variety of designs that play with the versatility and a large range of colors.<br> <br> All of our designs are ethically made in Colombia. We also have joined ofreces with non profit <b>NSM</b>, an organization focused on creating sexual education and awareness for girls and teenagers.<br> <br>Our velvet pieces are a must have, if you don´t own one yet ¡ the time is now !</p><br/><br/>"
+                        "about": "<p><b>DE IRISARRI</b>, es una marca de ropa <i>pret a porter</i> que se enfoca en el desarrollo de bodysuits y básicos en terciopelo: <b> ADN</b> de la marca. <br><br> <b>D / IR</b> lleva años en el mercado estudiando el cuerpo femenino para lograr la horma y la comodidad perfecta, tiene una gran variedad de diseños que juegan con la versatilidad y una amplia opción de colores.<br><br>Todos nuestros productos son elaborados en Colombia éticamente de manera muy artesanal. También contamos con una alianza social con la fundación <b>NIÑAS SIN MIEDO</b> que trabaja en derechos sexuales y reproductivos de las mujeres.<br> <br> Si aún no tienes un <i> velvet piece en tu clóset </i> ¡ anímate ! estás en el lugar indicado.</p><br/><br/> // <p><b> DE IRISARRI </b>,is a clothing brand <i>pret a porter</i> that focuses on developing bodysuits and basics in velvet : The brands <b>DNA.</b> <br> <br> <b> D/IR </b> has been in the market for years studying the female body in order to find the best fit and comfort, there is wide variety of designs that play with the versatility and a large range of colors.<br> <br> All of our designs are ethically made in Colombia. We also have joined ofreces with non profit <b>NSM</b>, an organization focused on creating sexual education and awareness for girls and teenagers.<br> <br>Our velvet pieces are a must have, if you don´t own one yet ¡ the time is now !</p><br/><br/>"
                     },
                     "isOk": true
                 }
@@ -222,8 +224,7 @@
                 data : {
                     "Mensaje": "Tiendas consultado...",
                     "Content": {
-                        "TiendasES": "<p>Casa Santamaría (Bogotá)<br>Calle 79B # 7 - 38.<br><br>Bazaar Boho (Neiva)<br>Calle 8 # 29 - 32, Local 1<br><br>Please Don’t Tell Shop (Miami)<br>www.pleasedonttellshop.com</p>",
-                        "TiendasEN": "<p>Casa Santamaría (Bogotá)<br>Calle 79B # 7 - 38.<br><br>Bazaar Boho (Neiva)<br>Calle 8 # 29 - 32, Local 1<br><br>Please Don’t Tell Shop (Miami)<br>www.pleasedonttellshop.com</p>"
+                        "tiendas": "<p>Casa Santamaría (Bogotá)<br>Calle 79B # 7 - 38.<br><br>Bazaar Boho (Neiva)<br>Calle 8 # 29 - 32, Local 1<br><br>Please Don’t Tell Shop (Miami)<br>www.pleasedonttellshop.com</p> // <p>Casa Santamaría (Bogotá)<br>Calle 79B # 7 - 38.<br><br>Bazaar Boho (Neiva)<br>Calle 8 # 29 - 32, Local 1<br><br>Please Don’t Tell Shop (Miami)<br>www.pleasedonttellshop.com</p>"
                     },
                     "isOk": true
                 }
@@ -251,8 +252,7 @@
                 data : {
                     "Mensaje": "Contacto consultado...",
                     "Content": {
-                        "ContactoES": "<br><br><br><br><br><h2 style='margin-left: 10%;font-size: 35px; font-weight: bold;'>Estaremos felices de responder tus preguntas</h2><br><img src='img/contact-decoration.svg' style='margin-left: 12%;' class='contact-decoration'><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>lauradeirisarri@gmail.com</p><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>Cl. 94 ## 11a-58 Local</p><br><br><h2 style='margin-left: 10%; font-size: 28px; font-weight: bold;'>Tambien nos puedes escribir al chat</h2>",
-                        "ContactoEN": "<br><br><br><br><br><h2 style='margin-left: 10%;font-size: 35px; font-weight: bold;'>We will be happy to answer your questions.</h2><br><img src='img/contact-decoration.svg' style='margin-left: 12%;' class='contact-decoration'><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>lauradeirisarri@gmail.com</p><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>Cl. 94 ## 11a-58 Local</p><br><br><h2 style='margin-left: 10%; font-size: 28px; font-weight: bold;'>You can also write us to the chat</h2>"
+                        "contacto": "<br><br><br><br><br><h2 style='margin-left: 10%;font-size: 35px; font-weight: bold;'>Estaremos felices de responder tus preguntas</h2><br><img src='img/contact-decoration.svg' style='margin-left: 12%;' class='contact-decoration'><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>lauradeirisarri@gmail.com</p><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>Cl. 94 ## 11a-58 Local</p><br><br><h2 style='margin-left: 10%; font-size: 28px; font-weight: bold;'>Tambien nos puedes escribir al chat</h2> // <br><br><br><br><br><h2 style='margin-left: 10%;font-size: 35px; font-weight: bold;'>We will be happy to answer your questions.</h2><br><img src='img/contact-decoration.svg' style='margin-left: 12%;' class='contact-decoration'><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>lauradeirisarri@gmail.com</p><br><p style='margin-left: 10%; text-align: left; font-size: 22px;'>Cl. 94 ## 11a-58 Local</p><br><br><h2 style='margin-left: 10%; font-size: 28px; font-weight: bold;'>You can also write us to the chat</h2>"
                     },
                     "isOk": true
                 }
@@ -268,6 +268,148 @@
             function error(error) {
                 defered.reject(error);
             }
+        }
+
+        function getCategorias(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            //$http.get(API_URL + '/page/colecciones').then(success, error);
+            
+            var response = {
+                data : {
+                    "Mensaje": "Categorias consultadas...",
+                    "Content": [
+                        {
+                            "id": 1,
+                            "nombre": "Mujer // Women",
+                            subCategorias:[
+                                {
+                                    "id": 1,
+                                    "nombre": "Pantalones // Jeans",
+                                },
+                                {
+                                    "id": 2,
+                                    "nombre": "Cop Tops // Cop Tops",
+                                },
+                                {
+                                    "id": 3,
+                                    "nombre": "Faldas // Skirts",
+                                },
+                                {
+                                    "id": 4,
+                                    "nombre": "Vestidos // Dresses",
+                                },
+                                {
+                                    "id": 5,
+                                    "nombre": "Sacos // Sacks",
+                                },
+                                {
+                                    "id": 6,
+                                    "nombre": "Accesorios // Accessories",
+                                },
+                                {
+                                    "id": 7,
+                                    "nombre": "Chaquetas // Jackets",
+                                },
+                                {
+                                    "id": 8,
+                                    "nombre": "Enterizos // Jumpsuits",
+                                },
+                                {
+                                    "id": 9,
+                                    "nombre": "Bodysuits // Bodysuits",
+                                },
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "nombre": "Hombre // Men",
+                            subCategorias:[
+                                {
+                                    "id": 10,
+                                    "nombre": "Pantalones // Jeans",
+                                },
+                                {
+                                    "id": 11,
+                                    "nombre": "Correas // Straps",
+                                },
+                                {
+                                    "id": 12,
+                                    "nombre": "Billeteras // Wallets",
+                                },
+                                {
+                                    "id": 13,
+                                    "nombre": "Suteres  // Sweaters",
+                                },
+                                {
+                                    "id": 14,
+                                    "nombre": "Zapatos // Shoes",
+                                }
+                            ]
+                        }
+                    ],
+                    "isOk": true
+                }
+            };
+            success(response);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getTags(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            //$http.get(API_URL + '/page/colecciones').then(success, error);
+            
+            var response = {
+                data : {
+                    "Mensaje": "Tags consultados...",
+                    "Content": [
+                        {
+                            "id": 1,
+                            "nombre": "Ultimo chance // Last Chance"
+                        },
+                        {
+                            "id": 2,
+                            "nombre": "Nuevos // New Arrivals"
+                        },
+                        {
+                            "id": 3,
+                            "nombre": "Clásicos D/IR // Classics D/IR"
+                        },
+                        {
+                            "id": 4,
+                            "nombre": "Bonos de regalo // Gift vouchers"
+                        }
+                    ],
+                    "isOk": true
+                }
+            };
+            success(response);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function dividirIdiomas(cadena){
+            return cadena.split("//");
         }
 
     }
