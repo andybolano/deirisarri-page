@@ -1095,7 +1095,7 @@ button.comprar {
     width: 100%;
 }
 
-@media (max-width: 400px){
+@media (max-width: 500px){
 
     #sec-tienda-categorias{
         float: left; 
@@ -1104,7 +1104,7 @@ button.comprar {
     }
 
     #sec-tienda-categorias .subcategoria-decoration{
-        margin-top: 0px;
+        margin-top: 10px;
     }
 
     #sec-tienda-productos{
@@ -1119,7 +1119,7 @@ button.comprar {
 
 }
 
-@media (min-width: 401px){
+@media (min-width: 501px){
 
     #sec-tienda-categorias{
         padding-top: 30px;
@@ -2249,9 +2249,9 @@ button.comprar {
 
 @media (max-width:500px) {
     #footer .menu {
-        width: 70%;
+        width: 55%;
         margin-left: 5px;
-        margin-top: 35px;
+        margin-top: 8px;
         float: left;
         color: #000;
         background-color: transparent;
