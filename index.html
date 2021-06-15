@@ -113,8 +113,21 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         <nav class="overlay-menu">
             <ul>
                 <li data-menuanchor="dir"><a ng-href="#dir">DE IRISARRI</a></li>
-                <li data-menuanchor="tienda">
-                    <a ng-href="#tienda" data-translate="tienda"></a>
+                <li data-menuanchor="tienda" ng-controller="CategoriasController as vm">
+                    <div class="dropdown" style="width: 128px;">
+                        <a href="javascript:;" data-translate="tienda"></a>
+                        <div class="dropdown-content">
+                            <div class="row" ng-repeat="item in vm.datosCategorias.categorias">
+                                <div class="col-xs-12">
+                                    <a ng-href="#tienda" ng-click="vm.seleccionarCategoria(item)" style="float: left; color: black;font-family: Arial, Helvetica, Verdana !important; text-decoration: none;" class="item-categoria ES">{{item.nombreES}}</a>
+                                    <a ng-href="#tienda" ng-click="vm.seleccionarCategoria(item)" style="float: left; color: black;font-family: Arial, Helvetica, Verdana !important; text-decoration: none;" class="item-categoria EN">{{item.nombreEN}}</a>
+                                </div>
+                                <div class="col-xs-12" ng-if="$index + 1 != vm.datosCategorias.categorias.length">
+                                    <hr class="separador-categoria">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li data-menuanchor="blog">
                     <a ng-href="#blog" data-translate="blog"></a>
@@ -236,10 +249,8 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                     <div id="sec-tienda-categorias">
                         <label class="title-categorias">¿Qué estas buscando?</label>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
-                        <br>
-                        <br>
                         <div class="row">
-                            <div class="col-sm-6 item-sub-categoria" ng-repeat="item in vm.subcategorias">
+                            <div class="col-sm-6 col-xs-6 item-sub-categoria" ng-repeat="item in vm.subcategorias">
                                 <label>
                                     <input type="radio" value="{{item.id}}" ng-model="vm.filtrosProductos.subCategoriaId" name="radio-subcategorias">
                                     <span class="ES">{{item.nombreES}}</span>
@@ -248,8 +259,6 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                             </div>
                         </div>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
-                        <br>
-                        <br>
                         <div class="row">
                             <div class="col-sm-12 item-sub-categoria" ng-repeat="item in vm.tags">
                                 <label>
