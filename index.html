@@ -448,10 +448,21 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-xs-6 content-comprar">
-                                    <button class="comprar" ng-click="vm.addCart();" data-translate="addCart"></button>
-                                    <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
-                                    <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined:0}} USD
-                                    </h3>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button class="comprar" ng-click="vm.addCart();" data-translate="addCart"></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-left">
+                                            <h3 class="ES precio-anterior" ng-if="vm.Producto.propiedades.precio_ant != null && vm.Producto.propiedades.precio_ant != ''">{{vm.Producto.propiedades.precio_ant | currency:undefined:0}} COP</h3>
+                                            <h3 class="EN precio-anterior" ng-if="vm.Producto.propiedades.precio_ant_usd != null && vm.Producto.propiedades.precio_ant_usd != ''">{{vm.Producto.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
+                                            <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined:0}} USD</h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

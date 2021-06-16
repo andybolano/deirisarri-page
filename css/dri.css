@@ -566,7 +566,13 @@ h1 {
 .btn-zoom:hover,
 .cart,
 button.comprar {
-    cursor: pointer
+    cursor: pointer;
+    width: 100%;
+}
+
+.precio-anterior{
+    color: #cebfbf; 
+    text-decoration: line-through;
 }
 
 .btn-zoom {
