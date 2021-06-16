@@ -17,6 +17,7 @@
             vm.filtrosProductos = {};
             var $carousel;
 
+
             $carousel = $('.carousel-store').flickity({
                 lazyLoad: true,
                 percentPosition: true,
@@ -113,7 +114,8 @@
             };
 
             vm.getProductos = function () {
-                var promisePost = appService.getProductos();
+                var filtros = vm.getFiltrosProductos();
+                var promisePost = appService.getProductosFiltrados(filtros);
                 promisePost.then(function (d) {
 
 
@@ -130,13 +132,10 @@
                     }
 
                     setTimeout(function () {
-                        $('.grid').masonry({
-                            itemSelector: '.grid-item',
-                            columnWidth: '.grid-item',
-                            gutter: '.gutter-sizer',
-                            percentPosition: true
-                        });
-                    }, 1000);
+                        var grid = $('.grid');
+                        grid.masonry('reloadItems');
+                        grid.masonry();
+                    }, 500);
 
 
                 }, function (err) {
@@ -380,12 +379,26 @@
             }
 
             vm.init = function(){
+                vm.initGrid();
                 vm.getTags();
-                vm.getProductos();
+                vm.watchCategoriaSeleccionada();
+            };
+
+            vm.initGrid = function(){
+                $('.grid').masonry({
+                    itemSelector: '.grid-item', 
+                    columnWidth: '.grid-item',
+                    gutter: '.gutter-sizer',
+                    percentPosition: true
+                });
+            };
+
+            vm.watchCategoriaSeleccionada = function(){
                 $rootScope.$watch("categoriaSeleccionada",function(newValue,oldValue) {
                     vm.filtrosProductos.categoriaId = newValue.id;
                     vm.filtrosProductos.subCategoriaId = null;
                     vm.getSubCategorias();
+                    vm.getProductos();
                  });
             };
 
@@ -435,6 +448,7 @@
             vm.getFiltrosProductos = function(){
                 var tagsIdsSeleccionados = vm.tags.filter(function(o){ return o.seleccionado; }).map(function(o){ return o.id; });
                 vm.filtrosProductos.tagsIds = tagsIdsSeleccionados;
+                console.log(JSON.stringify(vm.filtrosProductos));
                 return vm.filtrosProductos;
             };
 

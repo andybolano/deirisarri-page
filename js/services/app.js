@@ -21,7 +21,8 @@
             getCategorias: getCategorias,
             getTags: getTags,
             dividirIdiomas: dividirIdiomas,
-            getSubCategorias: getSubCategorias
+            getSubCategorias: getSubCategorias,
+            getProductosFiltrados: getProductosFiltrados
         };
         return service;
 
@@ -118,6 +119,25 @@
             var defered = $q.defer();
             var promise = defered.promise;
             $http.get(API_URL + '/page/productos').then(success, error);
+            return promise;
+
+            function success(p) {
+                defered.resolve(p);
+            }
+
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getProductosFiltrados(filtros) {
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            // $http.post(API_URL + '/page/productos', filtros).then(success, error);
+            $http.get(API_URL + '/page/productos').then(success, error);
+
             return promise;
 
             function success(p) {

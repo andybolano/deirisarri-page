@@ -252,7 +252,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                         <div class="row">
                             <div class="col-sm-6 col-xs-6 item-sub-categoria" ng-repeat="item in vm.subcategorias">
                                 <label>
-                                    <input type="radio" value="{{item.id}}" ng-model="vm.filtrosProductos.subCategoriaId" name="radio-subcategorias">
+                                    <input type="radio" value="{{item.id}}" ng-model="vm.filtrosProductos.subCategoriaId" ng-change="vm.getProductos()" name="radio-subcategorias">
                                     <span class="ES">{{item.nombreES}}</span>
                                     <span class="EN">{{item.nombreEN}}</span>
                                 </label>
@@ -262,7 +262,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                         <div class="row">
                             <div class="col-sm-12 item-sub-categoria" ng-repeat="item in vm.tags">
                                 <label>
-                                    <input type="checkbox" value="{{item.id}}" name="check-tags" ng-model="item.seleccionado">
+                                    <input type="checkbox" value="{{item.id}}" name="check-tags" ng-model="item.seleccionado" ng-change="vm.getProductos()">
                                     <span class="ES">{{item.nombreES}}</span>
                                     <span class="EN">{{item.nombreEN}}</span>
                                 </label>
@@ -293,7 +293,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                                     <div ng-if="item.sotck.length == 0" class="agotado"
                                                         style="top: 60%;display:block;width: 100%;position: relative;">
                                                         AGOTADO</div>
-                                                    <img data-src="{{item.propiedades.image}}" class="image post-carga"
+                                                    <img src="{{item.propiedades.image}}" class="image post-carga"
                                                         ng-click='vm.view_producto(item)' style="width:100%">
                                                 </div>
     
@@ -323,7 +323,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                                     <div ng-if="item.sotck.length == 0" class="agotado"
                                                         style="top: 60%;display:block;width: 100%;position: relative;">
                                                         AGOTADO</div>
-                                                    <img data-src="{{item.propiedades.image}}" ng-if="vm.impar($index)"
+                                                    <img src="{{item.propiedades.image}}" ng-if="vm.impar($index)"
                                                         class="image post-carga" ng-click='vm.view_producto(item)'
                                                         style="width:100%">
                                                 </div>
@@ -334,7 +334,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                                     <div ng-if="item.sotck.length == 0" class="agotado"
                                                         style="top: 60%;display:block;width: 100%;position: relative;">
                                                         AGOTADO</div>
-                                                    <img data-src="{{item.propiedades.image}}" ng-if="vm.par($index)"
+                                                    <img src="{{item.propiedades.image}}" ng-if="vm.par($index)"
                                                         class="image post-carga" ng-click='vm.view_producto(item)'
                                                         style="width:100%">
                                                 </div>
