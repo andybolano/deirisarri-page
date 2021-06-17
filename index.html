@@ -1166,6 +1166,35 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                             </div>
                         </form>
                     </div>
+
+                    <div class="header-cart" data-translate="codigoPromocional"></div>
+                    <div class="form-pago">
+                        <div class="row" ng-if="vm.codigoDescuento == null">
+                            <div class="col-lg-12">
+                                <span data-translate="infoCodigoPromocional"></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <br>
+                                <input type="text" class="input-text" ng-model="vm.filtroCodigoDescuento.codigo"/>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="button comprar buscarcodedescuento" data-translate="buscarCodigoPromocional" ng-click="vm.getCodigoDescuento()"></button>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-if="vm.codigoDescuento != null">
+                            <div class="col-lg-12" style="text-align: center;">
+                                <strong>{{vm.codigoDescuento.codigo}}:</strong>
+                                <span data-translate="infoCodigoPromocionalAplicado" class="ES"></span> 
+                                <span data-translate="infoCodigoPromocionalAplicado" class="EN"></span> 
+                                <strong>{{vm.codigoDescuento.porcentaje_descuento}} %</strong>
+                                <br>
+                                <br>
+                                <a href="javascript:;" ng-click="vm.eliminarCodigoDescuento()"><small
+                                    style="color:#e53935" data-translate="eliminar"></small></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="header-cart" data-translate="resumenCompra"></div>
@@ -1197,7 +1226,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                         <h4 class="EN">{{item.producto.precio_usd * item.cantidad | currency:undefined}}
                                             USD</h4>
                                         <input type="number " class="input-text cantidad " ng-model="item.cantidad "
-                                            ng-change="vm.buttonPay(); ">
+                                            ng-change="vm.buttonPay();">
                                     </div>
 
 

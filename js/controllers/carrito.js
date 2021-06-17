@@ -25,12 +25,8 @@
             vm.envio = 0;
             vm.mobile = false;
             vm.descuento = 0;
-
-
-
-
-
-
+            vm.filtroCodigoDescuento = {codigo : ""};
+            vm.codigoDescuento = null;
 
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                 vm.mobile = true;
@@ -227,7 +223,21 @@
                                 }
                             }
                         }
+
                         descuento_acum.push(descuento);
+
+                        var descuentoPorCodigo = 0;
+                        if(vm.codigoDescuento != null){
+                            if ($rootScope.lang == 'ES') {
+                                descuentoPorCodigo = (productos[i].precio * productos[i].cantidad) * (vm.codigoDescuento.porcentaje_descuento / 100);
+                            } else {
+                                descuentoPorCodigo = (productos[i].precio_usd * productos[i].cantidad) * (vm.codigoDescuento.porcentaje_descuento / 100);
+                            }
+
+                            if(descuentoPorCodigo > 0){
+                                descuento_acum.push(descuentoPorCodigo);
+                            }
+                        }
                     }
 
                     let total = 0;
@@ -235,6 +245,8 @@
                     for (let i = 0; i < descuento_acum.length; i++) {
                         total += descuento_acum[i];
                     }
+
+
                     return parseInt(total);
                 } catch (e) {
                     // error
@@ -314,8 +326,6 @@
                     }
                 }
 
-
-
                 get_products_by_count($rootScope.Carrito).then(val => {
 
                     for (let i = 0; i < val.length; i++) {
@@ -333,15 +343,6 @@
                     }
 
                 })
-
-
-
-
-
-
-
-
-
 
                 if (!vm.Cliente.nit || vm.Cliente.nit == "") {
                     toastr.warning("Ingresar identificacion");
@@ -363,7 +364,6 @@
                     return false
                 }
 
-
                 if (!vm.Cliente.direccion || vm.Cliente.direccion == "") {
                     toastr.warning("Ingresar direccion");
                     return false
@@ -373,7 +373,6 @@
                     toastr.warning("Ingresar telefono");
                     return false
                 }
-
 
                 if (!$('#cbox_terminos').prop('checked')) {
                     toastr.warning("Aceptar terminos y condiciones");
@@ -396,17 +395,14 @@
                     return pais.id == parseInt(document.getElementById('pais').value);
                 })
 
-
-
-
                 vm.Cliente.pais = pais.name;
-
 
                 let ciudad = $rootScope.ciudades.find(ciudad => {
                     return ciudad.id == parseInt(document.getElementById('ciudad').value);
                 })
 
-                vm.Cliente.ciudad = ciudad.name
+                vm.Cliente.ciudad = ciudad.name;
+
                 if (document.getElementById('departament').value) {
                     let dep = $rootScope.departament.find(departament => {
                         return departament.id == parseInt(document.getElementById('departament').value);
@@ -426,7 +422,6 @@
                     toastr.warning("Ingresar ciudad");
                     return false
                 }
-
 
                 var object = {
                     cliente: vm.Cliente,
@@ -570,6 +565,44 @@
                 var ms = addZero(d.getMilliseconds(), 3);
                 return h + "" + m + "" + s + "" + ms;
             }
+
+            vm.getCodigoDescuento = function(){
+                appService.getCodigoPromocional(vm.filtroCodigoDescuento.codigo).then(success, error);
+
+                function success(d) {
+                    var response = d.data;
+                    if(response.isOk){
+                        vm.filtroCodigoDescuento.codigo = "";
+                        vm.codigoDescuento = response.Content;
+                        toastr.success(response.Mensaje);
+                    }
+                    else{
+                        toastr.error(response.Mensaje);
+                    }
+                }
+
+                function error(error) {
+                    if ($rootScope.lang == 'ES') {
+                        toastr.error("Se ha producido un error por favor intente nuevamente");
+                    }
+                    if ($rootScope.lang == 'EN') {
+                        toastr.error("An error has occurred please try again");
+
+                    }
+                }
+                
+            };
+
+            vm.eliminarCodigoDescuento = function(){
+                vm.codigoDescuento = null;
+                if ($rootScope.lang == 'ES') {
+                    toastr.success("Se ha quitado el código de descuento");
+                }
+                if ($rootScope.lang == 'EN') {
+                    toastr.success("Discount code has been removed");
+
+                }
+            };
 
         }]);
 

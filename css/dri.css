@@ -783,6 +783,11 @@ hr {
     width: 100%
 }
 
+.comprar.buscarcodedescuento {
+    margin-top: 14px;
+    width: 100%
+}
+
 .total td {
     padding-left: 10px;
     padding-right: 10px

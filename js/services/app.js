@@ -22,7 +22,8 @@
             getTags: getTags,
             dividirIdiomas: dividirIdiomas,
             getSubCategorias: getSubCategorias,
-            getProductosFiltrados: getProductosFiltrados
+            getProductosFiltrados: getProductosFiltrados,
+            getCodigoPromocional: getCodigoPromocional
         };
         return service;
 
@@ -456,6 +457,38 @@
 
             if(categoriaId == 1) success(response1);
             if(categoriaId == 2) success(response2);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getCodigoPromocional(codigo){
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            //$http.get(API_URL + '/page/colecciones').then(success, error);
+            
+            var response1 = {
+                data : {
+                    "Mensaje": "Descuento consultado...",
+                    "Content": {
+                        id: 1,
+                        codigo: codigo,
+                        porcentaje_descuento: 50
+                    },
+                    "isOk": true
+                }
+            };
+
+            success(response1);
         
             return promise;
         
