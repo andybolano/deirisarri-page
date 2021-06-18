@@ -88,8 +88,8 @@
                 promisePost.then(function (d) {
                     var response = d.data;
                     if(response.isOk){
-                        vm.datosContacto.contactoES = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.contacto)[0]);
-                        vm.datosContacto.contactoEN = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.contacto)[1]);
+                        vm.datosContacto.contactoES = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.contact)[0]);
+                        vm.datosContacto.contactoEN = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.contact)[1]);
                     }
                 }, function (err) {
                     if (err.status == 402) {
