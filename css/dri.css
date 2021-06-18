@@ -902,6 +902,11 @@ button.comprar {
     margin-right: 20px
 }
 
+.link-tabla-medidas{
+    color: black;
+    text-decoration: underline;
+}
+
 .cart {
     width: 60px;
     margin-left: -60px;
@@ -1714,11 +1719,13 @@ button.comprar {
     width: 100%
 }
 
-#img {
+#img, 
+#img_tabla_medidas {
     width: 100%;
 }
 
-#img>img {
+#img>img,
+#img_tabla_medidas>img {
     width: 100%;
 }
 
@@ -1730,7 +1737,8 @@ button.comprar {
     display: none
 }
 
-#img {
+#img,
+#img_tabla_medidas {
     width: 50%;
     position: absolute;
     top: 50%;
@@ -1740,7 +1748,8 @@ button.comprar {
 }
 
 @media (min-width:1600px) {
-    #img {
+    #img,
+    #img_tabla_medidas {
         width: 60%;
         position: absolute;
         top: 50%;
@@ -1751,7 +1760,8 @@ button.comprar {
 }
 
 @media (max-width:1430px) {
-    #img {
+    #img,
+    #img_tabla_medidas {
         width: 60%;
         position: absolute;
         top: 50%;
@@ -1762,7 +1772,8 @@ button.comprar {
 }
 
 @media (max-width:800px) {
-    #img {
+    #img,
+    #img_tabla_medidas {
         width: 90%;
         position: absolute;
         top: 50%;
@@ -2150,7 +2161,8 @@ button.comprar {
         margin-left: 25%
     }
 
-    #img {
+    #img,
+    #img_tabla_medidas {
         width: 40%;
         position: absolute;
         top: 50%;
@@ -2172,7 +2184,8 @@ button.comprar {
         margin-left: 15%
     }
 
-    #img {
+    #img,
+    #img_tabla_medidas {
         width: 35%;
         position: absolute;
         top: 50%;

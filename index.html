@@ -85,7 +85,14 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
     <div id="modal_coleccion" class="modal">
         <span class="close" onclick="close_modal_coleccion()" class="animated bounceIn"></span>
         <div id="img">
+            
+        </div>
+    </div>
 
+    <div id="modal_tabla_medidas" class="modal">
+        <span class="close" onclick="close_modal_tabla_medidas()" class="animated bounceIn"></span>
+        <div id="img_tabla_medidas">
+            
         </div>
     </div>
 
@@ -379,7 +386,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                                 ng-model="vm.colorSelected" style="width:100%;height:37px;">
                                                 <option value="0" disabled>COLOR</option>
                                                 <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
-                                                    {{item.nombre}}
+                                                    {{item.nombre}} 
                                                 </option>
                                             </select>
 
@@ -388,10 +395,18 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                         <div class="color" id="color" style="width:100%;height:16px;">
 
                                         </div>
+                                        
+                                        <div style="width:100%; margin-bottom: 10px;" ng-if="vm.debeMostrarTablaMedidas()">
+                                            
+                                            <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
+                                            <br>
+                                        </div>
                                     </div>
                                     <div class="col-xs-6 content-comprar">
                                         <button class="comprar" ng-click="vm.addCart();"
                                             data-translate="addCart"></button>
+                                        <h3 class="ES precio-anterior" ng-if="vm.Producto.propiedades.precio_ant != null && vm.Producto.propiedades.precio_ant != ''">{{vm.Producto.propiedades.precio_ant | currency:undefined:0}} COP</h3>
+                                        <h3 class="EN precio-anterior" ng-if="vm.Producto.propiedades.precio_ant_usd != null && vm.Producto.propiedades.precio_ant_usd != ''">{{vm.Producto.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
                                         <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP
                                         </h3>
                                         <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined}} USD
@@ -446,6 +461,14 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row" ng-if="vm.debeMostrarTablaMedidas()">
+                                        <div class="col-lg-12">
+                                            <br>
+                                            <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
+                                            <br>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 col-xs-6 content-comprar">
                                     <div class="row">
@@ -488,6 +511,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 </div>
             </div>
             <a href="javascript:;" ng-click="vm.back()" class="back" id="back"></a>
+                       
         </section>
 
         <section class="section" id="section3" ng-controller="BlogController as vm" ng-init="vm.getBlog()">
@@ -1318,6 +1342,8 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
             </div>
         </div>
     </div>
+
+
 </body>
 
 
@@ -1425,6 +1451,14 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         document.getElementById("overlay").style.display = "none";
         document.getElementById("modal_coleccion").style.display = "none";
         document.getElementById("img").innerHTML = " ";
+        $.fn.fullpage.setAllowScrolling(true);
+        $.fn.fullpage.setKeyboardScrolling(true, 'up, down')
+    }
+
+    function close_modal_tabla_medidas() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("modal_tabla_medidas").style.display = "none";
+        document.getElementById("img_tabla_medidas").innerHTML = " ";
         $.fn.fullpage.setAllowScrolling(true);
         $.fn.fullpage.setKeyboardScrolling(true, 'up, down')
     }

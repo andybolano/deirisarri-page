@@ -129,6 +129,9 @@
                         var descripcion = vm.productos[i].propiedades.descripcion.split("//");
                         vm.productos[i].propiedades.descripcionES = descripcion[0];
                         vm.productos[i].propiedades.descripcionEN = descripcion[1];
+
+                        vm.productos[i].propiedades.image_medidas_escritorio = "http://localhost:8040//img/tallas-esc.png";
+                        vm.productos[i].propiedades.image_medidas_movil = "http://localhost:8040//img/tallas-mov.png";
                     }
 
                     setTimeout(function () {
@@ -448,8 +451,36 @@
             vm.getFiltrosProductos = function(){
                 var tagsIdsSeleccionados = vm.tags.filter(function(o){ return o.seleccionado; }).map(function(o){ return o.id; });
                 vm.filtrosProductos.tagsIds = tagsIdsSeleccionados;
-                console.log(JSON.stringify(vm.filtrosProductos));
                 return vm.filtrosProductos;
+            };
+
+            vm.verTallas = function(){
+                open_modal();
+                document.getElementById("overlay").style.display = "block";
+                document.getElementById("modal_tabla_medidas").style.display = "block";
+
+                var text = "";
+                if(vm.mobile){
+                    text = "<img src='" + vm.Producto.propiedades.image_medidas_movil + "' /> ";
+                }else{
+                    text = "<img src='" + vm.Producto.propiedades.image_medidas_escritorio + "' /> ";
+                }
+
+                document.getElementById("img_tabla_medidas").innerHTML = text;
+            };
+
+            vm.debeMostrarTablaMedidas = function(){
+                if(vm.Producto.propiedades != null){
+                    if(vm.mobile){
+                        return vm.Producto.propiedades.image_medidas_movil != null && vm.Producto.propiedades.image_medidas_movil != ""; 
+                    }else{
+                        return vm.Producto.propiedades.image_medidas_escritorio != null && vm.Producto.propiedades.image_medidas_escritorio != "";
+                    }
+                }
+                else {
+                    return false;
+                }
+
             };
 
         }]);

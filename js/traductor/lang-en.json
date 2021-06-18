@@ -61,6 +61,8 @@
     "tarjeta": "Card:",
     "eliminar": "Deleted",
     "info": "You will receive your invoice electronically, to registered mail.",
-    "terminos": ""
+    "terminos": "",
+
+    "textTablaMedidas": "*MEASUREMENT TABLE"
 
 }

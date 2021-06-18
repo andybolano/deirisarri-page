@@ -59,5 +59,7 @@
     "tarjeta": "Tarjeta:",
     "eliminar": "eliminar",
     "info": "Recibiras tu factura de manera electrónica, al correo registrado.",
-    "terminos": ""
+    "terminos": "",
+
+    "textTablaMedidas": "*TABLA DE MEDIDAS"
 }
