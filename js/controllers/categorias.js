@@ -22,8 +22,9 @@
                     var response = d.data;
                     if(response.isOk){
                         vm.datosCategorias.categorias = response.Content;
+                        vm.datosCategorias.categorias = vm.datosCategorias.categorias.sort(function(a,b){ return b.id - a.id; });
                         for (var i = 0; i < vm.datosCategorias.categorias.length; i++) {
-                            var nombres = appService.dividirIdiomas(vm.datosCategorias.categorias[i].nombre);
+                            var nombres = appService.dividirIdiomas(vm.datosCategorias.categorias[i].name);
                             vm.datosCategorias.categorias[i].nombreES = nombres[0];
                             vm.datosCategorias.categorias[i].nombreEN = nombres[1];
                         }

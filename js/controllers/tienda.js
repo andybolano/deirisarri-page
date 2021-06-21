@@ -413,7 +413,7 @@
                     if(response.isOk){
                         vm.subcategorias = response.Content;
                         for (var i = 0; i < vm.subcategorias.length; i++) {
-                            var nombres = appService.dividirIdiomas(vm.subcategorias[i].nombre);
+                            var nombres = appService.dividirIdiomas(vm.subcategorias[i].name);
                             vm.subcategorias[i].nombreES = nombres[0];
                             vm.subcategorias[i].nombreEN = nombres[1];
                         }
@@ -434,7 +434,7 @@
                     if(response.isOk){
                         vm.tags = response.Content;
                         for (var i = 0; i < vm.tags.length; i++) {
-                            var nombres = appService.dividirIdiomas(vm.tags[i].nombre);
+                            var nombres = appService.dividirIdiomas(vm.tags[i].name);
                             vm.tags[i].nombreES = nombres[0];
                             vm.tags[i].nombreEN = nombres[1];
                         }

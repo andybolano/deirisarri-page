@@ -248,25 +248,7 @@
             var defered = $q.defer();
             var promise = defered.promise;
         
-            //$http.get(API_URL + '/page/colecciones').then(success, error);
-            
-            var response = {
-                data : {
-                    "Mensaje": "Categorias consultadas...",
-                    "Content": [
-                        {
-                            "id": 1,
-                            "nombre": "Mujer // Women"
-                        },
-                        {
-                            "id": 2,
-                            "nombre": "Hombre // Men"
-                        }
-                    ],
-                    "isOk": true
-                }
-            };
-            success(response);
+            $http.get(API_URL + '/categoria').then(success, error);
         
             return promise;
         
@@ -283,33 +265,7 @@
             var defered = $q.defer();
             var promise = defered.promise;
         
-            //$http.get(API_URL + '/page/colecciones').then(success, error);
-            
-            var response = {
-                data : {
-                    "Mensaje": "Tags consultados...",
-                    "Content": [
-                        {
-                            "id": 1,
-                            "nombre": "Ultimo chance // Last Chance"
-                        },
-                        {
-                            "id": 2,
-                            "nombre": "Nuevos // New Arrivals"
-                        },
-                        {
-                            "id": 3,
-                            "nombre": "Clásicos D/IR // Classics D/IR"
-                        },
-                        {
-                            "id": 4,
-                            "nombre": "Bonos de regalo // Gift vouchers"
-                        }
-                    ],
-                    "isOk": true
-                }
-            };
-            success(response);
+            $http.get(API_URL + '/tag').then(success, error);
         
             return promise;
         
@@ -331,84 +287,7 @@
             var defered = $q.defer();
             var promise = defered.promise;
         
-            //$http.get(API_URL + '/page/colecciones').then(success, error);
-            
-            var response1 = {
-                data : {
-                    "Mensaje": "SubCategorias consultadas...",
-                    "Content": [
-                        {
-                            "id": 1,
-                            "nombre": "Pantalones // Jeans",
-                        },
-                        {
-                            "id": 2,
-                            "nombre": "Cop Tops // Cop Tops",
-                        },
-                        {
-                            "id": 3,
-                            "nombre": "Faldas // Skirts",
-                        },
-                        {
-                            "id": 4,
-                            "nombre": "Vestidos // Dresses",
-                        },
-                        {
-                            "id": 5,
-                            "nombre": "Sacos // Sacks",
-                        },
-                        {
-                            "id": 6,
-                            "nombre": "Accesorios // Accessories",
-                        },
-                        {
-                            "id": 7,
-                            "nombre": "Chaquetas // Jackets",
-                        },
-                        {
-                            "id": 8,
-                            "nombre": "Enterizos // Jumpsuits",
-                        },
-                        {
-                            "id": 9,
-                            "nombre": "Bodysuits // Bodysuits",
-                        }
-                    ],
-                    "isOk": true
-                }
-            };
-
-            var response2 = {
-                data : {
-                    "Mensaje": "SubCategorias consultadas...",
-                    "Content": [
-                        {
-                            "id": 10,
-                            "nombre": "Pantalones // Jeans",
-                        },
-                        {
-                            "id": 11,
-                            "nombre": "Correas // Straps",
-                        },
-                        {
-                            "id": 12,
-                            "nombre": "Billeteras // Wallets",
-                        },
-                        {
-                            "id": 13,
-                            "nombre": "Suteres  // Sweaters",
-                        },
-                        {
-                            "id": 14,
-                            "nombre": "Zapatos // Shoes",
-                        }
-                    ],
-                    "isOk": true
-                }
-            };
-
-            if(categoriaId == 1) success(response1);
-            if(categoriaId == 2) success(response2);
+            $http.get(API_URL + '/sub-categoria/' + categoriaId).then(success, error);
         
             return promise;
         
