@@ -398,10 +398,12 @@
 
             vm.watchCategoriaSeleccionada = function(){
                 $rootScope.$watch("categoriaSeleccionada",function(newValue,oldValue) {
-                    vm.filtrosProductos.categoriaId = newValue.id;
-                    vm.filtrosProductos.subCategoriaId = null;
-                    vm.getSubCategorias();
-                    vm.getProductos();
+                    if(newValue != null){
+                        vm.filtrosProductos.categoriaId = newValue.id;
+                        vm.filtrosProductos.subCategoriaId = null;
+                        vm.getSubCategorias();
+                        vm.getProductos();
+                    }
                  });
             };
 
