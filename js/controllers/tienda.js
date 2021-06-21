@@ -133,14 +133,6 @@
                         vm.productos[i].propiedades.image_medidas_escritorio = "http://localhost:8040//img/tallas-esc.png";
                         vm.productos[i].propiedades.image_medidas_movil = "http://localhost:8040//img/tallas-mov.png";
                     }
-
-                    setTimeout(function () {
-                        var grid = $('.grid');
-                        grid.masonry('reloadItems');
-                        grid.masonry();
-                    }, 500);
-
-
                 }, function (err) {
                     if (err.status == 402) {
                         toastr["error"](err.data.respuesta);
@@ -382,18 +374,8 @@
             }
 
             vm.init = function(){
-                vm.initGrid();
                 vm.getTags();
                 vm.watchCategoriaSeleccionada();
-            };
-
-            vm.initGrid = function(){
-                $('.grid').masonry({
-                    itemSelector: '.grid-item', 
-                    columnWidth: '.grid-item',
-                    gutter: '.gutter-sizer',
-                    percentPosition: true
-                });
             };
 
             vm.watchCategoriaSeleccionada = function(){

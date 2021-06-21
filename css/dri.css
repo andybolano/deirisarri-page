@@ -2341,3 +2341,48 @@ button.comprar {
 .separador-categoria{
     border: 1px solid black;
 }
+
+.grid-productos{
+    margin:10px;
+}
+
+.card-producto{
+    padding: 10px;
+}
+.card-producto .nombre-card-producto
+{
+    font-size: 20px;
+    font-weight: 900;
+    font-family: GothamBold, arial, helvetica;
+    color: #000 !important;
+}
+
+.card-producto .decoration-title
+{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.card-producto .card-text-precio-producto
+{
+    padding-top: 10px;
+}
+
+.card-producto .text-precio-producto
+{
+    font-size: 22px;
+}
+
+@media (max-width:500px) {
+.card-producto .card-description-producto
+    {
+        margin-top: 125px;
+    }
+}
+
+@media (min-width:500px) {
+    .card-producto .image-grid-producto{
+        margin-left: 20%;
+    }
+}
+

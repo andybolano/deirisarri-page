@@ -278,74 +278,30 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                     </div>
                     <div id="sec-tienda-productos">
                         <div class="line-content">
-                            <div class="content-productos">
-                                <div class="grid">
-                                    <div class="gutter-sizer"></div>
-                                    <div class="grid-sizer"></div>
-                                    <div class="grid-item" ng-repeat="item in vm.productos">
-                                        <div ng-if="$index==1 ">
-                                            <div class="content-title title-right title-down">
-                                                <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                    <h2 class="ES">{{item.propiedades.nombreES}}</h2>
-                                                    <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
-                                                </a>
-                                                <div class="decoration-title">
-                                                    <img src="img/decoration-text.svg">
-                                                </div>
-    
+                            <div class="row grid-productos">
+                                <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="cargador">
+                                                <div ng-if="item.sotck.length == 0" class="agotado"
+                                                    style="top: 60%;display:block;width: 100%;position: relative;">
+                                                    AGOTADO</div>
+                                                <img src="{{item.propiedades.image}}" class="image-grid-producto"
+                                                    ng-click='vm.view_producto(item)' style="width:100%;">
                                             </div>
-                                            <a href="javascript:;">
-    
-                                                <div class="image img-down img-right cargador">
-                                                    <div ng-if="item.sotck.length == 0" class="agotado"
-                                                        style="top: 60%;display:block;width: 100%;position: relative;">
-                                                        AGOTADO</div>
-                                                    <img src="{{item.propiedades.image}}" class="image post-carga"
-                                                        ng-click='vm.view_producto(item)' style="width:100%">
-                                                </div>
-    
-                                            </a>
                                         </div>
-                                        <div ng-if="$index !==1">
-                                            <div class="content-title title-right" ng-if="vm.impar($index)">
-                                                <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                    <h2 class="ES">{{item.propiedades.nombreES}}</h2>
-                                                    <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
-                                                </a>
-                                                <div class="decoration-title">
-                                                    <img src="img/decoration-text.svg">
-                                                </div>
-                                            </div>
-                                            <div class="content-title title-left" ng-if="vm.par($index)">
-                                                <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                    <h2 class="ES">{{item.propiedades.nombreES}}</h2>
-                                                    <h2 class="EN">{{item.propiedades.nombreEN}}</h2>
-                                                </a>
-                                                <div class="decoration-title">
-                                                    <img src="img/decoration-text.svg">
-                                                </div>
-                                            </div>
-                                            <a href="javascript:;">
-                                                <div class="image img-right cargador" ng-if="vm.impar($index)">
-                                                    <div ng-if="item.sotck.length == 0" class="agotado"
-                                                        style="top: 60%;display:block;width: 100%;position: relative;">
-                                                        AGOTADO</div>
-                                                    <img src="{{item.propiedades.image}}" ng-if="vm.impar($index)"
-                                                        class="image post-carga" ng-click='vm.view_producto(item)'
-                                                        style="width:100%">
-                                                </div>
-    
+                                        <div class="col-xs-12 card-description-producto">
+                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                                <label class="ES nombre-card-producto">{{item.propiedades.nombreES}}</label>
+                                                <label class="EN nombre-card-producto">{{item.propiedades.nombreEN}}</label>
                                             </a>
-                                            <a href="javascript:;">
-                                                <div class="image img-left cargador" ng-if="vm.par($index)">
-                                                    <div ng-if="item.sotck.length == 0" class="agotado"
-                                                        style="top: 60%;display:block;width: 100%;position: relative;">
-                                                        AGOTADO</div>
-                                                    <img src="{{item.propiedades.image}}" ng-if="vm.par($index)"
-                                                        class="image post-carga" ng-click='vm.view_producto(item)'
-                                                        style="width:100%">
-                                                </div>
-                                            </a>
+                                            <div class="decoration-title">
+                                                <img src="img/decoration-text.svg">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 text-center card-text-precio-producto">
+                                            <label class="text-precio-producto ES">{{item.propiedades.precio | currency:undefined}} COP</label>
+                                            <label class="text-precio-producto EN">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
                                         </div>
                                     </div>
                                 </div>
