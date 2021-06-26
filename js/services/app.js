@@ -305,22 +305,8 @@
             var defered = $q.defer();
             var promise = defered.promise;
         
-            //$http.get(API_URL + '/page/colecciones').then(success, error);
+            $http.get(API_URL + '/promotion/' + codigo).then(success, error);
             
-            var response1 = {
-                data : {
-                    "Mensaje": "Descuento consultado...",
-                    "Content": {
-                        id: 1,
-                        codigo: codigo,
-                        porcentaje_descuento: 50
-                    },
-                    "isOk": true
-                }
-            };
-
-            success(response1);
-        
             return promise;
         
             function success(p) {

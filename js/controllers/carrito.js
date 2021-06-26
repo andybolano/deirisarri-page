@@ -229,9 +229,9 @@
                         var descuentoPorCodigo = 0;
                         if(vm.codigoDescuento != null){
                             if ($rootScope.lang == 'ES') {
-                                descuentoPorCodigo = (productos[i].precio * productos[i].cantidad) * (vm.codigoDescuento.porcentaje_descuento / 100);
+                                descuentoPorCodigo = (productos[i].precio * productos[i].cantidad) * (vm.codigoDescuento.percentage / 100);
                             } else {
-                                descuentoPorCodigo = (productos[i].precio_usd * productos[i].cantidad) * (vm.codigoDescuento.porcentaje_descuento / 100);
+                                descuentoPorCodigo = (productos[i].precio_usd * productos[i].cantidad) * (vm.codigoDescuento.percentage / 100);
                             }
 
                             if(descuentoPorCodigo > 0){
