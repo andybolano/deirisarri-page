@@ -259,7 +259,13 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                         <div class="row">
                             <div class="col-sm-6 col-xs-6 item-sub-categoria" ng-repeat="item in vm.subcategorias">
                                 <label>
-                                    <input type="radio" value="{{item.id}}" ng-model="vm.filtrosProductos.subCategoriaId" ng-change="vm.getProductos()" name="radio-subcategorias">
+                                    <input 
+                                        type="radio" 
+                                        value="{{item.id}}" 
+                                        ng-model="vm.filtrosProductos.subcategory" 
+                                        ng-change="vm.getProductos()" 
+                                        ng-click="vm.clicSubcategoria(item.id)" 
+                                        name="radio-subcategorias">
                                     <span class="ES">{{item.nombreES}}</span>
                                     <span class="EN">{{item.nombreEN}}</span>
                                 </label>
@@ -304,6 +310,9 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                             <label class="text-precio-producto EN">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 card-producto" ng-if="vm.productos.length == 0">
+                                    <label>No se ha encontrado ningún productos que cumpla con su busqueda</label>
                                 </div>
                             </div>
                         </div>

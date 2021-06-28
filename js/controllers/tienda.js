@@ -15,6 +15,8 @@
             vm.subcategorias = [];
             vm.tags = [];
             vm.filtrosProductos = {};
+            vm.subCategoriaSeleccionadaAux = null;
+
             var $carousel;
 
 
@@ -373,28 +375,28 @@
 
             }
 
-            vm.init = function(){
+            vm.init = function () {
                 vm.getTags();
                 vm.watchCategoriaSeleccionada();
             };
 
-            vm.watchCategoriaSeleccionada = function(){
-                $rootScope.$watch("categoriaSeleccionada",function(newValue,oldValue) {
-                    if(newValue != null){
-                        vm.filtrosProductos.categoriaId = newValue.id;
-                        vm.filtrosProductos.subCategoriaId = null;
+            vm.watchCategoriaSeleccionada = function () {
+                $rootScope.$watch("categoriaSeleccionada", function (newValue, oldValue) {
+                    if (newValue != null) {
+                        vm.filtrosProductos.category = newValue.id;
+                        vm.filtrosProductos.subcategory = null;
                         vm.getSubCategorias();
                         vm.getProductos();
                     }
-                 });
+                });
             };
 
-            vm.getSubCategorias = function(){
-                if($rootScope.categoriaSeleccionada == null) return;
+            vm.getSubCategorias = function () {
+                if ($rootScope.categoriaSeleccionada == null) return;
                 var promisePost = appService.getSubCategorias($rootScope.categoriaSeleccionada.id);
                 promisePost.then(function (d) {
                     var response = d.data;
-                    if(response.isOk){
+                    if (response.isOk) {
                         vm.subcategorias = response.Content;
                         for (var i = 0; i < vm.subcategorias.length; i++) {
                             var nombres = appService.dividirIdiomas(vm.subcategorias[i].name);
@@ -411,11 +413,11 @@
                 });
             };
 
-            vm.getTags = function(){
+            vm.getTags = function () {
                 var promisePost = appService.getTags();
                 promisePost.then(function (d) {
                     var response = d.data;
-                    if(response.isOk){
+                    if (response.isOk) {
                         vm.tags = response.Content;
                         for (var i = 0; i < vm.tags.length; i++) {
                             var nombres = appService.dividirIdiomas(vm.tags[i].name);
@@ -432,32 +434,32 @@
                 });
             };
 
-            vm.getFiltrosProductos = function(){
-                var tagsIdsSeleccionados = vm.tags.filter(function(o){ return o.seleccionado; }).map(function(o){ return o.id; });
-                vm.filtrosProductos.tagsIds = tagsIdsSeleccionados;
+            vm.getFiltrosProductos = function () {
+                var tagsIdsSeleccionados = vm.tags.filter(function (o) { return o.seleccionado; }).map(function (o) { return o.id; });
+                vm.filtrosProductos.tag = tagsIdsSeleccionados;
                 return vm.filtrosProductos;
             };
 
-            vm.verTallas = function(){
+            vm.verTallas = function () {
                 open_modal();
                 document.getElementById("overlay").style.display = "block";
                 document.getElementById("modal_tabla_medidas").style.display = "block";
 
                 var text = "";
-                if(vm.mobile){
+                if (vm.mobile) {
                     text = "<img src='" + vm.Producto.propiedades.image_medidas_movil + "' /> ";
-                }else{
+                } else {
                     text = "<img src='" + vm.Producto.propiedades.image_medidas_escritorio + "' /> ";
                 }
 
                 document.getElementById("img_tabla_medidas").innerHTML = text;
             };
 
-            vm.debeMostrarTablaMedidas = function(){
-                if(vm.Producto.propiedades != null){
-                    if(vm.mobile){
-                        return vm.Producto.propiedades.image_medidas_movil != null && vm.Producto.propiedades.image_medidas_movil != ""; 
-                    }else{
+            vm.debeMostrarTablaMedidas = function () {
+                if (vm.Producto.propiedades != null) {
+                    if (vm.mobile) {
+                        return vm.Producto.propiedades.image_medidas_movil != null && vm.Producto.propiedades.image_medidas_movil != "";
+                    } else {
                         return vm.Producto.propiedades.image_medidas_escritorio != null && vm.Producto.propiedades.image_medidas_escritorio != "";
                     }
                 }
@@ -467,5 +469,16 @@
 
             };
 
+            vm.clicSubcategoria = function (subcategoriaId) {
+                if (vm.subCategoriaSeleccionadaAux == subcategoriaId) {
+                    document.querySelectorAll('[name=radio-subcategorias]').forEach((x) => x.checked = false);
+                    vm.filtrosProductos.subcategory = null;
+                    vm.subCategoriaSeleccionadaAux = null;
+                    vm.getProductos();
+                }
+                else{
+                    vm.subCategoriaSeleccionadaAux = subcategoriaId;
+                }
+            };
         }]);
 })();

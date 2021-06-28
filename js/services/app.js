@@ -136,8 +136,7 @@
             var defered = $q.defer();
             var promise = defered.promise;
 
-            // $http.post(API_URL + '/page/productos', filtros).then(success, error);
-            $http.get(API_URL + '/page/productos').then(success, error);
+            $http.post(API_URL + '/productos/filter', filtros).then(success, error);
 
             return promise;
 
