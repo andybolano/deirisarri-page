@@ -80,23 +80,26 @@
 
 
                 if (vm.mobile) {
-                    var text = ""
-                    for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
-                        text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
-                        text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                        text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
-                        text += '</div>';
+                    var text = "";
+                    if( vm.Producto.imagenes_moviles != null){
+                        for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
+                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
+                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
+                            text += '</div>';
+                        }
                     }
                     $('#elementos-productos-movil').html(text);
                 } else {
-                    var text = ""
-                    for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                        text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
-                        text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                        text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
-                        text += '</div>';
+                    var text = "";
+                    if(vm.Producto.imagenes != null){
+                        for (var i = 0; i < vm.Producto.imagenes.length; i++) {
+                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
+                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
+                            text += '</div>';
+                        }
                     }
-
                     $('#elementos-productos-pc').html(text);
                 }
 
