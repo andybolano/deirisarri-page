@@ -288,9 +288,9 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                 <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <div class="cargador">
-                                                <div ng-if="item.sotck.length == 0" class="agotado"
-                                                    style="top: 60%;display:block;width: 100%;position: relative;">
+                                            <div class="cargador"> 
+                                                <div ng-if="vm.estaAgotado(item.propiedades.id, item.sotck)" class="agotado"
+                                                    style="top: 60%; right: 0%;display:block;width: 60%;position: absolute;">
                                                     AGOTADO</div>
                                                 <img src="{{item.propiedades.image}}" class="image-grid-producto"
                                                     ng-click='vm.view_producto(item)' style="width:100%;">

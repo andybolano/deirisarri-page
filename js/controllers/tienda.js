@@ -477,5 +477,16 @@
                     vm.subCategoriaSeleccionadaAux = subcategoriaId;
                 }
             };
+
+            vm.estaAgotado = function(id, stocksProducto){
+                if(stocksProducto.length > 0){
+                    let cantidadTotal = stocksProducto.reduce(function(actual, stock){ 
+                        return actual + (stock.cantidad_total != null ? Number(stock.cantidad_total) : 0) 
+                    }, 0);
+                    if(cantidadTotal > 0) return false;
+                }
+
+                return true;
+            };
         }]);
 })();
