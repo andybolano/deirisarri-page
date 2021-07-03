@@ -131,9 +131,6 @@
                         var descripcion = vm.productos[i].propiedades.descripcion.split("//");
                         vm.productos[i].propiedades.descripcionES = descripcion[0];
                         vm.productos[i].propiedades.descripcionEN = descripcion[1];
-
-                        vm.productos[i].propiedades.image_medidas_escritorio = "http://localhost:8040//img/tallas-esc.png";
-                        vm.productos[i].propiedades.image_medidas_movil = "http://localhost:8040//img/tallas-mov.png";
                     }
                 }, function (err) {
                     if (err.status == 402) {
