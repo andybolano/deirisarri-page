@@ -37,7 +37,6 @@
     "envioBogota": "<b>Envíos a destino local 1 dia</b>",
     "infoEnvioColombia": "Valor envio en Colombia CO : ",
     "infoEnvioInternacional": "Envios a destinos internacionales :",
-
     "recogerPedido": "Recoger mi pedido directamente en las oficinas de <b>deirisarri<b>",
     "recogerLocal": "Recoger en el local",
     "infoPayu": "<h4>Serás redirigido a la pasarela de pago después de realizar un pedido.</h4>",
@@ -60,6 +59,6 @@
     "eliminar": "eliminar",
     "info": "Recibiras tu factura de manera electrónica, al correo registrado.",
     "terminos": "",
-
-    "textTablaMedidas": "*TABLA DE MEDIDAS"
+    "textTablaMedidas": "*TABLA DE MEDIDAS",
+    "queEstasBuscarndo": "¿Qué estas buscando?"
 }

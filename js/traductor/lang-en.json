@@ -62,7 +62,6 @@
     "eliminar": "Deleted",
     "info": "You will receive your invoice electronically, to registered mail.",
     "terminos": "",
-
-    "textTablaMedidas": "*MEASUREMENT TABLE"
-
+    "textTablaMedidas": "*MEASUREMENT TABLE",
+    "queEstasBuscarndo": "¿What are you looking for?"
 }
