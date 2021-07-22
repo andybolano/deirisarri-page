@@ -251,81 +251,88 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
         <section class="section" id="section2" ng-controller="TiendaController as vm" ng-init="vm.init()">
 
             <div class="slide" id="slide0">
-                <div class="overflow-content scrollable-element " ng-class="{'scroll-dowm': vm.mobile}"
+                <div class="overflow-content scrollable-element line-content" ng-class="{'scroll-dowm': vm.mobile}"
                     id="scroll-shop">
                     <div id="sec-tienda-categorias">
-                        <label class="title-categorias" data-translate="queEstasBuscarndo"></label><br>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label class="title-categorias" data-translate="queEstasBuscarndo"></label><br>
+                            </div>
+                        </div>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                         <div class="row">
                             <div class="col-sm-6 col-xs-6 item-sub-categoria" ng-repeat="item in vm.subcategorias">
-                                <label>
+                                <label class="custom-radio-checkbox">
                                     <input 
-                                        style="background-color: #f5ced6; border-color: #f5ced6;"
-                                        type="radio" 
+                                        type="checkbox" 
                                         value="{{item.id}}" 
-                                        ng-model="vm.filtrosProductos.subcategory" 
+                                        ng-model="item.seleccionado" 
                                         ng-change="vm.getProductos()" 
-                                        ng-click="vm.clicSubcategoria(item.id)" 
-                                        name="radio-subcategorias">
-                                    <span class="ES">{{item.nombreES}}</span>
-                                    <span class="EN">{{item.nombreEN}}</span>
+                                        name="check-subcategorias" 
+                                        class="custom-radio-checkbox__input" />
+
+                                    <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+                                    <span class="ES custom-radio-checkbox__text">{{item.nombreES}}</span>
+                                    <span class="EN custom-radio-checkbox__text">{{item.nombreEN}}</span>
                                 </label>
+
+
                             </div>
                         </div>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                         <div class="row">
                             <div class="col-sm-12 item-sub-categoria" ng-repeat="item in vm.tags">
-                                <label>
+                                <label class="custom-radio-checkbox">
                                     <input 
                                         type="checkbox" 
                                         value="{{item.id}}" 
-                                        name="check-tags" 
                                         ng-model="item.seleccionado" 
                                         ng-change="vm.getProductos()"
-                                        style="background-color: #f5ced6; border-color: #f5ced6;">
-                                    <span class="ES">{{item.nombreES}}</span>
-                                    <span class="EN">{{item.nombreEN}}</span>
+                                        name="check-tags" 
+                                        class="custom-radio-checkbox__input" />
+
+                                    <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+
+                                    <span class="ES custom-radio-checkbox__text">{{item.nombreES}}</span>
+                                    <span class="EN custom-radio-checkbox__text">{{item.nombreEN}}</span>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div id="sec-tienda-productos">
-                        <div class="line-content">
-                            <div class="row grid-productos">
-                                <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="cargador"> 
-                                                <div ng-if="vm.estaAgotado(item.propiedades.id, item.sotck)" class="agotado"
-                                                    style="top: 60%; left: 55%;display:block;width: 60%;position: absolute;">
-                                                    AGOTADO</div>
-                                                <img src="{{item.propiedades.image}}" class="image-grid-producto"
-                                                    ng-click='vm.view_producto(item)' style="width:100%;">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 card-description-producto">
-                                            <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                                <label class="ES nombre-card-producto">{{item.propiedades.nombreES}}</label>
-                                                <label class="EN nombre-card-producto">{{item.propiedades.nombreEN}}</label>
-                                            </a>
-                                            <div class="decoration-title">
-                                                <img src="img/decoration-text.svg">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 text-center card-text-precio-producto">
-                                            <label class="text-precio-producto ES">{{item.propiedades.precio | currency:undefined}} COP</label>
-                                            <label class="text-precio-producto EN">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
+                        <div class="row grid-productos">
+                            <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="cargador"> 
+                                            <div ng-if="vm.estaAgotado(item.propiedades.id, item.sotck)" class="agotado"
+                                                style="top: 60%; left: 55%;display:block;width: 60%;position: absolute;">
+                                                AGOTADO</div>
+                                            <img src="{{item.propiedades.image}}" class="image-grid-producto"
+                                                ng-click='vm.view_producto(item)' style="width:100%;">
                                         </div>
                                     </div>
+                                    <div class="col-xs-12 card-description-producto">
+                                        <a href="javascript:;" ng-click='vm.view_producto(item)'>
+                                            <label class="ES nombre-card-producto">{{item.propiedades.nombreES}}</label>
+                                            <label class="EN nombre-card-producto">{{item.propiedades.nombreEN}}</label>
+                                        </a>
+                                        <div class="decoration-title">
+                                            <img src="img/decoration-text.svg">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 text-center card-text-precio-producto">
+                                        <label class="text-precio-producto ES">{{item.propiedades.precio | currency:undefined}} COP</label>
+                                        <label class="text-precio-producto EN">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
+                                    </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 card-producto" ng-if="vm.productos.length == 0">
-                                    <label class="ES" data-translate="sinProductos"></label>
-                                    <label class="EN" data-translate="sinProductos"></label>
-                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 card-producto" ng-if="vm.productos.length == 0">
+                                <label class="ES" data-translate="sinProductos"></label>
+                                <label class="EN" data-translate="sinProductos"></label>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -989,6 +996,10 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 <a href="https://www.facebook.com/DeIrisarri/" target="_blank "><img src="img/facebook.svg"></a>
                 <a href="https://twitter.com/deirisarri?lang=es" target="_blank "><img src="img/twitter.svg"></a>
                 <a href="https://www.instagram.com/de_irisarri/" target="_blank "><img src="img/instagram.svg"></a>
+            </div>
+        </div>
+        <div id="social-whatsapp">
+            <div class="social-whatsapp">
                 <a ng-if="vm.datosContacto.numeroWhatsApp != null && vm.datosContacto.numeroWhatsApp != ''" href="https://api.whatsapp.com/send?phone={{vm.datosContacto.numeroWhatsApp}}" target="_blank "><img src="img/whatsapp.png"></a>
             </div>
         </div>

@@ -384,7 +384,7 @@
                 $rootScope.$watch("categoriaSeleccionada", function (newValue, oldValue) {
                     if (newValue != null) {
                         vm.filtrosProductos.category = newValue.id;
-                        vm.filtrosProductos.subcategory = null;
+                        vm.filtrosProductos.subcategory = [];
                         vm.getSubCategorias();
                         vm.getProductos();
                     }
@@ -436,7 +436,11 @@
 
             vm.getFiltrosProductos = function () {
                 var tagsIdsSeleccionados = vm.tags.filter(function (o) { return o.seleccionado; }).map(function (o) { return o.id; });
+                var subCategoriaIdsSeleccionados = vm.subcategorias.filter(function (o) { return o.seleccionado; }).map(function (o) { return o.id; });
+                
                 vm.filtrosProductos.tag = tagsIdsSeleccionados;
+                vm.filtrosProductos.subcategory = subCategoriaIdsSeleccionados;
+
                 return vm.filtrosProductos;
             };
 
@@ -467,18 +471,6 @@
                     return false;
                 }
 
-            };
-
-            vm.clicSubcategoria = function (subcategoriaId) {
-                if (vm.subCategoriaSeleccionadaAux == subcategoriaId) {
-                    document.querySelectorAll('[name=radio-subcategorias]').forEach((x) => x.checked = false);
-                    vm.filtrosProductos.subcategory = null;
-                    vm.subCategoriaSeleccionadaAux = null;
-                    vm.getProductos();
-                }
-                else{
-                    vm.subCategoriaSeleccionadaAux = subcategoriaId;
-                }
             };
 
             vm.estaAgotado = function(id, stocksProducto){
