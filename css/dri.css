@@ -571,7 +571,7 @@ button.comprar {
 }
 
 .precio-anterior{
-    color: #cebfbf; 
+    color: #f5ced6 !important;
     text-decoration: line-through;
 }
 
@@ -785,7 +785,8 @@ hr {
 
 .comprar.buscarcodedescuento {
     margin-top: 14px;
-    width: 100%
+    width: 100%;
+    padding: 10px 34px !important;
 }
 
 .total td {
@@ -1643,7 +1644,7 @@ button.comprar {
     background-repeat: repeat-x;
     z-index: 9;
     color: #f2f2f2;
-    bottom: 5px;
+    bottom: 0px;
 }
 
 #social-network {
@@ -1654,10 +1655,10 @@ button.comprar {
 }
 
 .social img {
-    width: 52px;
+    width: 40px;
     display: inline-block;
     padding-left: 10px;
-    margin-top: -6px
+    margin-top: 10px
 }
 
 .cargador {
@@ -2351,7 +2352,7 @@ button.comprar {
 }
 .card-producto .nombre-card-producto
 {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 900;
     font-family: GothamBold, arial, helvetica;
     color: #000 !important;
@@ -2370,7 +2371,7 @@ button.comprar {
 
 .card-producto .text-precio-producto
 {
-    font-size: 22px;
+    font-size: 13px;
 }
 
 @media (max-width:500px) {
@@ -2383,6 +2384,11 @@ button.comprar {
 @media (min-width:500px) {
     .card-producto .image-grid-producto{
         margin-left: 20%;
+    }
+
+    .about-context{
+        padding-left:20%; 
+        padding-right: 20%;
     }
 }
 
