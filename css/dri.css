@@ -1150,8 +1150,8 @@ button.comprar {
 
     #sec-tienda-productos{
         float: left; 
-        width: 80%; 
-        margin-left: 21%;
+        width: 75%; 
+        margin-left: 24%;
     }
 
     #sec-tienda-categorias .subcategoria-decoration{
@@ -1687,6 +1687,7 @@ button.comprar {
     background-size: 40px 40px;
     background-position: center;
     background-repeat: no-repeat;
+    margin: auto;
 }
 
 .cargador.car-blog {
@@ -2414,9 +2415,9 @@ button.comprar {
 }
 
 @media (min-width:500px) {
-    .card-producto .image-grid-producto{
+    /* .card-producto .image-grid-producto{
         margin-left: 20%;
-    }
+    } */
 
     .about-context{
         padding-left:20%; 
