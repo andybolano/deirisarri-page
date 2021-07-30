@@ -310,6 +310,10 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                                 AGOTADO</div>
                                             <img src="{{item.propiedades.image}}" class="image-grid-producto"
                                                 ng-click='vm.view_producto(item)' style="width:100%;">
+                                            <img ng-if="item.imagenes.length > 0" src="{{item.imagenes[0].url}}" class="image-grid-producto-2"
+                                                ng-click='vm.view_producto(item)' style="width:100%;">
+                                            <img ng-if="item.imagenes.length == 0" src="{{item.propiedades.image}}" class="image-grid-producto-2"
+                                                ng-click='vm.view_producto(item)' style="width:100%;">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 card-description-producto">

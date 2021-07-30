@@ -1683,7 +1683,6 @@ button.comprar {
     background-color: #fff;
     width: 280px;
     height: 440px;
-    background-image: url('../img/loading-img.svg');
     background-size: 40px 40px;
     background-position: center;
     background-repeat: no-repeat;
@@ -2459,3 +2458,20 @@ button.comprar {
 .custom-radio-checkbox > .custom-radio-checkbox__input:checked + .custom-radio-checkbox__show--checkbox {
     background-image: url(../img/check-check.png);
 }
+
+
+
+.image-grid-producto-2{
+    display: none;
+    padding-top: 100px;
+}
+
+.cargador:hover .image-grid-producto{
+    display: none;
+}
+
+.cargador:hover .image-grid-producto-2{
+    display: block;
+}
+
+
