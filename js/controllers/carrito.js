@@ -184,6 +184,7 @@
 
             };
 
+
             vm.getTotal = function () {
                 var total = 0;
                 for (var i = 0; i < $rootScope.Carrito.length; i++) {
@@ -333,11 +334,6 @@
                     }
 
                 })
-
-
-
-
-
 
 
 
