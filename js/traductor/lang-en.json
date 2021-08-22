@@ -63,5 +63,7 @@
     "info": "You will receive your invoice electronically, to registered mail.",
     "terminos": "",
     "textTablaMedidas": "*MEASUREMENT TABLE",
-    "queEstasBuscarndo": "¿What are you looking for?"
+    "queEstasBuscarndo": "¿What are you looking for?",
+    "sinProductos": "No product has been found that meets your search"
+
 }

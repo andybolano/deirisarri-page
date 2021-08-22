@@ -60,5 +60,6 @@
     "info": "Recibiras tu factura de manera electrónica, al correo registrado.",
     "terminos": "",
     "textTablaMedidas": "*TABLA DE MEDIDAS",
-    "queEstasBuscarndo": "¿Qué estas buscando?"
+    "queEstasBuscarndo": "¿Qué estas buscando?",
+    "sinProductos": "No se ha encontrado ningún productos que cumpla con su busqueda"
 }
