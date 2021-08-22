@@ -27,6 +27,10 @@
     "infoCliente": "Customer information",
     "infoPago": "Payment information",
     "infoEnvio": "Shipping method",
+    "codigoPromocional": "Promotional code",
+    "buscarCodigoPromocional": "SEARCH",
+    "infoCodigoPromocionalAplicado": "A discount of ",
+    "infoCodigoPromocional": "If you have a promotional code please write it below",
     "envioColombia": "<b>Shipments to Colombia 5 WORKING DAYS</b>",
     "envioInternacional": "<b>Shipments to international destinations 15 WORKING DAYS</b>",
     "infoEnvioColombia": "Shipping value in Colombia CO : ",
@@ -57,6 +61,9 @@
     "tarjeta": "Card:",
     "eliminar": "Deleted",
     "info": "You will receive your invoice electronically, to registered mail.",
-    "terminos": ""
+    "terminos": "",
+    "textTablaMedidas": "*MEASUREMENT TABLE",
+    "queEstasBuscarndo": "¿What are you looking for?",
+    "sinProductos": "No product has been found that meets your search"
 
 }

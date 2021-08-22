@@ -13,7 +13,17 @@
             getColecciones: getColecciones,
             pay: pay,
             getBanner: getBanner,
-            sendMessage: sendMessage
+            sendMessage: sendMessage,
+            getNumeroWhatsApp: getNumeroWhatsApp,
+            getAbout: getAbout, 
+            getTiendas: getTiendas,
+            getContacto: getContacto,
+            getCategorias: getCategorias,
+            getTags: getTags,
+            dividirIdiomas: dividirIdiomas,
+            getSubCategorias: getSubCategorias,
+            getProductosFiltrados: getProductosFiltrados,
+            getCodigoPromocional: getCodigoPromocional
         };
         return service;
 
@@ -121,6 +131,24 @@
             }
         }
 
+        function getProductosFiltrados(filtros) {
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            $http.post(API_URL + '/productos/filter', filtros).then(success, error);
+
+            return promise;
+
+            function success(p) {
+                defered.resolve(p);
+            }
+
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
         function getBlogs() {
             var defered = $q.defer();
             var promise = defered.promise;
@@ -151,6 +179,143 @@
             }
         }
 
+        function getNumeroWhatsApp(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            $http.get(API_URL + '/data-shared/phone').then(success, error);
+            return promise;
+
+            function success(p) {
+                defered.resolve(p);
+            }
+
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getAbout(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            $http.get(API_URL + '/data-shared/about').then(success, error);
+            return promise;
+
+            function success(p) {
+                defered.resolve(p);
+            }
+
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getTiendas(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            $http.get(API_URL + '/data-shared/tienda').then(success, error);
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getContacto(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            $http.get(API_URL + '/data-shared/contac').then(success, error);        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getCategorias(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            $http.get(API_URL + '/categoria').then(success, error);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getTags(){
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            $http.get(API_URL + '/tag').then(success, error);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function dividirIdiomas(cadena){
+            return cadena.split("//");
+        }
+
+        function getSubCategorias(categoriaId){
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            $http.get(API_URL + '/sub-categoria/' + categoriaId).then(success, error);
+        
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
+
+        function getCodigoPromocional(codigo){
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+        
+            $http.get(API_URL + '/promotion/' + codigo).then(success, error);
+            
+            return promise;
+        
+            function success(p) {
+                defered.resolve(p);
+            }
+        
+            function error(error) {
+                defered.reject(error);
+            }
+        }
 
     }
 })();

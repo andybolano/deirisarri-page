@@ -12,7 +12,13 @@
             vm.carrito = [];
             vm.mobile = false;
             vm.disponible = false;
+            vm.subcategorias = [];
+            vm.tags = [];
+            vm.filtrosProductos = {};
+            vm.subCategoriaSeleccionadaAux = null;
+
             var $carousel;
+
 
             $carousel = $('.carousel-store').flickity({
                 lazyLoad: true,
@@ -74,23 +80,26 @@
 
 
                 if (vm.mobile) {
-                    var text = ""
-                    for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
-                        text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
-                        text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                        text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
-                        text += '</div>';
+                    var text = "";
+                    if( vm.Producto.imagenes_moviles != null){
+                        for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
+                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
+                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
+                            text += '</div>';
+                        }
                     }
                     $('#elementos-productos-movil').html(text);
                 } else {
-                    var text = ""
-                    for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                        text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
-                        text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                        text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
-                        text += '</div>';
+                    var text = "";
+                    if(vm.Producto.imagenes != null){
+                        for (var i = 0; i < vm.Producto.imagenes.length; i++) {
+                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
+                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
+                            text += '</div>';
+                        }
                     }
-
                     $('#elementos-productos-pc').html(text);
                 }
 
@@ -110,7 +119,8 @@
             };
 
             vm.getProductos = function () {
-                var promisePost = appService.getProductos();
+                var filtros = vm.getFiltrosProductos();
+                var promisePost = appService.getProductosFiltrados(filtros);
                 promisePost.then(function (d) {
 
 
@@ -124,24 +134,7 @@
                         var descripcion = vm.productos[i].propiedades.descripcion.split("//");
                         vm.productos[i].propiedades.descripcionES = descripcion[0];
                         vm.productos[i].propiedades.descripcionEN = descripcion[1];
-
-
                     }
-
-
-
-
-
-                    setTimeout(function () {
-                        $('.grid').masonry({
-                            itemSelector: '.grid-item',
-                            columnWidth: '.grid-item',
-                            gutter: '.gutter-sizer',
-                            percentPosition: true
-                        });
-                    }, 1000);
-
-
                 }, function (err) {
                     if (err.status == 402) {
                         toastr["error"](err.data.respuesta);
@@ -382,7 +375,113 @@
 
             }
 
+            vm.init = function () {
+                vm.getTags();
+                vm.watchCategoriaSeleccionada();
+            };
 
+            vm.watchCategoriaSeleccionada = function () {
+                $rootScope.$watch("categoriaSeleccionada", function (newValue, oldValue) {
+                    if (newValue != null) {
+                        vm.filtrosProductos.category = newValue.id;
+                        vm.filtrosProductos.subcategory = [];
+                        vm.getSubCategorias();
+                        vm.getProductos();
+                    }
+                });
+            };
+
+            vm.getSubCategorias = function () {
+                if ($rootScope.categoriaSeleccionada == null) return;
+                var promisePost = appService.getSubCategorias($rootScope.categoriaSeleccionada.id);
+                promisePost.then(function (d) {
+                    var response = d.data;
+                    if (response.isOk) {
+                        vm.subcategorias = response.Content;
+                        for (var i = 0; i < vm.subcategorias.length; i++) {
+                            var nombres = appService.dividirIdiomas(vm.subcategorias[i].name);
+                            vm.subcategorias[i].nombreES = nombres[0];
+                            vm.subcategorias[i].nombreEN = nombres[1];
+                        }
+                    }
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
+            };
+
+            vm.getTags = function () {
+                var promisePost = appService.getTags();
+                promisePost.then(function (d) {
+                    var response = d.data;
+                    if (response.isOk) {
+                        vm.tags = response.Content;
+                        for (var i = 0; i < vm.tags.length; i++) {
+                            var nombres = appService.dividirIdiomas(vm.tags[i].name);
+                            vm.tags[i].nombreES = nombres[0];
+                            vm.tags[i].nombreEN = nombres[1];
+                        }
+                    }
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
+            };
+
+            vm.getFiltrosProductos = function () {
+                var tagsIdsSeleccionados = vm.tags.filter(function (o) { return o.seleccionado; }).map(function (o) { return o.id; });
+                var subCategoriaIdsSeleccionados = vm.subcategorias.filter(function (o) { return o.seleccionado; }).map(function (o) { return o.id; });
+                
+                vm.filtrosProductos.tag = tagsIdsSeleccionados;
+                vm.filtrosProductos.subcategory = subCategoriaIdsSeleccionados;
+
+                return vm.filtrosProductos;
+            };
+
+            vm.verTallas = function () {
+                open_modal();
+                document.getElementById("overlay").style.display = "block";
+                document.getElementById("modal_tabla_medidas").style.display = "block";
+
+                var text = "";
+                if (vm.mobile) {
+                    text = "<img src='" + vm.Producto.propiedades.image_medidas_movil + "' /> ";
+                } else {
+                    text = "<img src='" + vm.Producto.propiedades.image_medidas_escritorio + "' /> ";
+                }
+
+                document.getElementById("img_tabla_medidas").innerHTML = text;
+            };
+
+            vm.debeMostrarTablaMedidas = function () {
+                if (vm.Producto.propiedades != null) {
+                    if (vm.mobile) {
+                        return vm.Producto.propiedades.image_medidas_movil != null && vm.Producto.propiedades.image_medidas_movil != "";
+                    } else {
+                        return vm.Producto.propiedades.image_medidas_escritorio != null && vm.Producto.propiedades.image_medidas_escritorio != "";
+                    }
+                }
+                else {
+                    return false;
+                }
+
+            };
+
+            vm.estaAgotado = function(id, stocksProducto){
+                if(stocksProducto.length > 0){
+                    let cantidadTotal = stocksProducto.reduce(function(actual, stock){ 
+                        return actual + (stock.cantidad_total != null ? Number(stock.cantidad_total) : 0) 
+                    }, 0);
+                    if(cantidadTotal > 0) return false;
+                }
+
+                return true;
+            };
         }]);
-
 })();

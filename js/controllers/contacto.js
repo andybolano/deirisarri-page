@@ -2,8 +2,10 @@
     'use strict';
     angular
         .module('app')
-        .controller('ContactoController', ['appService', function(appService) {
+        .controller('ContactoController', ['appService', '$sce', function(appService, $sce) {
             var vm = this;
+            vm.datosContacto= {};
+
             vm.data = {
                 nombre: "",
                 email: "",
@@ -63,6 +65,39 @@
                 });
 
 
+            }
+
+            vm.isMovil = function(){
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            _init();
+            
+
+            function _init(){
+                _traerContacto();
+            }
+
+            function _traerContacto(){
+                var promisePost = appService.getContacto();
+                promisePost.then(function (d) {
+                    var response = d.data;
+                    if(response.isOk){
+                        vm.datosContacto.contactoES = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.contact)[0]);
+                        vm.datosContacto.contactoEN = $sce.trustAsHtml(appService.dividirIdiomas(response.Content.contact)[1]);
+                    }
+                }, function (err) {
+                    if (err.status == 402) {
+                        toastr["error"](err.data.respuesta);
+                    } else {
+                        toastr["error"]("Ha ocurrido un problema!");
+                    }
+                });
             }
 
         }]);
