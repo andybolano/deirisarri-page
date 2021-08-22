@@ -301,12 +301,12 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                     </div>
                     <div id="sec-tienda-productos">
                         <div class="row grid-productos">
-                            <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos">
+                            <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos" style="margin-bottom: 20px;">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="cargador"> 
                                             <div ng-if="vm.estaAgotado(item.propiedades.id, item.sotck)" class="agotado"
-                                                style="top: 60%; left: 55%;display:block;width: 60%;position: absolute;">
+                                                style="top: 50%; left: 50%;display:block; width: calc(100% - 35px);position: absolute;">
                                                 AGOTADO</div>
                                             <img src="{{item.propiedades.image}}" class="image-grid-producto"
                                                 ng-click='vm.view_producto(item)' style="width:100%;">
@@ -328,6 +328,8 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                     <div class="col-xs-12 text-center card-text-precio-producto">
                                         <label class="text-precio-producto ES">{{item.propiedades.precio | currency:undefined}} COP</label>
                                         <label class="text-precio-producto EN">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
+                                        <h3 style="font-size: 13px;position: absolute;left: 50%;transform: translate(-50%, 0px);" class="ES precio-anterior" ng-if="item.propiedades.precio_ant != null && item.propiedades.precio_ant != ''">{{item.propiedades.precio_ant | currency:undefined:0}} COP</h3>
+                                        <h3 style="font-size: 13px;position: absolute;left: 50%;transform: translate(-50%, 0px);" class="EN precio-anterior" ng-if="item.propiedades.precio_ant_usd != null && item.propiedades.precio_ant_usd != ''">{{item.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
                                     </div>
                                 </div>
                             </div>
@@ -393,6 +395,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                         <h3 class="EN precio-anterior" ng-if="vm.Producto.propiedades.precio_ant_usd != null && vm.Producto.propiedades.precio_ant_usd != ''">{{vm.Producto.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
                                         <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
                                         <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined}} USD</h3>
+                                
                                     </div>
                                 </div>
                                 <div class="row">
@@ -458,12 +461,12 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                                             <button class="comprar" ng-click="vm.addCart();" data-translate="addCart"></button>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 text-left">
+                                    <div style="display: flex;justify-content: flex-end;">
+                                        <div>
                                             <h3 class="ES precio-anterior" ng-if="vm.Producto.propiedades.precio_ant != null && vm.Producto.propiedades.precio_ant != ''">{{vm.Producto.propiedades.precio_ant | currency:undefined:0}} COP</h3>
                                             <h3 class="EN precio-anterior" ng-if="vm.Producto.propiedades.precio_ant_usd != null && vm.Producto.propiedades.precio_ant_usd != ''">{{vm.Producto.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
                                         </div>
-                                        <div class="col-xs-6 text-right">
+                                        <div style="margin-left: 20px;">
                                             <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
                                             <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined:0}} USD</h3>
                                         </div>

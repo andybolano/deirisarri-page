@@ -885,8 +885,10 @@ button.comprar {
 
 .store h3 {
     margin-top: 20px;
-    font-size: 1.3em
+    font-size: 1.1em
 }
+
+
 
 .content-comprar {
     text-align: right
@@ -1687,6 +1689,7 @@ button.comprar {
     background-position: center;
     background-repeat: no-repeat;
     margin: auto;
+    cursor: pointer;
 }
 
 .cargador.car-blog {
