@@ -156,11 +156,30 @@ body {
 .content {
     border: 8px solid #F7CED6;
     width: calc(100% - 65px);
-    height: calc(100% - 230px);
+    height: calc(100% - 200px);
     margin-left: 32px;
     margin-top: 60px;
     padding: 10px;
-    display: table;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content.about{
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.content.store-detail{
+    justify-content: center;
+}
+
+.bg-contact{
+    background-size: cover;
+    background-position:center;
+    width:50%;
 }
 
 @media (max-width:500px) {
@@ -317,7 +336,7 @@ textarea {
 
 #menu li a,
 #menu li.active a {
-    padding: 9px 0;
+    padding: 5px 0;
     display: block
 }
 
@@ -332,7 +351,7 @@ textarea {
 }
 
 #menu li.active a {
-    border-bottom: 7px solid #F7CED6
+    border-bottom: 5px solid #F7CED6
 }
 
 #menu {
@@ -415,18 +434,18 @@ textarea {
 }
 
 .content h1 {
-    margin-top: 3%
+    margin-top: 0;
 }
 
 h1 {
-    font-family: gothamBold;
-    font-size: 2.8em
+    font-family: 'gothamBold';
+    font-size: 2.2em
 }
 
 .img-detail {
     width: 40%;
-    left: 20%;
-    margin-top: 5%
+    margin: 0 auto;
+    margin-top: 0;
 }
 
 @media (max-width:1366px) {
@@ -1077,7 +1096,7 @@ button.comprar {
 .overflow-content {
     width: 100%;
     width: calc(100% - 70px);
-    height: calc(100% - 170px);
+    height: calc(100% - 140px);
     overflow-y: auto;
     overflow-x: hidden;
     margin-left: 32px;
@@ -1086,7 +1105,7 @@ button.comprar {
 
 .line-content {
     padding: 10px;
-    border: 8px solid #F7CED6;
+    border: 6px solid #F7CED6;
     border-right: 0
 }
 
@@ -1138,22 +1157,34 @@ button.comprar {
 
 }
 
+
+#scroll-shop{
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width:600px) {
+    #scroll-shop{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
 @media (min-width: 501px){
 
+
     #sec-tienda-categorias{
-        padding-top: 30px;
-        padding-left: 30px;
-        float: left; 
-        width: 340px; 
+        padding-top: 10px;
+        padding-left: 10px;
+        width: 320px; 
         text-align: left;
-        position: fixed;
+        position: absolute;
         z-index: 1000;
     }
 
     #sec-tienda-productos{
-        float: left; 
-        width: 75%; 
-        margin-left: 24%;
+        margin-left: 320px;
+        width: calc( 100% - 320px ); 
     }
 
     #sec-tienda-categorias .subcategoria-decoration{
@@ -1174,12 +1205,12 @@ button.comprar {
 @media (max-height:780px) {
     .carousel-store {
         background: #FAFAFA;
-        height: 400px
+        height: 350px
     }
 
     .carousel-cell-store {
         width: 100%;
-        height: 400px;
+        height: 350px;
         margin-right: 10px;
         background: #FFF
     }
@@ -1544,7 +1575,7 @@ button.comprar {
 }
 
 .subcategoria-decoration {
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 5px;
     width: 50%
 }
@@ -1704,12 +1735,13 @@ button.comprar {
         width: 90%;
         margin-left: 5%;
         background-image: url(../img/footer.svg);
-        background-repeat: repeat-x
+        background-repeat: repeat-x;
+        background-color: transparent !important;
     }
 
     #social-network {
         position: fixed;
-        right: 100px;
+        right: 70px;
         width: auto;
         bottom: 25px;
         height: 40px;
@@ -1718,22 +1750,22 @@ button.comprar {
     .social img {
         width: 40px;
         display: inline-block;
-        padding-left: 8px;
-        margin-top: -8px
+        padding-left: 10px;
+        margin-top: -6px
     }
 
     #social-whatsapp {
         position: fixed;
-        right: 20px;
+        right: 10px;
         width: auto;
         height: 45px
     }
     
     .social-whatsapp img {
-        width: 80px;
+        width: 70px;
         display: inline-block;
         padding-left: 10px;
-        margin-top: -33px
+        margin-top: -6px
     }
 
     .cargador {
@@ -1747,6 +1779,8 @@ button.comprar {
         width: 100%;
         height: auto;
     }
+
+    
 }
 
 #loading,
@@ -1858,7 +1892,7 @@ button.comprar {
     width: 42px;
     height: 42px;
     top: 20px;
-    right: 20px;
+    left: 20px;
     z-index: 3001;
     font-size: 2em;
     background-image: url(../img/close.svg);
@@ -2308,19 +2342,25 @@ button.comprar {
 }
 
 @media (max-width:500px) {
+
+
+    
     #footer .menu {
         width: 40%;
-        margin-left: 5px;
-        margin-top: 8px;
+        margin-left: 15px;
+        margin-top: 15px;
         float: left;
         color: #000;
-        background-color: transparent;
     }
 
     #footer .menu li {
         padding-right: 5px;
-        display: inline;
+        display: none;
         border-right: 0px solid #000;
+    }
+
+    #footer .menu li:first-child{
+        display: block !important;
     }
 
     #footer .menu li .active {
@@ -2379,7 +2419,7 @@ button.comprar {
 }
 
 .grid-productos{
-    margin:10px;
+    margin:0px;
 }
 
 .card-producto{
@@ -2412,7 +2452,7 @@ button.comprar {
 @media (max-width:500px) {
 .card-producto .card-description-producto
     {
-        margin-top: 125px;
+        margin-top: 0px;
     }
 }
 
@@ -2435,7 +2475,8 @@ button.comprar {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
-    font-family: arial;
+    font-size: 0.9rem;
+    font-family: 'GothamBook';
 }
 
 /* Modificador para dar la imagen de checkbox */

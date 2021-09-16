@@ -235,7 +235,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                     <h1 data-translate="DIR-TITLE-DES"></h1>
                     <div class="ES" ng-bind-html="vm.datosAbout.aboutES" style="text-align: center;"></div>
                     <div class="EN" ng-bind-html="vm.datosAbout.aboutEN" style="text-align: center;"></div>
-                    <img src="img/detail-text.svg " class="img-detail">
+              
                 </div>
             </div>
             <div class="slide" id="slide2" ng-controller="TiendasController as vm">
@@ -281,7 +281,7 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                         </div>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                         <div class="row">
-                            <div class="col-sm-12 item-sub-categoria" ng-repeat="item in vm.tags">
+                            <div class="col-sm-6 item-sub-categoria" ng-repeat="item in vm.tags">
                                 <label class="custom-radio-checkbox">
                                     <input 
                                         type="checkbox" 
@@ -414,8 +414,8 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                         </div>
                     </div>
                 </div>
-                <div class="content" ng-if="!vm.mobile">
-                    <div class="row store" style="padding:5%">
+                <div class="content store-detail" ng-if="!vm.mobile">
+                    <div class="row store" style="padding:10px">
                         <div class="col-lg-6 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6 col-xs-6">
@@ -586,14 +586,14 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
                 <div class="ES" ng-bind-html="vm.datosContacto.contactoES"></div>
                 <div class="EN" ng-bind-html="vm.datosContacto.contactoEN"></div>
             </div>
-            <div class="content" style="text-align: left !important;" ng-if="!vm.isMovil()">
+            <div class="content about" style="text-align: left !important;" ng-if="!vm.isMovil()">
                 
-                <div style="float: left; width: 50%;">
+                <div style="width:50%">
                     <div class="ES" style="margin-left: 10%;" ng-bind-html="vm.datosContacto.contactoES"></div>
                     <div class="EN" style="margin-left: 10%;" ng-bind-html="vm.datosContacto.contactoEN"></div>
                 </div>
-                <div style="float: left; width: 50%;">
-                    <img src="img/img-contact.png" width="100%;">
+                <div class="bg-contact" style="background-image: url('img/img-contact.png');">
+                
                 </div>
             </div>
         </section>
@@ -1011,7 +1011,6 @@ Si aún no tienes un velvet piece en tu clóset, ! anímate ! estás en el lugar
             </div>
         </div>
     </div>
-
     <div ng-controller="CarritoController as vm" id="modal_carrito" class="modal">
         <div class="content-carrito scrollable-element animated bounceIn">
 

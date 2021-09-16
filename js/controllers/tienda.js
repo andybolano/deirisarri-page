@@ -40,7 +40,7 @@
             }
 
             vm.view_producto = function (item) {
-                $('#menu-footer').hide();
+                //$('#menu-footer').hide();
 
                 if (!$carousel.flickity()) {
 
@@ -255,7 +255,7 @@
                 $carousel.flickity('destroy');
                 $("#color").css("background-color", '#FFF')
                 $.fn.fullpage.moveSlideRight();
-                $('#menu-footer').show();
+              //  $('#menu-footer').show();
             }
 
 

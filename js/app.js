@@ -102,7 +102,6 @@ angular.module('app').filter('filtroColor', function () {
             var vm = this;
             vm.lang = function (lang) {
                 $rootScope.lang = lang;
-
             }
         }]);
 })();
