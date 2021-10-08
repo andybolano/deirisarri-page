@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>DE IRISARRI</title>
@@ -136,15 +135,26 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
     <div class="overlay-mobile" id="overlay-mobile">
         <nav class="overlay-menu">
             <ul>
-                <li data-menuanchor="dir"><a ng-href="#dir">DE IRISARRI</a></li>
+                <li data-menuanchor="dir" class="item-menu"><a ng-href="#dir">DE IRISARRI</a></li>
                 <li data-menuanchor="tienda" ng-controller="CategoriasController as vm">
                     <div class="dropdown" style="width: 128px;">
                         <a href="javascript:;" data-translate="tienda"></a>
                         <div class="dropdown-content">
                             <div class="row" ng-repeat="item in vm.datosCategorias.categorias">
                                 <div class="col-xs-12">
-                                    <a ng-href="#tienda" ng-click="vm.seleccionarCategoria(item)" style="float: left; color: black;font-family: Arial, Helvetica, Verdana !important; text-decoration: none;" class="item-categoria ES">{{item.nombreES}}</a>
-                                    <a ng-href="#tienda" ng-click="vm.seleccionarCategoria(item)" style="float: left; color: black;font-family: Arial, Helvetica, Verdana !important; text-decoration: none;" class="item-categoria EN">{{item.nombreEN}}</a>
+
+                                    <a class="item-menu item-categoria ES" 
+                                    ng-href="#tienda" 
+                                    onclick="toogle()"
+                                    ng-click="vm.seleccionarCategoria(item);" 
+                                    style="float: left; color: black;font-family: Arial, Helvetica, Verdana !important; text-decoration: none;">{{item.nombreES}}</a>
+                                   
+                                    <a class="item-menu item-categoria EN" 
+                                    ng-href="#tienda" 
+                                    onclick="toogle()"
+                                    ng-click="vm.seleccionarCategoria(item);" 
+                                    style="float: left; color: black;font-family: Arial, Helvetica, Verdana !important; text-decoration: none;">{{item.nombreEN}}</a>
+                                
                                 </div>
                                 <div class="col-xs-12" ng-if="$index + 1 != vm.datosCategorias.categorias.length">
                                     <hr class="separador-categoria">
@@ -153,13 +163,13 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                         </div>
                     </div>
                 </li>
-                <li data-menuanchor="blog">
+                <li data-menuanchor="blog" class="item-menu">
                     <a ng-href="#blog" data-translate="blog"></a>
                 </li>
-                <li data-menuanchor="colecciones">
+                <li data-menuanchor="colecciones" class="item-menu">
                     <a ng-href="#colecciones" data-translate="colecciones"></a>
                 </li>
-                <li data-menuanchor="contacto">
+                <li data-menuanchor="contacto" class="item-menu">
                     <a ng-href="#contacto" data-translate="contacto"></a>
                 </li>
             </ul>
@@ -256,7 +266,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                 </div>
             </div>
             <div class="slide" id="slide2" ng-controller="TiendasController as vm">
-                <div class="content">
+                <div class="content about-context">
                     <h1 data-translate="DIR-TITLE-HIS"></h1>
                     <div class="ES" ng-bind-html="vm.datosTiendas.tiendasES"></div>
                     <div class="EN" ng-bind-html="vm.datosTiendas.tiendasEN"></div>
@@ -324,7 +334,9 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                         <div class="cargador"> 
                                             <div ng-if="vm.estaAgotado(item.propiedades.id, item.sotck)" class="agotado"
                                                 style="top: 50%; left: 50%;display:block; width: calc(100% - 35px);position: absolute;">
-                                                AGOTADO</div>
+                                                <span class="ES">AGOTADO</span>
+                                                <span class="EN">SOLD OUT</span>
+                                            </div>
                                             <img src="{{item.propiedades.image}}" class="image-grid-producto"
                                                 ng-click='vm.view_producto(item)' style="width:100%;">
                                             <img ng-if="item.imagenes.length > 0" src="{{item.imagenes[0].url}}" class="image-grid-producto-2"
@@ -605,9 +617,9 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
             </div>
             <div class="content about" style="text-align: left !important;" ng-if="!vm.isMovil()">
                 
-                <div style="width:50%">
-                    <div class="ES" style="margin-left: 10%;" ng-bind-html="vm.datosContacto.contactoES"></div>
-                    <div class="EN" style="margin-left: 10%;" ng-bind-html="vm.datosContacto.contactoEN"></div>
+                <div style="width:50%; display:flex; align-items: center; ">
+                    <div class="ES" style="width:100%;text-align: left !important;" ng-bind-html="vm.datosContacto.contactoES"></div>
+                    <div class="EN" style="width:100%;text-align: left !important;" ng-bind-html="vm.datosContacto.contactoEN"></div>
                 </div>
                 <div class="bg-contact" style="background-image: url('img/img-contact.png');">
                 
@@ -1377,11 +1389,6 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-152805027-1', 'auto');
 
-    /*   window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-152805027-1');*/
 
 
     function close_carrito_terminos() {
@@ -1396,10 +1403,18 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
 
 
     $('#toggle').click(function () {
-        $(this).toggleClass('active');
+            toogle();
+    });
+
+    $('.item-menu').click(()=>{
+        toogle();
+    })
+
+    function toogle(){
+        $('#toggle').toggleClass('active');
         $('#overlay-mobile').toggleClass('open');
         $('#overlay-bg').toggleClass('open');
-    });
+    }
 
     function menu() {
         $('#toggle').toggleClass('active');

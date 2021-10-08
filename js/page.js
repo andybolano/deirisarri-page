@@ -51,13 +51,28 @@
 
 
      (function () {
+
+        const userLang = navigator.language || navigator.userLanguage; 
+        const defaultLang = 'es';
+
+        $('#english').removeClass('active-lang');
+            $('#spanish').addClass('active-lang');
+            $('.ES').show();
+            $('.EN').hide();
+
+        if(userLang !== 'es-ES'){
+            defaultLang : 'en';
+            $('#english').addClass('active-lang');
+            $('#spanish').removeClass('active-lang');
+            $('.ES').hide();
+            $('.EN').show();
+        }
+
          $("[data-translate] ").jqTranslate('js/traductor/lang', {
-             defaultLang: 'en'
+             defaultLang: defaultLang
          });
-         $('#english').removeClass('active-lang');
-         $('#spanish').addClass('active-lang');
-         $('.ES').show();
-         $('.EN').hide();
+        
+        
      })();
 
 

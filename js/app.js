@@ -4,14 +4,20 @@
     angular.module('app', ['ngSanitize'])
         .constant('HOME', 'app.home')
         //.constant('API_URL', 'https://deirisarri.co/api/public/index.php/api')
-        .constant('API_URL', 'https://disarri.lauchoit.com/api')
+        .constant('API_URL', 'https://deirisarri.co/api/public/api')
         //.constant('API_URL', 'http://localhost/deirisarri/api/public/index.php/api')
         .config(function ($compileProvider) {
             $compileProvider.debugInfoEnabled(false);
 
         }).run(function ($rootScope) {
+
+            const userLang = navigator.language || navigator.userLanguage; 
+            let defaultLang = 'ES';
+            if(userLang !== 'es-ES'){
+                defaultLang = 'EN';
+            }
             $rootScope.Envio = {};
-            $rootScope.lang = "ES";
+            $rootScope.lang = defaultLang;
             if (!localStorage.getItem('cart')) {
                 $rootScope.Carrito = [];
             } else {
@@ -97,12 +103,9 @@ angular.module('app').filter('filtroColor', function () {
     angular
         .module('app')
         .controller('barController', ['$rootScope', function ($rootScope) {
-
-
             var vm = this;
             vm.lang = function (lang) {
                 $rootScope.lang = lang;
-
-            }
+            };
         }]);
 })();

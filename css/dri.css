@@ -143,6 +143,17 @@ html {
     height: 100%;
 }
 
+@media (max-width:1460px) {
+    html {
+        zoom: 0.9;
+    }
+}
+@media (max-width:600px) {
+    html {
+        zoom: 1;
+    }
+}
+
 body {
     font-family: GothamBook, arial, helvetica;
     color: #000;
@@ -154,11 +165,11 @@ body {
 }
 
 .content {
-    border: 8px solid #F7CED6;
-    width: calc(100% - 65px);
-    height: calc(100% - 200px);
-    margin-left: 32px;
-    margin-top: 60px;
+    border: 6px solid #F7CED6;
+    width: calc(100% - 40px);
+    height: calc(100% - 90px);
+    margin-left: 20px;
+    margin-top: 90px;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
@@ -166,10 +177,24 @@ body {
 
 }
 
+.fp-controlArrow{
+    margin-top: 0px;
+}
+
 .content.about{
     align-content: center;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.content.about p{
+    text-align: left;
+    margin-left: 10%;
+}
+@media (max-width:500px) {
+    .content.about p{
+        margin-left: 10px;
+    }
 }
 
 .content.store-detail{
@@ -356,8 +381,8 @@ textarea {
 
 #menu {
     float: right;
-    top: 40px;
-    right: 20px
+    top: 20px;
+    right: 10px
 }
 
 #logo,
@@ -365,9 +390,13 @@ textarea {
     float: left
 }
 
+.logo{
+    height: 70px;
+}
+
 #logo {
-    top: 30px;
-    left: 30px
+    top: 10px;
+    left: 15px
 }
 
 #logo li {
@@ -385,7 +414,7 @@ textarea {
 .content-lang {
     position: relative;
     margin-left: 30px;
-    top: -35px
+    top: -30px
 }
 
 .blank {
@@ -427,9 +456,8 @@ textarea {
 
 .content p {
     line-height: 1.4em;
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 30px;
+    width: 100%;
+    margin-left: 0;
     text-align: center
 }
 
@@ -455,7 +483,6 @@ h1 {
         width: 80%;
         position: relative;
         left: 0;
-        top: 1%;
         transform: none;
         -webkit-transform: none
     }
@@ -468,7 +495,6 @@ h1 {
         width: 90%;
         position: relative;
         left: 0;
-        top: 2%;
         text-align: center;
         transform: none;
         -webkit-transform: none
@@ -501,7 +527,6 @@ h1 {
         width: 85%;
         position: relative;
         margin-left: 7.555%;
-        margin-top: 10px;
         transform: none;
         -webkit-transform: none;
         text-align: center
@@ -725,16 +750,26 @@ hr {
 }
 
 .content-carrito {
-    margin-top: 1.3%;
+    margin-top: 30px;
     margin-left: 1.5%;
     width: 97%;
-    height: 95%;
+    height: calc(100% - 30px);
     background-color: #FFF;
     padding: 20px;
     overflow-y: auto;
     -webkit-box-shadow: -1px 5px 21px -3px rgba(0, 0, 0, .75);
     -moz-box-shadow: -1px 5px 21px -3px rgba(0, 0, 0, .75);
-    box-shadow: -1px 5px 21px -3px rgba(0, 0, 0, .75)
+    box-shadow: -1px 5px 21px -3px rgba(0, 0, 0, .75);
+    z-index: 3000;
+}
+
+@media (max-width:700px) {
+    .content-carrito {
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+        margin-left: 0;
+    }
 }
 
 .header-cart,
@@ -921,7 +956,8 @@ button.comprar {
     height: 45px;
     text-align: center;
     float: left;
-    margin-right: 20px
+    margin-right: 20px;
+    margin-bottom:10px;
 }
 
 .link-tabla-medidas{
@@ -974,8 +1010,7 @@ button.comprar {
     height: 98px;
     border: 0 solid;
     z-index: 4;
-    top: 80%;
-    margin-top: -38px;
+    bottom: 0;
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -1095,12 +1130,12 @@ button.comprar {
 
 .overflow-content {
     width: 100%;
-    width: calc(100% - 70px);
-    height: calc(100% - 140px);
+    width: calc(100% - 40px);
+    height: calc(100% - 100px);
     overflow-y: auto;
     overflow-x: hidden;
-    margin-left: 32px;
-    margin-top: 120px
+    margin-left: 20px;
+    margin-top: 90px
 }
 
 .line-content {
@@ -1150,9 +1185,7 @@ button.comprar {
         width: 100%; 
     }
 
-    .title-categorias{
-        font-weight: bold;
-    }
+
 
 
 }
@@ -1176,25 +1209,28 @@ button.comprar {
     #sec-tienda-categorias{
         padding-top: 10px;
         padding-left: 10px;
-        width: 320px; 
+        width: 360px; 
         text-align: left;
         position: absolute;
         z-index: 1000;
     }
 
     #sec-tienda-productos{
-        margin-left: 320px;
-        width: calc( 100% - 320px ); 
+        margin-left: 360px;
+        width: calc( 100% - 360px ); 
     }
 
     #sec-tienda-categorias .subcategoria-decoration{
         margin-bottom: 15px;
     }
 
-    .title-categorias{
-        font-size: 25px;
-        font-weight: bold;
-    }
+  
+        .title-categorias{
+            font-size: 1.4rem;
+            font-weight: 900;
+            font-family: 'GothamBold';
+        }
+    
 
     .item-sub-categoria{
         padding-bottom: 15px;
@@ -1688,7 +1724,7 @@ button.comprar {
     position: fixed;
     right: 100px;
     width: auto;
-    height: 45px
+    height: 45px;
 }
 
 .social img {
@@ -1730,21 +1766,21 @@ button.comprar {
 
 @media(max-width:500px) {
     #footer {
-        bottom: 30px;
+        bottom: 0px;
         height: 50px;
-        width: 90%;
-        margin-left: 5%;
+        width: 100%;
+        margin-left: 0;
         background-image: url(../img/footer.svg);
         background-repeat: repeat-x;
-        background-color: transparent !important;
     }
 
     #social-network {
         position: fixed;
         right: 70px;
-        width: auto;
-        bottom: 25px;
+        width: 200px;
+        bottom: 20px;
         height: 40px;
+        margin-left: auto;
     }
 
     .social img {
@@ -1756,16 +1792,16 @@ button.comprar {
 
     #social-whatsapp {
         position: fixed;
-        right: 10px;
+        right: 20px;
         width: auto;
         height: 45px
     }
     
     .social-whatsapp img {
-        width: 70px;
+        width: 60px;
         display: inline-block;
         padding-left: 10px;
-        margin-top: -6px
+        bottom: 20px;
     }
 
     .cargador {
@@ -1892,11 +1928,11 @@ button.comprar {
     width: 42px;
     height: 42px;
     top: 20px;
-    left: 20px;
+    right: 20px;
     z-index: 3001;
     font-size: 2em;
     background-image: url(../img/close.svg);
-    background-size: 100% 100%
+    background-size: 100% 100%;
 }
 
 @media (max-width:1100px) {
@@ -1923,7 +1959,8 @@ button.comprar {
     }
 
     .logo {
-        width: 100px
+        width: 100px;
+        height: 50px;
     }
 
     .content-lang {
@@ -2018,7 +2055,7 @@ button.comprar {
         color: #c3c3c3
     }
 
-    .close {
+    .close{
         width: 32px;
         height: 32px;
         position: absolute;
@@ -2047,7 +2084,7 @@ button.comprar {
     width: 50px;
     -webkit-transition: opacity .25s ease;
     transition: opacity .25s ease;
-    z-index: 2001
+    z-index: 200
 }
 
 .button_container:hover {
@@ -2101,7 +2138,7 @@ button.comprar {
     height: 100%;
     visibility: hidden;
     overflow: hidden;
-    z-index: 2000
+    z-index: 199;
 }
 
 .overlay-bg {
@@ -2113,7 +2150,7 @@ button.comprar {
     height: 100%;
     visibility: hidden;
     overflow: hidden;
-    z-index: 1900;
+    z-index: 198;
 }
 
 .overlay-bg.open {
@@ -2346,21 +2383,18 @@ button.comprar {
 
     
     #footer .menu {
-        width: 40%;
-        margin-left: 15px;
-        margin-top: 15px;
+        width: 100%;
+        margin-left: 0px;
         float: left;
         color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     #footer .menu li {
         padding-right: 5px;
-        display: none;
         border-right: 0px solid #000;
-    }
-
-    #footer .menu li:first-child{
-        display: block !important;
     }
 
     #footer .menu li .active {
@@ -2370,9 +2404,10 @@ button.comprar {
     #footer .menu li a {
         background-color: #f5ced6;
         color: #000;
-        font-size: 8px;
+        font-size: 9px;
         font-weight: 900;
         font-family: GothamBold, arial, helvetica;
+        line-height: 0px;
     }
 }
 
@@ -2420,6 +2455,7 @@ button.comprar {
 
 .grid-productos{
     margin:0px;
+    padding-bottom: 40px;
 }
 
 .card-producto{
@@ -2452,8 +2488,19 @@ button.comprar {
 @media (max-width:500px) {
 .card-producto .card-description-producto
     {
-        margin-top: 0px;
+        margin-top: 20px;
     }
+}
+
+
+.about-context {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-context p{
+    margin-top: 2%;
 }
 
 @media (min-width:500px) {
