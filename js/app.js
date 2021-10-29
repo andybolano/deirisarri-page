@@ -3,29 +3,23 @@
     // Add Angular module mdr.file
     angular.module('app', ['ngSanitize'])
         .constant('HOME', 'app.home')
-        //.constant('API_URL', 'https://deirisarri.co/api/public/index.php/api')
         .constant('API_URL', 'https://deirisarri.co/api/public/api')
-        //.constant('API_URL', 'http://localhost/deirisarri/api/public/index.php/api')
         .config(function ($compileProvider) {
             $compileProvider.debugInfoEnabled(false);
 
         }).run(function ($rootScope) {
 
-            const userLang = navigator.language || navigator.userLanguage; 
-            let defaultLang = 'ES';
-            if(userLang !== 'es-ES'){
-                defaultLang = 'EN';
-            }
+
+            let defaultLang = 'es';
             $rootScope.Envio = {};
             $rootScope.lang = defaultLang;
+            
             if (!localStorage.getItem('cart')) {
                 $rootScope.Carrito = [];
             } else {
                 $rootScope.Carrito = JSON.parse(localStorage.getItem('cart'));
             }
         });
-
-
 
 })();
 

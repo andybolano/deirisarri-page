@@ -183,12 +183,14 @@
 
             vm.getTotal = function () {
                 var total = 0;
+        
                 for (var i = 0; i < $rootScope.Carrito.length; i++) {
 
                     var product = $rootScope.Carrito[i].producto;
-                    if ($rootScope.lang == 'ES') {
+                
+                    if ($rootScope.lang == 'es') {
                         total += (product.precio * $rootScope.Carrito[i].cantidad);
-                    } else if ($rootScope.lang == 'EN') {
+                    } else if ($rootScope.lang == 'en') {
                         total += (product.precio_usd * $rootScope.Carrito[i].cantidad);
                     }
 
@@ -217,7 +219,7 @@
                         for (let x = 0; x < descuentos.length; x++) {
 
                             if (productos[i].cantidad >= parseInt(descuentos[x].cantidad)) {
-                                if ($rootScope.lang == 'ES') {
+                                if ($rootScope.lang == 'es') {
                                     descuento = (productos[i].precio * productos[i].cantidad) * (descuentos[x].descuento / 100);
                                 } else {
                                     descuento = (productos[i].precio_usd * productos[i].cantidad) * (descuentos[x].descuento / 100);
@@ -229,7 +231,7 @@
 
                         var descuentoPorCodigo = 0;
                         if(vm.codigoDescuento != null){
-                            if ($rootScope.lang == 'ES') {
+                            if ($rootScope.lang == 'es') {
                                 descuentoPorCodigo = (productos[i].precio * productos[i].cantidad) * (vm.codigoDescuento.percentage / 100);
                             } else {
                                 descuentoPorCodigo = (productos[i].precio_usd * productos[i].cantidad) * (vm.codigoDescuento.percentage / 100);
@@ -299,7 +301,7 @@
 
 
 
-                if ($rootScope.lang == 'ES') {
+                if ($rootScope.lang == 'es') {
                     if ((vm.getTotal() < $rootScope.Envio.valor_min_cop)) {
                         swal({
                             position: 'center',
@@ -313,7 +315,7 @@
                     }
                 }
 
-                if ($rootScope.lang == 'EN') {
+                if ($rootScope.lang == 'en') {
                     if ((vm.getTotal() < $rootScope.Envio.valor_min_usd)) {
                         swal({
                             position: 'center',
@@ -447,9 +449,9 @@
 
                         var currency = "COP";
 
-                        if ($rootScope.lang == 'ES') {
+                        if ($rootScope.lang == 'es') {
                             currency = "COP";
-                        } else if ($rootScope.lang == 'EN') {
+                        } else if ($rootScope.lang == 'en') {
                             currency = "USD";
                         }
 
@@ -517,17 +519,17 @@
             $('input:radio[name=envio]').change(function () {
 
                 if (this.value == 'CO') {
-                    if ($rootScope.lang == 'ES') {
+                    if ($rootScope.lang == 'es') {
                         vm.envio = parseInt($rootScope.Envio.envioCO);
-                    } else if ($rootScope.lang == 'EN') {
+                    } else if ($rootScope.lang == 'en') {
                         vm.envio = parseFloat($rootScope.Envio.envioCO_usd);
                     }
 
                 }
                 if (this.value == 'IN') {
-                    if ($rootScope.lang == 'ES') {
+                    if ($rootScope.lang == 'es') {
                         vm.envio = parseInt($rootScope.Envio.envioIN);
-                    } else if ($rootScope.lang == 'EN') {
+                    } else if ($rootScope.lang == 'en') {
                         vm.envio = parseFloat($rootScope.Envio.envioIN_usd);
                     }
 
@@ -539,9 +541,9 @@
                 }
                 if (this.value == 'BO') {
 
-                    if ($rootScope.lang == 'ES') {
+                    if ($rootScope.lang == 'es') {
                         vm.envio = parseInt($rootScope.Envio.envioBO);
-                    } else if ($rootScope.lang == 'EN') {
+                    } else if ($rootScope.lang == 'en') {
                         vm.envio = parseFloat($rootScope.Envio.envioBO_usd);
                     }
 
@@ -583,10 +585,10 @@
                 }
 
                 function error(error) {
-                    if ($rootScope.lang == 'ES') {
+                    if ($rootScope.lang == 'es') {
                         toastr.error("Se ha producido un error por favor intente nuevamente");
                     }
-                    if ($rootScope.lang == 'EN') {
+                    if ($rootScope.lang == 'en') {
                         toastr.error("An error has occurred please try again");
 
                     }
@@ -596,10 +598,10 @@
 
             vm.eliminarCodigoDescuento = function(){
                 vm.codigoDescuento = null;
-                if ($rootScope.lang == 'ES') {
+                if ($rootScope.lang == 'es') {
                     toastr.success("Se ha quitado el código de descuento");
                 }
-                if ($rootScope.lang == 'EN') {
+                if ($rootScope.lang == 'en') {
                     toastr.success("Discount code has been removed");
 
                 }

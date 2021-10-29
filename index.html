@@ -120,8 +120,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
         </li>
         <li>
             <div class="content-lang">
-                <a href="javascript:;" id="spanish" class="lang" ng-click="vm.lang('ES')">ESP/</a>
-                <a href="javascript:;" id="english" class="lang" ng-click="vm.lang('EN')"">/ENG</a>
+                <a href="javascript:;" id="spanish" class="lang" ng-click="vm.lang('es')">ESP/</a>
+                <a href="javascript:;" id="english" class="lang" ng-click="vm.lang('en')"">/ENG</a>
             </div>
         </li>
         <li>
@@ -280,15 +280,15 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
             <div class="slide" id="slide0">
                 <div class="overflow-content scrollable-element line-content" ng-class="{'scroll-dowm': vm.mobile}"
                     id="scroll-shop">
-                    <div id="sec-tienda-categorias">
+                    <div id="sec-tienda-categorias" class="scrollable-element scrollable-element-categorias" ng-if="!vm.mobile">
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-12">
                                 <label class="title-categorias" data-translate="queEstasBuscarndo"></label><br>
                             </div>
                         </div>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                         <div class="row">
-                            <div class="col-sm-6 col-xs-6 item-sub-categoria" ng-repeat="item in vm.subcategorias">
+                            <div class="col-xs-12 item-sub-categoria" ng-repeat="item in vm.subcategorias">
                                 <label class="custom-radio-checkbox">
                                     <input 
                                         type="checkbox" 
@@ -308,7 +308,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                         </div>
                         <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                         <div class="row">
-                            <div class="col-sm-6 item-sub-categoria" ng-repeat="item in vm.tags">
+                            <div class="col-xs-12 item-sub-categoria" ng-repeat="item in vm.tags">
                                 <label class="custom-radio-checkbox">
                                     <input 
                                         type="checkbox" 
@@ -326,6 +326,64 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                             </div>
                         </div>
                     </div>
+
+                    <div ng-if="vm.mobile" id="filterMobile">
+                        <div class="content-filter">
+
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="title-categorias" data-translate="queEstasBuscarndo"></label><br>
+                                </div>
+                            </div>
+                            <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
+                            <div class="row">
+                                <div class="col-xs-12 item-sub-categoria" ng-repeat="item in vm.subcategorias">
+                                    <label class="custom-radio-checkbox">
+                                        <input 
+                                            type="checkbox" 
+                                            value="{{item.id}}" 
+                                            ng-model="item.seleccionado" 
+                                            ng-change="vm.getProductos()" 
+                                            name="check-subcategorias" 
+                                            class="custom-radio-checkbox__input" />
+    
+                                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+                                        <span class="ES custom-radio-checkbox__text">{{item.nombreES}}</span>
+                                        <span class="EN custom-radio-checkbox__text">{{item.nombreEN}}</span>
+                                    </label>
+    
+    
+                                </div>
+                            </div>
+                            <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
+                            <div class="row">
+                                <div class="col-xs-12 item-sub-categoria" ng-repeat="item in vm.tags">
+                                    <label class="custom-radio-checkbox">
+                                        <input 
+                                            type="checkbox" 
+                                            value="{{item.id}}" 
+                                            ng-model="item.seleccionado" 
+                                            ng-change="vm.getProductos()"
+                                            name="check-tags" 
+                                            class="custom-radio-checkbox__input" />
+    
+                                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+    
+                                        <span class="ES custom-radio-checkbox__text">{{item.nombreES}}</span>
+                                        <span class="EN custom-radio-checkbox__text">{{item.nombreEN}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        
+
+                        </div>
+                        <div class="title" id="btnFilter" onclick="viewFilter()">
+                            <p>Filtros</p>
+                        </div>
+                    </div>
+
+
                     <div id="sec-tienda-productos">
                         <div class="row grid-productos">
                             <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos" style="margin-bottom: 20px;">
@@ -334,8 +392,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                         <div class="cargador"> 
                                             <div ng-if="vm.estaAgotado(item.propiedades.id, item.sotck)" class="agotado"
                                                 style="top: 50%; left: 50%;display:block; width: calc(100% - 35px);position: absolute;">
-                                                <span class="ES">AGOTADO</span>
-                                                <span class="EN">SOLD OUT</span>
+                                                <span ng-if="lang === 'es'">AGOTADO</span>
+                                                <span ng-if="lang === 'en'">SOLD OUT</span>
                                             </div>
                                             <img src="{{item.propiedades.image}}" class="image-grid-producto"
                                                 ng-click='vm.view_producto(item)' style="width:100%;">
@@ -345,18 +403,21 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                                 ng-click='vm.view_producto(item)' style="width:100%;">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xs-12 card-description-producto">
                                         <a href="javascript:;" ng-click='vm.view_producto(item)'>
-                                            <label class="ES nombre-card-producto">{{item.propiedades.nombreES}}</label>
-                                            <label class="EN nombre-card-producto">{{item.propiedades.nombreEN}}</label>
+                                            <label class="nombre-card-producto" ng-if="lang === 'es'">{{item.propiedades.nombreES}}</label>
+                                            <label class="nombre-card-producto" ng-if="lang === 'en'">{{item.propiedades.nombreEN}}</label>
                                         </a>
                                         <div class="decoration-title">
                                             <img src="img/decoration-text.svg">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 text-center card-text-precio-producto">
-                                        <label class="text-precio-producto ES">{{item.propiedades.precio | currency:undefined}} COP</label>
-                                        <label class="text-precio-producto EN">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
+                                       
+                                        <label class="text-precio-producto " ng-if="lang === 'es' ">{{item.propiedades.precio | currency:undefined}} COP</label>
+                                        <label class="text-precio-producto " ng-if="lang === 'en' "">{{item.propiedades.precio_usd | currency:undefined}} USD</label>
                                         <h3 style="font-size: 13px;position: absolute;left: 50%;transform: translate(-50%, 0px);" class="ES precio-anterior" ng-if="item.propiedades.precio_ant != null && item.propiedades.precio_ant != ''">{{item.propiedades.precio_ant | currency:undefined:0}} COP</h3>
                                         <h3 style="font-size: 13px;position: absolute;left: 50%;transform: translate(-50%, 0px);" class="EN precio-anterior" ng-if="item.propiedades.precio_ant_usd != null && item.propiedades.precio_ant_usd != ''">{{item.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
                                     </div>
@@ -387,35 +448,44 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                 <div class="row" style="padding:0">
                                     <div class="col-xs-6">
 
-                                        <div style="width:100%">
-                                            <div class="box-talla" ng-repeat="item in vm.Producto.tallas "
-                                                id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
-                                                {{item.talla}}
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="box-talla" ng-repeat="item in vm.Producto.tallas "
+                                                    id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
+                                                    {{item.talla}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="box-color" style="width:100%">
+
+                                                    <select id="colorSel" class="input-text" ng-change="vm.color();"
+                                                        ng-model="vm.colorSelected" style="width:100%;height:37px;">
+                                                        <option value="0" disabled>COLOR</option>
+                                                        <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
+                                                            {{item.nombre}} 
+                                                        </option>
+                                                    </select>
+        
+                                                </div>
+                                                <div class="color" id="color" style="width:100%;height:16px;">
+
+                                                </div>
                                             </div>
                                         </div>
 
 
-                                        <div class="box-color" style="width:100%">
-
-                                            <select id="colorSel" class="input-text" ng-change="vm.color();"
-                                                ng-model="vm.colorSelected" style="width:100%;height:37px;">
-                                                <option value="0" disabled>COLOR</option>
-                                                <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
-                                                    {{item.nombre}} 
-                                                </option>
-                                            </select>
-
-                                        </div>
-                                        <br>
-                                        <div class="color" id="color" style="width:100%;height:16px;">
-
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div style="width:100%; margin-bottom: 10px;" ng-if="vm.debeMostrarTablaMedidas()">
+                                                    <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
+                                                </div>
+                                            </div>
                                         </div>
                                         
-                                        <div style="width:100%; margin-bottom: 10px;" ng-if="vm.debeMostrarTablaMedidas()">
-                                            
-                                            <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
-                                            <br>
-                                        </div>
+
                                     </div>
                                     <div class="col-xs-6 content-comprar">
                                         <button class="comprar" ng-click="vm.addCart();"
@@ -1234,8 +1304,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                 </td>
                                 <td valign="top ">
                                     <div class="content-descripcion ">
-                                        <h4 class="ES">{{item.producto.nombreES}}</h2>
-                                            <h4 class="EN">{{item.producto.nombreEN}}</h2>
+                                        <h4 ng-if="lang === 'es' ">{{item.producto.nombreES}}</h2>
+                                        <h4 ng-if="lang === 'en' ">{{item.producto.nombreEN}}</h2>
                                                 <small>
                                                     Talla:{{item.talla}}
                                                 </small><br>
@@ -1248,9 +1318,9 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     <a href="javascript:;" ng-click="vm.eliminarProducto($index)"><small
                                             style="color:#e53935" data-translate="eliminar"></small></a>
                                     <div class="content-precio ">
-                                        <h4 class="ES">{{item.producto.precio * item.cantidad | currency:undefined:0}}
+                                        <h4 ng-if="lang === 'es' ">{{item.producto.precio * item.cantidad | currency:undefined:0}}
                                             COP</h4>
-                                        <h4 class="EN">{{item.producto.precio_usd * item.cantidad | currency:undefined}}
+                                        <h4  ng-if="lang === 'en' ">{{item.producto.precio_usd * item.cantidad | currency:undefined}}
                                             USD</h4>
                                         <input type="number " class="input-text cantidad " ng-model="item.cantidad "
                                             ng-change="vm.buttonPay();">
@@ -1283,8 +1353,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     <h4 class="EN">PURCHASE:</h4>
                                 </td>
                                 <td style="border:0;text-align: right">
-                                    <h4 class="ES">{{vm.getTotal()|currency:undefined:0}} COP </h4>
-                                    <h4 class="EN">{{vm.getTotal()|currency:undefined}} USD </h4>
+                                    <h4 ng-if="lang === 'es' ">{{vm.getTotal()|currency:undefined:0}} COP </h4>
+                                    <h4 ng-if="lang === 'en' ">{{vm.getTotal()|currency:undefined}} USD </h4>
                                 </td>
                             </tr>
                             <tr style="border:0">
@@ -1293,8 +1363,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     <h4 class="EN">DISCOUNT:</h4>
                                 </td>
                                 <td style="border:0;text-align: right">
-                                    <h4 class="ES">- {{vm.descuento|currency:undefined:0}} COP </h4>
-                                    <h4 class="EN">- {{vm.descuento|currency:undefined}} USD </h4>
+                                    <h4 ng-if="lang === 'es' ">- {{vm.descuento|currency:undefined:0}} COP </h4>
+                                    <h4 ng-if="lang === 'en' ">- {{vm.descuento|currency:undefined}} USD </h4>
                                 </td>
                             </tr>
                             <tr style="border:0">
@@ -1303,8 +1373,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     <h4 class="EN">SHIPPING VALUE</h4>
                                 </td>
                                 <td style="border:0;text-align: right">
-                                    <h4 class="ES">{{vm.envio | currency:undefined:0}} COP </h4>
-                                    <h4 class="EN">{{vm.envio | currency:undefined}} USD </h4>
+                                    <h4 ng-if="lang === 'es' ">{{vm.envio | currency:undefined:0}} COP </h4>
+                                    <h4 ng-if="lang === 'en' ">{{vm.envio | currency:undefined}} USD </h4>
                                 </td>
                             </tr>
                             <tr class="total ">
@@ -1312,10 +1382,9 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     <h4>TOTAL:</h4>
                                 </td>
                                 <td style="text-align: right" colspan="2">
-                                    <h4 class="ES">{{vm.getTotal() - vm.descuento + vm.envio | currency:undefined:0}}
+                                    <h4 ng-if="lang === 'es' ">{{vm.getTotal() - vm.descuento + vm.envio | currency:undefined:0}}
                                         COP </h4>
-                                    <h4 class="EN">{{vm.getTotal() - vm.descuento + vm.envio | currency:undefined}} USD
-                                    </h4>
+                                    <h4 ng-if="lang === 'en' ">{{vm.getTotal() - vm.descuento + vm.envio | currency:undefined}} USD</h4>
                                 </td>
                             </tr>
                         </table>
@@ -1395,6 +1464,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
         document.getElementById("overlay").style.display = "none";
         document.getElementById("modal_carrito").style.display = "none";
     }
+
     $(".menu li a").click(function () {
         $('.menu li a').removeClass("active");
         $(this).toggleClass("active");
@@ -1409,6 +1479,10 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
     $('.item-menu').click(()=>{
         toogle();
     })
+
+    function viewFilter(){
+        $('#filterMobile').toggleClass('active');
+    }
 
     function toogle(){
         $('#toggle').toggleClass('active');

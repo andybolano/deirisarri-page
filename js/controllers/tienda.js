@@ -84,7 +84,11 @@
                     if( vm.Producto.imagenes_moviles != null){
                         for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
                             text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
-                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            if($rootScope.lang === 'es'){
+                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            }else{
+                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">SOLD OUT</div>';
+                            }
                             text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
                             text += '</div>';
                         }
@@ -95,7 +99,11 @@
                     if(vm.Producto.imagenes != null){
                         for (var i = 0; i < vm.Producto.imagenes.length; i++) {
                             text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
-                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            if($rootScope.lang === 'es'){
+                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            }else{
+                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">SOLD OUT</div>'; 
+                            }
                             text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
                             text += '</div>';
                         }
@@ -159,7 +167,11 @@
                         var text = ""
                         for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
                             text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
+                            if($rootScope.lang === 'es'){
                             text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '" id="agotado' + i + '">AGOTADO</div>';
+                            }else{
+                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '" id="agotado' + i + '">SOLD OUT</div>';   
+                            }
                             text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
                             text += '</div>';
                         }
@@ -168,7 +180,11 @@
                         var text = ""
                         for (var i = 0; i < vm.Producto.imagenes.length; i++) {
                             text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
-                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            if($rootScope.lang === 'es'){
+                                 text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
+                            }else{
+                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">SOLD OUT</div>';
+                            }
                             text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
                             text += '</div>';
                         }
@@ -293,9 +309,9 @@
                 var currency = "";
 
 
-                if ($rootScope.lang == 'ES') {
+                if ($rootScope.lang == 'es') {
                     currency = 'COP';
-                } else if ($rootScope.lang == 'EN') {
+                } else if ($rootScope.lang == 'en') {
                     currency = 'USD';
                 }
 

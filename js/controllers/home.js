@@ -24,11 +24,11 @@ angular.module('app')
 
                     var imagenesCargadas = [];
 
-                    for (var i = 0; i < vm.banners.length; i++) {
-                        imagenesCargadas.push(vm.banners[i].img_pc)
+                    for (let i = 0; i < vm.banners.length; i++) {
+                        imagenesCargadas.push(vm.banners[i].img_pc);
                     }
 
-                    for (var i = 0; i < imagenesCargadas.length; i++) {
+                    for (let i = 0; i < imagenesCargadas.length; i++) {
                         $('<img>').attr('src', imagenesCargadas[i]);
                     }
                     if (!vm.mobile) {
