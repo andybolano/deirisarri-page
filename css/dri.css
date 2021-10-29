@@ -1298,9 +1298,9 @@ button.comprar {
         padding-left: 10px;
         width: 180px; 
         text-align: left;
-        position: absolute;
+        position: fixed;
         z-index: 1000;
-        height: calc(100% - 120px);
+        height:calc(100% - 140px);
         overflow-y: auto;
         overflow-x: hidden;
     }
