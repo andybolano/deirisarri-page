@@ -1195,6 +1195,7 @@ button.comprar {
     text-align: left;
     padding: 30px 40px;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 #filterMobile .content-filter .title-categorias{

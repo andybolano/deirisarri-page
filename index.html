@@ -339,14 +339,14 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                             <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                             <div class="row">
                                 <div class="col-xs-12 item-sub-categoria" ng-repeat="item in vm.subcategorias">
-                                    <label class="custom-radio-checkbox">
+                                    <label class="custom-radio-checkbox" onclick="filterCheck()">
                                         <input 
                                             type="checkbox" 
                                             value="{{item.id}}" 
                                             ng-model="item.seleccionado" 
                                             ng-change="vm.getProductos()" 
                                             name="check-subcategorias" 
-                                            class="custom-radio-checkbox__input" />
+                                            class="custom-radio-checkbox__input"/>
     
                                         <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
                                         <span class="ES custom-radio-checkbox__text">{{item.nombreES}}</span>
@@ -359,7 +359,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                             <img src='img/subcategoria-decoration.svg' class='subcategoria-decoration'>
                             <div class="row">
                                 <div class="col-xs-12 item-sub-categoria" ng-repeat="item in vm.tags">
-                                    <label class="custom-radio-checkbox">
+                                    <label class="custom-radio-checkbox" onclick="filterCheck()">
                                         <input 
                                             type="checkbox" 
                                             value="{{item.id}}" 
@@ -1470,6 +1470,13 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
         $(this).toggleClass("active");
 
     });
+
+    function filterCheck(){
+        $('#filterMobile').removeClass('active');
+        
+   
+    }
+
 
 
     $('#toggle').click(function () {
