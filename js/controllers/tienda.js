@@ -75,40 +75,10 @@
                 $.fn.fullpage.moveSlideLeft();
                 vm.Producto = JSON.parse(localStorage.getItem('producto'));
 
-
-
-
-
                 if (vm.mobile) {
-                    var text = "";
-                    if( vm.Producto.imagenes_moviles != null){
-                        for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
-                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
-                            if($rootScope.lang === 'es'){
-                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                            }else{
-                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '"" id="agotado' + i + '">SOLD OUT</div>';
-                            }
-                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
-                            text += '</div>';
-                        }
-                    }
-                    $('#elementos-productos-movil').html(text);
+                    setCarousel(vm.Producto.imagenes_moviles, 'mobile');
                 } else {
-                    var text = "";
-                    if(vm.Producto.imagenes != null){
-                        for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
-                            if($rootScope.lang === 'es'){
-                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                            }else{
-                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">SOLD OUT</div>'; 
-                            }
-                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
-                            text += '</div>';
-                        }
-                    }
-                    $('#elementos-productos-pc').html(text);
+                    setCarousel(vm.Producto.imagenes, 'desktop');
                 }
 
 
@@ -126,6 +96,31 @@
                 }, 500);
             };
 
+            const setCarousel = (data, type) => {
+
+             let text = "";
+             
+             if(data === null){
+                 return;
+             }
+
+            for (let i = 0; i < data.length; i++) {
+                    const color = sanitizeColor(data[i].color);
+                    text += '<div class="carousel-cell-store" id="element-' + color + '">';
+                    if($rootScope.lang === 'es'){
+                        text += ' <div class="agotado agotado-prenda-' + color + '"" id="agotado' + i + '">AGOTADO</div>';
+                    }else{
+                        text += ' <div class="agotado agotado-prenda-' + color + '"" id="agotado' + i + '">OUT OF STOCK</div>';
+                    }
+                    text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + data[i].url + '" alt="tulip" style="height:100%"  />';
+                    text += '</div>';
+            }
+
+
+              type === 'mobile' ?  $('#elementos-productos-movil').html(text) :  $('#elementos-productos-pc').html(text);
+
+            }
+ 
             vm.getProductos = function () {
                 var filtros = vm.getFiltrosProductos();
                 var promisePost = appService.getProductosFiltrados(filtros);
@@ -164,48 +159,28 @@
                     $carousel.flickity('destroy');
 
                     if (vm.mobile) {
-                        var text = ""
-                        for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
-                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes_moviles[i].color + '">';
-                            if($rootScope.lang === 'es'){
-                            text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '" id="agotado' + i + '">AGOTADO</div>';
-                            }else{
-                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes_moviles[i].color + '" id="agotado' + i + '">SOLD OUT</div>';   
-                            }
-                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes_moviles[i].url + '" alt="tulip" style="height:100%"  />';
-                            text += '</div>';
-                        }
-                        $('#elementos-productos-movil').html(text);
+                        setCarousel(vm.Producto.imagenes_moviles, 'mobile');
                     } else {
-                        var text = ""
-                        for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                            text += '<div class="carousel-cell-store" id="element-' + vm.Producto.imagenes[i].color + '">';
-                            if($rootScope.lang === 'es'){
-                                 text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">AGOTADO</div>';
-                            }else{
-                                text += ' <div class="agotado agotado-prenda-' + vm.Producto.imagenes[i].color + '"" id="agotado' + i + '">SOLD OUT</div>';
-                            }
-                            text += '<img class="carousel-cell-image-store" data-flickity-lazyload="' + vm.Producto.imagenes[i].url + '" alt="tulip" style="height:100%"  />';
-                            text += '</div>';
-                        }
-                        $('#elementos-productos-pc').html(text);
+                        setCarousel(vm.Producto.imagenes, 'desktop');
                     }
 
                     var dataColor = (JSON.parse(vm.colorSelected));
                     $("#color").css("background-color", dataColor.color);
 
-                    vm.colorFilter = dataColor.nombre;
+                    vm.colorFilter = sanitizeColor(dataColor.nombre);
 
                     if (vm.mobile) {
                         for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
-                            if (dataColor.nombre !== vm.Producto.imagenes_moviles[i].color) {
-                                $('#element-' + vm.Producto.imagenes_moviles[i].color).remove();
+                            const colorProduct = sanitizeColor(vm.Producto.imagenes_moviles[i].color);
+                            if (vm.colorFilter !== colorProduct) {
+                                $('#element-' + colorProduct).remove();
                             }
                         }
                     } else {
                         for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                            if (dataColor.nombre !== vm.Producto.imagenes[i].color) {
-                                $('#element-' + vm.Producto.imagenes[i].color).remove();
+                            const colorProduct = sanitizeColor(vm.Producto.imagenes[i].color);
+                            if (vm.colorFilter !== colorProduct) {
+                                $('#element-' + colorProduct).remove();
                             }
                         }
                     }
@@ -499,5 +474,15 @@
 
                 return true;
             };
+
+
+            const sanitizeColor = (color) => {
+                return removeAccents(color.replace(/ /g, "")).toLowerCase();
+            };
+
+            const removeAccents = (str) => {
+                return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            };
+
         }]);
 })();

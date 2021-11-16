@@ -417,7 +417,7 @@
 
 
                 if (!vm.Cliente.pais || vm.Cliente.pais == "") {
-                    toastr.warning("Ingresar paÃ­s");
+                    toastr.warning("Ingresar pa¨ªs");
                     return false
                 }
 
@@ -434,20 +434,27 @@
                     referenceCode: "dir" + addControl()
                 }
 
-                console.log(object)
 
                 appService.pay(object).then(success, error);
 
                 function success(d) {
                     if (d.data.result) {
 
-                        var apiKey = d.data.Content.apiKey;
-                        var merchantId = d.data.Content.merchantId;
-                        var referenceCode = object.referenceCode;
-                        var accountId = d.data.Content.accountId;
-                        var total = vm.getTotal() - vm.descuento + vm.envio;
+                        const apiKey = d.data.Content.apiKey;
+                        const merchantId = d.data.Content.merchantId;
+                        const referenceCode = object.referenceCode;
+                        const accountId = d.data.Content.accountId;
+                        
+                        
+                        /*const apiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+                        const merchantId = '508029';
+                        const referenceCode = object.referenceCode;
+                        const accountId = '512321';*/
+                        
+                        
+                        const total = vm.getTotal() - vm.descuento + vm.envio;
 
-                        var currency = "COP";
+                        let currency = "COP";
 
                         if ($rootScope.lang == 'es') {
                             currency = "COP";
@@ -459,11 +466,11 @@
 
 
                         var signature = String(CryptoJS.MD5(apiKey + "~" + merchantId + "~" + referenceCode + "~" + total + "~" + currency));
-
-
+                        const url_test = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
+                        const url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
 
                         var text = "";
-                        text += '<form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">';
+                        text += '<form method="post" action="'+url+'">';
                         text += '<input name="merchantId" type="hidden" value="' + merchantId + '">';
                         text += '<input name="accountId" type="hidden" value="' + accountId + '">';
                         text += '<input name="ApiKey" type="hidden" value="' + apiKey + '">';
@@ -480,8 +487,9 @@
                         text += '<input name="shippingCity" type="hidden" value="' + vm.Cliente.ciudad + '">';
                         text += '<input name="shippingCountry" type="hidden" value="' + vm.Cliente.pais + '">';
                         text += '<input name="telephone" type="hidden" value="' + vm.Cliente.telefono + '">';
+                        text += '<input name="test" type="hidden"  value="0" >';
                         text += '<input name="responseUrl" type="hidden" value="https://deirisarri.co/pagos/response.php">';
-                        text += '<input name="confirmationUrl" type="hidden" value="https://deirisarri.co/pagos/confirmacion.php">';
+                        text += '<input name="confirmationUrl" type="hidden" value="https://deirisarri.co/api/public/api/pay/confirmation">';
                         text += '<input name="Submit" type="submit" id="buy" value="REALIZAR PAGO" class="button comprar finalizar" data-translate="finalizarCompra">';
                         text += '</form>';
 
