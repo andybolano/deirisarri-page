@@ -105,7 +105,7 @@
              }
 
             for (let i = 0; i < data.length; i++) {
-                    const color = sanitizeColor(data[i].color);
+                    const color = getIdColor(data[i].color);
                     text += '<div class="carousel-cell-store" id="element-' + color + '">';
                     if($rootScope.lang === 'es'){
                         text += ' <div class="agotado agotado-prenda-' + color + '"" id="agotado' + i + '">AGOTADO</div>';
@@ -154,7 +154,9 @@
                     toastr['warning']('Por favor seleccionar talla!');
                     return;
                 }*/
-                if (vm.colorSelected !== 0) {
+                if (vm.colorSelected === 0) {
+                    return;
+                }
 
                     $carousel.flickity('destroy');
 
@@ -167,18 +169,19 @@
                     var dataColor = (JSON.parse(vm.colorSelected));
                     $("#color").css("background-color", dataColor.color);
 
-                    vm.colorFilter = sanitizeColor(dataColor.nombre);
-
+                    vm.colorFilter = dataColor.id_color;
+                      
                     if (vm.mobile) {
                         for (var i = 0; i < vm.Producto.imagenes_moviles.length; i++) {
-                            const colorProduct = sanitizeColor(vm.Producto.imagenes_moviles[i].color);
+                            const colorProduct = getIdColor(vm.Producto.imagenes_moviles[i].color);
                             if (vm.colorFilter !== colorProduct) {
                                 $('#element-' + colorProduct).remove();
                             }
                         }
                     } else {
                         for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                            const colorProduct = sanitizeColor(vm.Producto.imagenes[i].color);
+                            const colorProduct = getIdColor(vm.Producto.imagenes[i].color);
+                        
                             if (vm.colorFilter !== colorProduct) {
                                 $('#element-' + colorProduct).remove();
                             }
@@ -194,10 +197,7 @@
                     }, 100);
 
                     vm.verificarDisponible();
-                } else {
-
-                }
-
+                 
 
 
             }
@@ -227,11 +227,10 @@
 
                 $('.agotado').css("display", "none");
                 if (!vm.disponible) {
-                    $('.agotado-prenda-' + color.nombre).css("display", "block");
+                    $('.agotado-prenda-' + color.id_color).css("display", "block");
                 }
-
-
             }
+
 
             vm.selectTalla = function (talla) {
 
@@ -261,6 +260,11 @@
                 return tipo;
             }
 
+
+            const getIdColor = (colorName) =>{
+                return vm.Producto.colores.find(item => sanitizeColor(item.nombre) === sanitizeColor(colorName)).id_color;
+            }
+
             vm.addCart = function () {
 
                 if (vm.colorSelected == 0) {
@@ -280,7 +284,6 @@
                 var imagen = "";
                 var talla = "";
                 var id_talla = 0;
-                var carrito = [];
                 var currency = "";
 
 
@@ -297,7 +300,7 @@
 
                 var color = JSON.parse(vm.colorSelected);
                 for (var i = 0; i < vm.Producto.imagenes.length; i++) {
-                    if (color.nombre == vm.Producto.imagenes[i].color) {
+                    if ( color.id_color === getIdColor(vm.Producto.imagenes[i].color)) {
                         imagen = vm.Producto.imagenes[i];
                         break;
                     }

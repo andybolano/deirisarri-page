@@ -69,6 +69,7 @@ angular.module('app')
 
             function success(d) {
                 $rootScope.Envio = d.data[0];
+             
 
 
             }

@@ -1110,6 +1110,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
             </div>
         </div>
     </div>
+    
     <div ng-controller="CarritoController as vm" id="modal_carrito" class="modal">
         <div class="content-carrito scrollable-element animated bounceIn">
 
@@ -1210,8 +1211,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                     <div class="header-cart" data-translate="infoEnvio"></div>
                     <div class="form-pago">
                         <form action="">
-
-                            <span data-translate="envioBogota"></span><br>
+                            <span class="EN"><b>Shipments to local destination {{Envio.dias_LO}} day</b></span>
+                            <span class="ES"><b>Envíos a destino local {{Envio.dias_LO}} dia</b></span><br>
                             <input type="radio" id="cbox_envioBogota" value="BO" name="envio" ng-model="item.enviob">
                             <span data-translate="infoEnvioBogota"></span>
                             <span class="ES">{{Envio.envioBO| currency:undefined:0}} COP</span>
@@ -1219,8 +1220,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
 
                             <br>
                             <hr>
-
-                            <span data-translate="envioColombia"></span><br>
+                            <span class="EN"><b>Shipments to Colombia {{Envio.dias_CO}} WORKING DAYS</b></span>
+                            <span class="ES"><b>Envíos a Colombia {{Envio.dias_CO}} DÍAS HÁBILES</b></span><br>
                             <input type="radio" id="cbox_envioColombia" value="CO" name="envio" ng-model="item.envioa">
                             <span data-translate="infoEnvioColombia"></span>
                             <span class="ES">
@@ -1233,7 +1234,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                             <br>
                             <hr>
                             <br>
-                            <span data-translate="envioInternacional"></span><br>
+                            <span class="EN"><b>Shipments to international destinations {{Envio.dias_IN}} WORKING DAYS</b></span>
+                            <span class="ES"><b>Envíos a destinos internacionales {{Envio.dias_IN}} DÍAS HÁBILES</b></span><br>
                             <input type="radio" id="cbox_envioInternacional" value="IN" name="envio"
                                 ng-model="item.enviob">
                             <span data-translate="infoEnvioInternacional"></span>
