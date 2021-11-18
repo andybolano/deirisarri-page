@@ -12,7 +12,9 @@
 
             let defaultLang = 'es';
             $rootScope.Envio = {};
+            $rootScope.ProductDetail = {};
             $rootScope.lang = defaultLang;
+            $rootScope.showProduct = false;
             
             if (!localStorage.getItem('cart')) {
                 $rootScope.Carrito = [];

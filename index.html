@@ -107,7 +107,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
 
     <div id="modal_tabla_medidas" class="modal">
         <span class="close" onclick="close_modal_tabla_medidas()" class="animated bounceIn"></span>
-        <div id="img_tabla_medidas">
+        <div id="img_tabla_medidas" class="animated fadeIn">
             
         </div>
     </div>
@@ -236,6 +236,173 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
         <span class="bottom"></span>
     </div>
 
+    <div id="overlay_product_detail" class="modal" style="z-index:1000; display:block" ng-if="showProduct">
+        <div class="content-product-detail animated fadeInUp" ng-controller="ProductController as vm" ng-init="vm.init()">
+            <span class="close" ng-click="vm.close()" class='animated bounceIn'></span>
+
+            <div class="overflow-content scrollable-element scroll-dowm" ng-if="vm.mobile"
+                    style="-webkit-overflow-scrolling: touch;">
+                  
+                        <div class="row store">
+                            <div class="col-lg-12">
+                                <div class="carousel-store" id="elementos-productos-movil">
+
+                                </div>
+                                <br><br>
+                            </div>
+                            <br>
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-6">
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="box-talla" ng-repeat="item in vm.Product.tallas "
+                                                    id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
+                                                    {{item.talla}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="box-color" style="width:100%">
+
+                                                    <select id="colorSel" class="input-text" ng-change="vm.color();"
+                                                        ng-model="vm.colorSelected" style="width:100%;height:37px;">
+                                                        <option value="0" disabled>COLOR</option>
+                                                        <option ng-repeat="item in vm.Product.colores" value="{{item}}">
+                                                            {{item.nombre}} 
+                                                        </option>
+                                                    </select>
+        
+                                                </div>
+                                                <div class="color" id="color" style="width:100%;height:16px;">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div style="width:100%; margin-bottom: 10px;" ng-if="vm.debeMostrarTablaMedidas()">
+                                                    <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    <div class="col-xs-6 content-comprar">
+                                        <button class="comprar" ng-click="vm.addCart();"
+                                            data-translate="addCart"></button>
+                                        <h3 class="ES precio-anterior" ng-if="vm.Product.propiedades.precio_ant != null && vm.Product.propiedades.precio_ant != ''">{{vm.Product.propiedades.precio_ant | currency:undefined:0}} COP</h3>
+                                        <h3 class="EN precio-anterior" ng-if="vm.Product.propiedades.precio_ant_usd != null && vm.Product.propiedades.precio_ant_usd != ''">{{vm.Product.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
+                                        <h3 class="ES">{{vm.Product.propiedades.precio | currency:undefined:0}} COP</h3>
+                                        <h3 class="EN">{{vm.Product.propiedades.precio_usd | currency:undefined}} USD</h3>
+                                
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h2 class="ES">{{vm.Product.propiedades.nombreES}}</h2>
+                                        <h2 class="EN">{{vm.Product.propiedades.nombreEN}}</h2>
+
+                                        <p class="ES">{{vm.Product.propiedades.descripcionES}}</p>
+                                        <p class="EN">{{vm.Product.propiedades.descripcionEN}}</p>
+                                        <div class="decoration-title">
+                                            <img src="img/decoration-text.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+            </div>
+            <div class="content store-detail" ng-if="!vm.mobile">
+                    <div class="row store" style="padding:10px">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="box-talla" ng-repeat="item in vm.Product.tallas "
+                                                id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
+                                                {{item.talla}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="box-color">
+
+                                                <select id="colorSel" class="input-text" ng-change="vm.color();"
+                                                    ng-model="vm.colorSelected" style="height:37px;">
+                                                    <option value="0" disabled>COLOR</option>
+                                                    <option ng-repeat="item in vm.Product.colores" value="{{item}}">
+                                                        {{item.nombre}}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                            <div class="color" id="color" style="margin-left: 5px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-if="vm.debeMostrarTablaMedidas()">
+                                        <div class="col-lg-12">
+                                            <br>
+                                            <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-6 content-comprar">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button class="comprar" ng-click="vm.addCart();" data-translate="addCart"></button>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex;justify-content: flex-end;">
+                                        <div>
+                                            <h3 class="ES precio-anterior" ng-if="vm.Product.propiedades.precio_ant != null && vm.Product.propiedades.precio_ant != ''">{{vm.Product.propiedades.precio_ant | currency:undefined:0}} COP</h3>
+                                            <h3 class="EN precio-anterior" ng-if="vm.Product.propiedades.precio_ant_usd != null && vm.Product.propiedades.precio_ant_usd != ''">{{vm.Product.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
+                                        </div>
+                                        <div style="margin-left: 20px;">
+                                            <h3 class="ES">{{vm.Product.propiedades.precio | currency:undefined:0}} COP</h3>
+                                            <h3 class="EN">{{vm.Product.propiedades.precio_usd | currency:undefined:0}} USD</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2 class="ES">{{vm.Product.propiedades.nombreES}}</h2>
+                                    <h2 class="EN">{{vm.Product.propiedades.nombreEN}}</h2>
+
+                                    <p class="ES">{{vm.Product.propiedades.descripcionES}}</p>
+                                    <p class="EN">{{vm.Product.propiedades.descripcionEN}}</p>
+                                    <div class="decoration-title">
+                                        <img src="img/decoration-text.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="carousel-store" id="elementos-productos-pc">
+
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <div id="fullpage">
         <section class="section active" id="section0" ng-controller="HomeController as vm" ng-init="vm.getBanner();">
@@ -277,7 +444,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
 
         <section class="section" id="section2" ng-controller="TiendaController as vm" ng-init="vm.init()">
 
-            <div class="slide" id="slide0">
+          
                 <div class="overflow-content scrollable-element line-content" ng-class="{'scroll-dowm': vm.mobile}"
                     id="scroll-shop">
                     <div id="sec-tienda-categorias" class="scrollable-element scrollable-element-categorias" ng-if="!vm.mobile">
@@ -383,7 +550,6 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                         </div>
                     </div>
 
-
                     <div id="sec-tienda-productos">
                         <div class="row grid-productos">
                             <div class="col-xs-12 col-sm-4 card-producto" ng-repeat="item in vm.productos" style="margin-bottom: 20px;">
@@ -423,179 +589,13 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 card-producto" ng-if="vm.productos.length == 0">
+                            <div class="col-xs-12 col-sm-12 card-producto" ng-if="vm.Products.length == 0">
                                 <label class="ES" data-translate="sinProductos"></label>
                                 <label class="EN" data-translate="sinProductos"></label>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="slide" id="slide1">
-                <div class="overflow-content scrollable-element scroll-dowm" ng-if="vm.mobile"
-                    style="-webkit-overflow-scrolling: touch;">
-                    <div class="content">
-                        <div class="row store">
-                            <div class="col-lg-12">
-                                <div class="carousel-store" id="elementos-productos-movil">
-
-                                </div>
-                                <br><br>
-                            </div>
-                            <br>
-                            <div class="col-lg-12" style="zoom:0.9">
-                                <div class="row" style="padding:0">
-                                    <div class="col-xs-6">
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="box-talla" ng-repeat="item in vm.Producto.tallas "
-                                                    id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
-                                                    {{item.talla}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="box-color" style="width:100%">
-
-                                                    <select id="colorSel" class="input-text" ng-change="vm.color();"
-                                                        ng-model="vm.colorSelected" style="width:100%;height:37px;">
-                                                        <option value="0" disabled>COLOR</option>
-                                                        <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
-                                                            {{item.nombre}} 
-                                                        </option>
-                                                    </select>
-        
-                                                </div>
-                                                <div class="color" id="color" style="width:100%;height:16px;">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div style="width:100%; margin-bottom: 10px;" ng-if="vm.debeMostrarTablaMedidas()">
-                                                    <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-
-                                    </div>
-                                    <div class="col-xs-6 content-comprar">
-                                        <button class="comprar" ng-click="vm.addCart();"
-                                            data-translate="addCart"></button>
-                                        <h3 class="ES precio-anterior" ng-if="vm.Producto.propiedades.precio_ant != null && vm.Producto.propiedades.precio_ant != ''">{{vm.Producto.propiedades.precio_ant | currency:undefined:0}} COP</h3>
-                                        <h3 class="EN precio-anterior" ng-if="vm.Producto.propiedades.precio_ant_usd != null && vm.Producto.propiedades.precio_ant_usd != ''">{{vm.Producto.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
-                                        <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
-                                        <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined}} USD</h3>
-                                
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <h2 class="ES">{{vm.Producto.propiedades.nombreES}}</h2>
-                                        <h2 class="EN">{{vm.Producto.propiedades.nombreEN}}</h2>
-
-                                        <p class="ES">{{vm.Producto.propiedades.descripcionES}}</p>
-                                        <p class="EN">{{vm.Producto.propiedades.descripcionEN}}</p>
-                                        <div class="decoration-title">
-                                            <img src="img/decoration-text.svg">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content store-detail" ng-if="!vm.mobile">
-                    <div class="row store" style="padding:10px">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="row">
-                                <div class="col-lg-6 col-xs-6">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="box-talla" ng-repeat="item in vm.Producto.tallas "
-                                                id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
-                                                {{item.talla}}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="box-color">
-
-                                                <select id="colorSel" class="input-text" ng-change="vm.color();"
-                                                    ng-model="vm.colorSelected" style="height:37px;">
-                                                    <option value="0" disabled>COLOR</option>
-                                                    <option ng-repeat="item in vm.Producto.colores" value="{{item}}">
-                                                        {{item.nombre}}
-                                                    </option>
-                                                </select>
-
-                                            </div>
-                                            <div class="color" id="color" style="margin-left: 5px;">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" ng-if="vm.debeMostrarTablaMedidas()">
-                                        <div class="col-lg-12">
-                                            <br>
-                                            <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
-                                            <br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-xs-6 content-comprar">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <button class="comprar" ng-click="vm.addCart();" data-translate="addCart"></button>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex;justify-content: flex-end;">
-                                        <div>
-                                            <h3 class="ES precio-anterior" ng-if="vm.Producto.propiedades.precio_ant != null && vm.Producto.propiedades.precio_ant != ''">{{vm.Producto.propiedades.precio_ant | currency:undefined:0}} COP</h3>
-                                            <h3 class="EN precio-anterior" ng-if="vm.Producto.propiedades.precio_ant_usd != null && vm.Producto.propiedades.precio_ant_usd != ''">{{vm.Producto.propiedades.precio_ant_usd | currency:undefined:0}} USD</h3>
-                                        </div>
-                                        <div style="margin-left: 20px;">
-                                            <h3 class="ES">{{vm.Producto.propiedades.precio | currency:undefined:0}} COP</h3>
-                                            <h3 class="EN">{{vm.Producto.propiedades.precio_usd | currency:undefined:0}} USD</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h2 class="ES">{{vm.Producto.propiedades.nombreES}}</h2>
-                                    <h2 class="EN">{{vm.Producto.propiedades.nombreEN}}</h2>
-
-                                    <p class="ES">{{vm.Producto.propiedades.descripcionES}}</p>
-                                    <p class="EN">{{vm.Producto.propiedades.descripcionEN}}</p>
-                                    <div class="decoration-title">
-                                        <img src="img/decoration-text.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="carousel-store" id="elementos-productos-pc">
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <a href="javascript:;" ng-click="vm.back()" class="back" id="back"></a>
-                       
+                </div>         
         </section>
 
         <section class="section" id="section3" ng-controller="BlogController as vm" ng-init="vm.getBlog()">
@@ -1433,6 +1433,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
 <script src="js/controllers/about.js " type="text/javascript "></script>
 <script src="js/controllers/tiendas.js " type="text/javascript "></script>
 <script src="js/controllers/categorias.js " type="text/javascript "></script>
+<script src="js/controllers/product.js " type="text/javascript "></script>
 <script src="js/services/app.js " type="text/javascript "></script>
 <script src="js/services/ubicacionService.js " type="text/javascript "></script>
 <script src="js/sweet.js " type="text/javascript "></script>
