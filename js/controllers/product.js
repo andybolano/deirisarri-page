@@ -44,10 +44,12 @@
                 vm.colorFilter = "";
                 $("#color").css("background-color", '#FFF');
 
-            
+               
+        
                 vm.mobile ? setCarousel(vm.Product.imagenes_moviles, 'mobile') : setCarousel(vm.Product.imagenes, 'desktop');
-                
 
+                
+                
             };
 
             vm.color = function () {
@@ -96,25 +98,32 @@
 
             vm.addCart = function () {
 
-                if (vm.colorSelected == 0) {
-                    toastr['warning']('Seleccionar un color');
-                    return;
-                }
 
-                if (!vm.tallaSelected || vm.tallaSelected == "") {
-                    toastr['warning']('Seleccionar talla');
-                    return;
-                }
+               
+                    if (vm.colorSelected == 0) {
+                        toastr['warning']('Seleccionar un color');
+                        return;
+                    }
+
+                    if (!vm.tallaSelected || vm.tallaSelected == "") {
+                        toastr['warning']('Seleccionar talla');
+                        return;
+                    }
+            
+
+
 
                 if (vm.disponible == false) {
                     toastr['warning']('Producto agotado!');
                     return;
                 }
+
+
                 var imagen = "";
                 var talla = "";
                 var id_talla = 0;
                 var currency = "";
-
+                var color = "";
 
                 if ($rootScope.lang == 'es') {
                     currency = 'COP';
@@ -126,22 +135,25 @@
 
 
 
-
-                var color = JSON.parse(vm.colorSelected);
-                for (var i = 0; i < vm.Product.imagenes.length; i++) {
-                    if ( color.id_color === getIdColor(vm.Product.imagenes[i].color)) {
-                        imagen = vm.Product.imagenes[i];
-                        break;
+        
+                     color = JSON.parse(vm.colorSelected);
+                    for (var i = 0; i < vm.Product.imagenes.length; i++) {
+                        if ( color.id_color === getIdColor(vm.Product.imagenes[i].color)) {
+                            imagen = vm.Product.imagenes[i];
+                            break;
+                        }
                     }
-                }
 
-                for (var i = 0; i < vm.Product.tallas.length; i++) {
-                    if (vm.tallaSelected == vm.Product.tallas[i].id_talla) {
-                        talla = vm.Product.tallas[i].talla;
-                        id_talla = vm.Product.tallas[i].id_talla;
-                        break;
+                    for (var i = 0; i < vm.Product.tallas.length; i++) {
+                        if (vm.tallaSelected == vm.Product.tallas[i].id_talla) {
+                            talla = vm.Product.tallas[i].talla;
+                            id_talla = vm.Product.tallas[i].id_talla;
+                            break;
+                        }
                     }
-                }
+                
+
+
                 var producto = {
                     producto: vm.Product.propiedades,
                     talla: talla,
@@ -204,7 +216,11 @@
             };
 
             vm.verificarDisponible = function () {
+
                 vm.disponible = false;
+         
+
+           
                 if (vm.tallaSelected == '' || !vm.tallaSelected) {
                     return;
 
@@ -216,7 +232,7 @@
 
                 var color = (JSON.parse(vm.colorSelected));
 
-
+            
 
                 for (var i = 0; i < vm.Product.sotck.length; i++) {
                     if (vm.Product.sotck[i].id_color == color.id_color && vm.Product.sotck[i].id_talla == vm.tallaSelected && parseInt(vm.Product.sotck[i].cantidad_total) > 0) {
@@ -272,7 +288,7 @@
 
             const setCarousel = (data, type) => {
 
-                console.log(data, type)
+                
 
                 if ($carousel.flickity()) {
                     $carousel.flickity('destroy');
@@ -300,6 +316,12 @@
                 type === 'mobile' ?  $('#elementos-productos-movil').html(text) :  $('#elementos-productos-pc').html(text);
                 initCarousel();
                }, 100);
+
+               if(vm.Product.propiedades.isBono == '1'){
+                vm.tallaSelected = vm.Product.tallas[0].id_talla;
+                vm.colorSelected = JSON.stringify(vm.Product.colores[0]);
+
+            }
                  
 
                   vm.selectTalla(vm.Product.tallas[0].id_talla);

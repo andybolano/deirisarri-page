@@ -18,7 +18,7 @@
 
 
             vm.view_producto = function (item) {
-
+            
                     $rootScope.ProductDetail = item;
                     $rootScope.showProduct = true;
               

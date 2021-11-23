@@ -238,7 +238,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
 
     <div id="overlay_product_detail" class="modal" style="z-index:1000; display:block" ng-if="showProduct">
         <div class="content-product-detail animated fadeInUp" ng-controller="ProductController as vm" ng-init="vm.init()">
-            <span class="close" ng-click="vm.close()" class='animated bounceIn'></span>
+            <span class="close" ng-click="vm.close()"></span>
 
             <div class="overflow-content scrollable-element scroll-dowm" ng-if="vm.mobile"
                     style="-webkit-overflow-scrolling: touch;">
@@ -254,8 +254,8 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-xs-6">
-
-                                        <div class="row">
+                                    
+                                        <div class="row" ng-if="vm.Product.propiedades.isBono == '0'">
                                             <div class="col-lg-12">
                                                 <div class="box-talla" ng-repeat="item in vm.Product.tallas "
                                                     id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
@@ -264,7 +264,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                             </div>
                                         </div>
 
-                                        <div class="row">
+                                        <div class="row" ng-if="vm.Product.propiedades.isBono == '0'">
                                             <div class="col-lg-12">
                                                 <div class="box-color" style="width:100%">
 
@@ -284,7 +284,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                         </div>
 
 
-                                        <div class="row">
+                                        <div class="row" ng-if="vm.Product.propiedades.isBono == '0'">
                                             <div class="col-lg-12">
                                                 <div style="width:100%; margin-bottom: 10px;" ng-if="vm.debeMostrarTablaMedidas()">
                                                     <a href="javascript:;" class="link-tabla-medidas" ng-click="vm.verTallas()" data-translate="textTablaMedidas"></a>
@@ -325,7 +325,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                         <div class="col-lg-6 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6 col-xs-6">
-                                    <div class="row">
+                                    <div class="row"  ng-if="vm.Product.propiedades.isBono == '0'">
                                         <div class="col-lg-12">
                                             <div class="box-talla" ng-repeat="item in vm.Product.tallas "
                                                 id="talla_{{item.id_talla}}" ng-click="vm.selectTalla(item.id_talla)">
@@ -334,7 +334,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row"  ng-if="vm.Product.propiedades.isBono == '0'">
                                         <div class="col-lg-12">
                                             <div class="box-color">
 
@@ -360,6 +360,19 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                             <br>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h2 class="ES">{{vm.Product.propiedades.nombreES}}</h2>
+                                            <h2 class="EN">{{vm.Product.propiedades.nombreEN}}</h2>
+        
+                                            <p class="ES">{{vm.Product.propiedades.descripcionES}}</p>
+                                            <p class="EN">{{vm.Product.propiedades.descripcionEN}}</p>
+                                            <div class="decoration-title">
+                                                <img src="img/decoration-text.svg">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 col-xs-6 content-comprar">
                                     <div class="row">
@@ -379,18 +392,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h2 class="ES">{{vm.Product.propiedades.nombreES}}</h2>
-                                    <h2 class="EN">{{vm.Product.propiedades.nombreEN}}</h2>
-
-                                    <p class="ES">{{vm.Product.propiedades.descripcionES}}</p>
-                                    <p class="EN">{{vm.Product.propiedades.descripcionEN}}</p>
-                                    <div class="decoration-title">
-                                        <img src="img/decoration-text.svg">
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="carousel-store" id="elementos-productos-pc">
@@ -1112,7 +1114,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
     </div>
     
     <div ng-controller="CarritoController as vm" id="modal_carrito" class="modal">
-        <div class="content-carrito scrollable-element animated bounceIn">
+        <div class="content-carrito scrollable-element animated fadeInDown">
 
 
             <div id="modalConfirm" class="modal">
@@ -1124,7 +1126,7 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                 </div>
             </div>
 
-            <span class="close" ng-click="vm.closeCarrito()" class='animated bounceIn'></span>
+            <span class="close" ng-click="vm.closeCarrito()"></span>
             <div class="row">
                 <div class="col-lg-2" style="width:auto;">
                     <img src="img/logo.jpg" alt="" class="logo" />
@@ -1308,10 +1310,10 @@ D / IR lleva años en el mercado estudiando el cuerpo femenino para lograr la ho
                                     <div class="content-descripcion ">
                                         <h4 ng-if="lang === 'es' ">{{item.producto.nombreES}}</h2>
                                         <h4 ng-if="lang === 'en' ">{{item.producto.nombreEN}}</h2>
-                                                <small>
+                                                <small ng-show="item.producto.isBono == '0'">
                                                     Talla:{{item.talla}}
                                                 </small><br>
-                                                <small>
+                                                <small ng-show="item.producto.isBono == '0'">
                                                     Color:{{item.color.nombre}}
                                                 </small>
                                     </div>
